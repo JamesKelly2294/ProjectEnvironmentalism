@@ -1,0 +1,69 @@
+﻿// Each #kernel tells which function to compile; you can have many kernels
+#pragma kernel CSMain
+
+Buffer<float> inHeights;
+RWBuffer<float> outHeights;
+
+int numRows;
+int numCols;
+
+[numthreads(32,1,1)]
+void CSMain (uint3 id : SV_DispatchThreadID)
+{
+	int row = id.x / numRows;
+	int col = id.x % numRows;
+
+	float total = inHeights[(row * numCols) + col];
+	int count = 1;
+
+	if (row > 0 && col > 0)
+	{
+		// top left
+		total += inHeights[((row - 1) * numCols) + (col - 1)];
+		count++;
+	}
+	if (row > 0)
+	{
+		// top
+		total += inHeights[((row - 1) * numCols) + (col)];
+		count++;
+	}
+	if (row > 0 && col < numCols - 1)
+	{
+		// top right
+		total += inHeights[((row - 1) * numCols) + (col + 1)];
+		count++;
+	}
+	if (col > 0)
+	{
+		// left
+		total += inHeights[((row) * numCols) + (col - 1)];
+		count++;
+	}
+	if (col < numCols - 1)
+	{
+		// right
+		total += inHeights[((row) * numCols) + (col + 1)];
+		count++;
+	}
+	if (row < numRows - 1 && col > 0)
+	{
+		// bottom left
+		total += inHeights[((row + 1) * numCols) + (col - 1)];
+		count++;
+	}
+	if (row < numRows - 1)
+	{
+		// bottom
+		total += inHeights[((row + 1) * numCols) + (col)];
+		count++;
+	}
+	if (row < numRows - 1 && col < numCols - 1)
+	{
+		// bottom right
+		total += inHeights[((row + 1) * numCols) + (col + 1)];
+		count++;
+	}
+
+	outHeights[id.x] = total / count;
+}
