@@ -150,12 +150,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e7d7900c9eff9448b0c09e03101b82e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numRows: 128
-  numCols: 128
+  numRows: 256
+  numCols: 256
   cubePrefab: {fileID: 2141813097219581291, guid: ee453d89726682f45914367b749712b1,
     type: 3}
   computeShader: {fileID: 7200000, guid: 2cb1005c635988e4bb8080891b09b654, type: 3}
-  numIterations: 10
+  numIterations: 1000
 --- !u!4 &102673001
 Transform:
   m_ObjectHideFlags: 0

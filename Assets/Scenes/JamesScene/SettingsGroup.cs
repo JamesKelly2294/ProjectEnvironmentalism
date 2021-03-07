@@ -69,11 +69,15 @@ public class SettingsGroup : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _am = GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>();
-        globalVolumeSlider.value = _am.GlobalVolume;
-        musicVolumeSlider.value = _am.MusicVolume;
-        sfxVolumeSlider.value = _am.SFXVolume;
-        environmentVolumeSlider.value = _am.EnvironmentVolume;
+        var audioManagerGM = GameObject.FindGameObjectWithTag("AudioManager");
+        if (audioManagerGM)
+        {
+            _am = audioManagerGM.GetComponent<AudioManager>();
+            globalVolumeSlider.value = _am.GlobalVolume;
+            musicVolumeSlider.value = _am.MusicVolume;
+            sfxVolumeSlider.value = _am.SFXVolume;
+            environmentVolumeSlider.value = _am.EnvironmentVolume;
+        }
 
         resolutions = Screen.resolutions.Where(r => r.refreshRate == 60 || r.refreshRate == 59).ToArray();
 
@@ -125,6 +129,20 @@ public class SettingsGroup : MonoBehaviour
                 break;
         }
         displayModeDropdown.RefreshShownValue();
+
+#if UNITY_WEBGL || UNITY_EDITOR
+        displayModeDropdown.interactable = false;
+        resolutionDropdown.interactable = false;
+
+        var placeholderOptions = new List<string>();
+        placeholderOptions.Add("Unsupported");
+
+        displayModeDropdown.ClearOptions();
+        resolutionDropdown.ClearOptions();
+
+        displayModeDropdown.AddOptions(placeholderOptions);
+        resolutionDropdown.AddOptions(placeholderOptions);
+#endif
     }
 
     // Update is called once per frame
