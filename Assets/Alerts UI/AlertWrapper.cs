@@ -28,7 +28,8 @@ public class AlertWrapper : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        GetComponent<LayoutElement>().preferredHeight = 0;
+        GetComponent<CanvasGroup>().alpha = 0;
     }
 
     // Update is called once per frame
