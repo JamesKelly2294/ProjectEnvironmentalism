@@ -2,7 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+
+#if (UNITY_EDITOR) 
 using UnityEditor;
+#endif
 
 public class SimGameAlertManager : MonoBehaviour
 {
@@ -44,6 +47,7 @@ public class SimGameAlertManager : MonoBehaviour
     }
 }
 
+#if (UNITY_EDITOR) 
 // Declare type of Custom Editor
 [CustomEditor(typeof(SimGameAlertManager))]
 public class SimGameAlertManagerEditor : Editor 
@@ -85,3 +89,4 @@ public class SimGameAlertManagerEditor : Editor
         }
     }
 }
+#endif

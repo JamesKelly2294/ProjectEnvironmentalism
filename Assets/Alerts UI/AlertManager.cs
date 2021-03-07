@@ -2,7 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+
+#if (UNITY_EDITOR) 
 using UnityEditor;
+#endif
 
 public class AlertManager : MonoBehaviour
 {
@@ -44,6 +47,7 @@ public class AlertManager : MonoBehaviour
     }
 }
 
+#if (UNITY_EDITOR) 
 // Declare type of Custom Editor
 [CustomEditor(typeof(AlertManager))]
 public class AlertManagerEditor : Editor 
@@ -128,3 +132,4 @@ public class AlertManagerEditor : Editor
         }
     }
 }
+#endif
