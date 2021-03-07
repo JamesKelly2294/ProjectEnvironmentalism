@@ -14,6 +14,7 @@ public static class Sounds
 public class AudioManager : MonoBehaviour
 {
     public AudioMixer mixer;
+    public GameObject audioSourcePrefab;
 
     private Dictionary<string, SoundInfo> sounds = new Dictionary<string, SoundInfo>();
     private List<AudioSource> audioSources = new List<AudioSource>();
@@ -30,6 +31,7 @@ public class AudioManager : MonoBehaviour
     
     public void Play(string id)
     {
+        Debug.Log("Play " + id);
         AudioSource audioSource = null;
         for (int i = 0; i < 8; i++)
         {
@@ -37,17 +39,23 @@ public class AudioManager : MonoBehaviour
             {
                 audioSource = audioSources[i];
                 break;
+            } else
+            {
+
+                Debug.Log(audioSources[i] + " is playing");
             }
         }
 
         if(audioSource == null)
         {
+            Debug.Log("Unable to play " + id + " as there are no audio sources available.");
             return;
         }
 
         SoundInfo soundInfo = sounds[id];
         if(soundInfo == null || soundInfo.audioClips.Length <= 0)
         {
+            Debug.Log("Unable to play " + id + " as there is no sound info associated with the id.");
             return;
         }
 
@@ -63,14 +71,18 @@ public class AudioManager : MonoBehaviour
         audioSourcesGO.transform.parent = transform;
         for (int i = 0; i < 8; i++)
         {
-            var go = new GameObject();
+            var go = Instantiate(audioSourcePrefab);
             go.transform.parent = audioSourcesGO.transform;
             go.transform.name = "Audio Source " + i;
-            var audioSource = go.AddComponent<AudioSource>();
+            var audioSource = go.GetComponent<AudioSource>();
             audioSources.Add(audioSource);
         }
-        
+    }
+
+    private void Start()
+    {
         InitializeVolumes();
+        Play(Sounds.Music.Test);
     }
 
     float GetVolumeFromPrefs(string volumeKey)
@@ -89,10 +101,10 @@ public class AudioManager : MonoBehaviour
 
     void InitializeVolumes()
     {
-        GlobalVolume = GetVolumeFromPrefs("globalVol");
-        MusicVolume = GetVolumeFromPrefs("musicVol");
-        SFXVolume = GetVolumeFromPrefs("sfxVol");
-        EnvironmentVolume = GetVolumeFromPrefs("environmentVol");
+        SetGlobalVol(GetVolumeFromPrefs("globalVol"));
+        SetMusicVol(GetVolumeFromPrefs("musicVol"));
+        SetSFXVol(GetVolumeFromPrefs("sfxVol"));
+        SetEnvironmentVol(GetVolumeFromPrefs("environmentVol"));
     }
 
     public void SetGlobalVol(float volume)
@@ -102,6 +114,7 @@ public class AudioManager : MonoBehaviour
         PlayerPrefs.Save();
 
         mixer.SetFloat("globalVol", Mathf.Log10(GlobalVolume) * 20);
+        Debug.Log("Set global volume = " + volume);
     }
 
     public void SetMusicVol(float volume)
@@ -111,6 +124,7 @@ public class AudioManager : MonoBehaviour
         PlayerPrefs.Save();
 
         mixer.SetFloat("musicVol", Mathf.Log10(MusicVolume) * 20);
+        Debug.Log("Set music volume = " + volume);
     }
 
     public void SetSFXVol(float volume)
@@ -120,6 +134,7 @@ public class AudioManager : MonoBehaviour
         PlayerPrefs.Save();
 
         mixer.SetFloat("sfxVol", Mathf.Log10(SFXVolume) * 20);
+        Debug.Log("Set sfx volume = " + volume);
     }
 
     public void SetEnvironmentVol(float volume)
@@ -129,6 +144,7 @@ public class AudioManager : MonoBehaviour
         PlayerPrefs.Save();
 
         mixer.SetFloat("environmentVol", Mathf.Log10(EnvironmentVolume) * 20);
+        Debug.Log("Set environment volume = " + volume);
     }
 
     // Update is called once per frame

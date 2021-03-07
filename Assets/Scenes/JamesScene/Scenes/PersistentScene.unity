@@ -240,6 +240,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mixer: {fileID: 24100000, guid: a0420a807fa813e4cb71d6b63902ac1c, type: 2}
+  audioSourcePrefab: {fileID: 5304750828136170511, guid: fe776b46bbb1158408005f95954f2ffc,
+    type: 3}
 --- !u!4 &1008703454
 Transform:
   m_ObjectHideFlags: 0

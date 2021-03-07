@@ -25,6 +25,30 @@ public class SettingsGroup : MonoBehaviour
         QualitySettings.SetQualityLevel(qualityIndex);
     }
 
+    public void SetGlobalVolume(float volume)
+    {
+        if(!_am) { return; }
+        _am.SetGlobalVol(volume);
+    }
+
+    public void SetMusicVolume(float volume)
+    {
+        if (!_am) { return; }
+        _am.SetMusicVol(volume);
+    }
+
+    public void SetEnvironmentVolume(float volume)
+    {
+        if (!_am) { return; }
+        _am.SetEnvironmentVol(volume);
+    }
+    public void SetSFXVolume(float volume)
+    {
+        if (!_am) { return; }
+        _am.SetSFXVol(volume);
+    }
+
+
     public void SetResolution(int resolutionIndex)
     {
         var resolution = resolutions[resolutionIndex];
