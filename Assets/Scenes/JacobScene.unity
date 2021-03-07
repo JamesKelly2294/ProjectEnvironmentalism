@@ -1109,7 +1109,7 @@ MonoBehaviour:
   seriousPowerAlert: {fileID: 450804233654861370, guid: 942088933529b4442a701652104becfd,
     type: 3}
   importantSound: {fileID: 8300000, guid: 54fa264adfc1cdd4189596ce288e66ff, type: 3}
-  seriousSound: {fileID: 8300000, guid: 7ad5adc038d78c940b50415d753c44a0, type: 3}
+  seriousSound: {fileID: 8300000, guid: 20ced4ef4daf04d8085d7776b4698cc0, type: 3}
   doneSprite: {fileID: 21300000, guid: f3ff66d7055dec648925d56539f8b59e, type: 3}
   errorSprite: {fileID: 21300000, guid: f6533ef725303e14a954886d1cb50544, type: 3}
   doneTint: {r: 0.6384499, g: 1, b: 0.5566038, a: 1}
