@@ -4,5 +4,11 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/JamesScene/MenuTest.unity
+    guid: dda117b4ccfbba842a6ae38df98bc321
+  - enabled: 1
+    path: Assets/Scenes/JamesScene/MenuTestGameScene.unity
+    guid: 37de88bcb394116439cf65c16c427686
   m_configObjects: {}
