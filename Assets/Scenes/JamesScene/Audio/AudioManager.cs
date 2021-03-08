@@ -11,6 +11,17 @@ public static class Sounds
     }
 }
 
+public static class SFX
+{
+    public static class Button
+    {
+        public const string HighlightStart = "Button/HighlightStart";
+        public const string HighlightEnd = "Button/HighlightEnd";
+        public const string PressStart = "Button/PressStart";
+        public const string PressEnd = "Button/PressEnd";
+    }
+}
+
 public class AudioManager : MonoBehaviour
 {
     public AudioMixer mixer;
@@ -24,6 +35,8 @@ public class AudioManager : MonoBehaviour
     public float SFXVolume { get; protected set; }
     public float EnvironmentVolume { get; protected set; }
 
+    private const int NUMBER_OF_AUDIO_SOURCES = 8;
+
     public void RegisterSoundInfo(SoundInfo soundInfo)
     {
         sounds[soundInfo.id] = soundInfo;
@@ -33,7 +46,7 @@ public class AudioManager : MonoBehaviour
     {
         Debug.Log("Play " + id);
         AudioSource audioSource = null;
-        for (int i = 0; i < 8; i++)
+        for (int i = 0; i < NUMBER_OF_AUDIO_SOURCES; i++)
         {
             if(!audioSources[i].isPlaying)
             {
@@ -52,10 +65,16 @@ public class AudioManager : MonoBehaviour
             return;
         }
 
-        SoundInfo soundInfo = sounds[id];
-        if(soundInfo == null || soundInfo.audioClips.Length <= 0)
+        if(!sounds.ContainsKey(id))
         {
             Debug.Log("Unable to play " + id + " as there is no sound info associated with the id.");
+            return;
+        }
+
+        SoundInfo soundInfo = sounds[id];
+        if(soundInfo.audioClips.Length <= 0)
+        {
+            Debug.Log("Unable to play " + id + " as there are no clips associated with the id.");
             return;
         }
 
@@ -69,7 +88,7 @@ public class AudioManager : MonoBehaviour
         GameObject audioSourcesGO = new GameObject();
         audioSourcesGO.transform.name = "Audio Source Pool";
         audioSourcesGO.transform.parent = transform;
-        for (int i = 0; i < 8; i++)
+        for (int i = 0; i < NUMBER_OF_AUDIO_SOURCES; i++)
         {
             var go = Instantiate(audioSourcePrefab);
             go.transform.parent = audioSourcesGO.transform;

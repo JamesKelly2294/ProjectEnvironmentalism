@@ -19,10 +19,13 @@ public class ButtonHighlightExpand : MonoBehaviour, IPointerEnterHandler, IPoint
     private TweenerCore<float, float, FloatOptions> _growthAnimation;
 
     // Start is called before the first frame update
-    void Start()
+    void OnEnable()
     {
-        _text = GetComponent<TextMeshProUGUI>();
-        _originalFontSize = _text.fontSize;
+        if (isText)
+        {
+            _text = GetComponent<TextMeshProUGUI>();
+            _originalFontSize = _text.fontSize;
+        }
     }
 
     public void OnPointerEnter(PointerEventData eventData)
