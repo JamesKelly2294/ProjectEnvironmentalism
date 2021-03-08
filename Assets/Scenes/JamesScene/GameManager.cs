@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public enum SceneIndices
 {
@@ -13,6 +14,8 @@ public enum SceneIndices
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
+    public GameObject loadingScreen;
+    public Slider progressBar;
 
     // Start is called before the first frame update
     void Awake()
@@ -22,9 +25,34 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadSceneAsync((int)SceneIndices.TitleScreen, LoadSceneMode.Additive);
     }
 
+    List<AsyncOperation> scenesLoading = new List<AsyncOperation>();
+
     public void LoadGame()
     {
-        SceneManager.UnloadSceneAsync((int)SceneIndices.TitleScreen);
-        SceneManager.LoadSceneAsync((int)SceneIndices.ComputeTest, LoadSceneMode.Additive);
+        loadingScreen.SetActive(true);
+        scenesLoading.Add(SceneManager.UnloadSceneAsync((int)SceneIndices.TitleScreen));
+        scenesLoading.Add(SceneManager.LoadSceneAsync((int)SceneIndices.ComputeTest, LoadSceneMode.Additive));
+
+        StartCoroutine(GetSceneLoadProgress());
+    }
+
+    public IEnumerator GetSceneLoadProgress()
+    {
+        foreach(var sceneLoad in scenesLoading)
+        {
+            while (!sceneLoad.isDone)
+            {
+                float totalProgress = 0;
+                foreach(var operation in scenesLoading)
+                {
+                    totalProgress += operation.progress;
+                }
+                progressBar.value = (totalProgress / scenesLoading.Count);
+                yield return null;
+            }
+        }
+
+        loadingScreen.gameObject.SetActive(false);
+        scenesLoading.Clear();
     }
 }
