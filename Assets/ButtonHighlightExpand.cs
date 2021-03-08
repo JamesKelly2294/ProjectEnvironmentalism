@@ -17,14 +17,21 @@ public class ButtonHighlightExpand : MonoBehaviour, IPointerEnterHandler, IPoint
     private TextMeshProUGUI _text;
     private float _originalFontSize;
     private TweenerCore<float, float, FloatOptions> _growthAnimation;
-
-    // Start is called before the first frame update
+    
     void OnEnable()
     {
         if (isText)
         {
             _text = GetComponent<TextMeshProUGUI>();
             _originalFontSize = _text.fontSize;
+        }
+    }
+
+    void OnDisable()
+    {
+        if (isText)
+        {
+            _text.fontSize = _originalFontSize;
         }
     }
 
