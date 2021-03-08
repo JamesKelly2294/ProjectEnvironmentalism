@@ -28,4 +28,18 @@ public class StandardButton : Button, IPointerEnterHandler, IPointerExitHandler
 
         _sender.Publish("button.highlight.end");
     }
+
+    public override void OnPointerDown(PointerEventData eventData)
+    {
+        base.OnPointerDown(eventData);
+
+        _sender.Publish("button.press.begin");
+    }
+
+    public override void OnPointerUp(PointerEventData eventData)
+    {
+        base.OnPointerUp(eventData);
+
+        _sender.Publish("button.press.end");
+    }
 }

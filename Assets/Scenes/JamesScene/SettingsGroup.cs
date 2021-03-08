@@ -93,15 +93,11 @@ public class SettingsGroup : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        var audioManagerGM = GameObject.FindGameObjectWithTag("AudioManager");
-        if (audioManagerGM)
-        {
-            _am = audioManagerGM.GetComponent<AudioManager>();
-            globalVolumeSlider.value = _am.GlobalVolume;
-            musicVolumeSlider.value = _am.MusicVolume;
-            sfxVolumeSlider.value = _am.SFXVolume;
-            environmentVolumeSlider.value = _am.EnvironmentVolume;
-        }
+        _am = AudioManager.Instance;
+        globalVolumeSlider.value = _am.GlobalVolume;
+        musicVolumeSlider.value = _am.MusicVolume;
+        sfxVolumeSlider.value = _am.SFXVolume;
+        environmentVolumeSlider.value = _am.EnvironmentVolume;
 
         resolutions = Screen.resolutions.Where(r => r.refreshRate == 60 || r.refreshRate == 59).ToArray();
 

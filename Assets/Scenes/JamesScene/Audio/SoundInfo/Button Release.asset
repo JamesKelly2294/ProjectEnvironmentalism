@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3c41cf80029352441b39ad9e2522d7a4, type: 3}
-  m_Name: Button Press
+  m_Name: Button Release
   m_EditorClassIdentifier: 
-  id: Button/PressStart
+  id: Button/PressEnd
   audioMixerGroup: {fileID: 4674431572857700961, guid: a0420a807fa813e4cb71d6b63902ac1c,
     type: 2}
   audioClips:
-  - {fileID: 8300000, guid: 7ad21b2cbc6d6064fbea905deb5bc11f, type: 3}
+  - {fileID: 8300000, guid: 21f403dee37ece14ba9c9b06f41b876c, type: 3}

@@ -24,6 +24,32 @@ public static class SFX
 
 public class AudioManager : MonoBehaviour
 {
+    private static AudioManager _instance;
+    public static AudioManager Instance
+    {
+        get
+        {
+            if (_instance == null)
+            {
+                Debug.Log("AudioManager.instance is null. Attempting to locate AudioManager in the scene.");
+                _instance = FindObjectOfType<AudioManager>();
+                if(!_instance)
+                {
+                    Debug.Log("Unable to locate AudioManager in the scene. Creating a new AudioManager.");
+                    var go = (GameObject)Instantiate(Resources.Load("AudioManager"), Vector3.zero, Quaternion.identity);
+                    _instance = go.GetComponent<AudioManager>();
+                }
+
+                Debug.Log("AudioManager is " + _instance.transform.name);
+            }
+            return _instance;
+        }
+        protected set
+        {
+            _instance = value;
+        }
+    }
+
     public AudioMixer mixer;
     public GameObject audioSourcePrefab;
 
@@ -85,6 +111,14 @@ public class AudioManager : MonoBehaviour
 
     void Awake()
     {
+        if(_instance != null && _instance != this)
+        {
+            Debug.LogError("Only one audio manager can exist. Destroying one instance.");
+            Destroy(this.gameObject);
+            return;
+        }
+        _instance = this;
+
         GameObject audioSourcesGO = new GameObject();
         audioSourcesGO.transform.name = "Audio Source Pool";
         audioSourcesGO.transform.parent = transform;

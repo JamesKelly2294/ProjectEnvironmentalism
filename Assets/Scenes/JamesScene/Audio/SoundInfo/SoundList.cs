@@ -11,9 +11,9 @@ public class SoundList : MonoBehaviour
 
     public void Awake()
     {
-        _am = GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>();
+        _am = AudioManager.Instance;
 
-        foreach(var soundInfo in sounds)
+        foreach (var soundInfo in sounds)
         {
             Debug.Log("Registering " + soundInfo.id);
             _am.RegisterSoundInfo(soundInfo);

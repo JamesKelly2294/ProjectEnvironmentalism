@@ -8,16 +8,14 @@ public class ButtonSounds : MonoBehaviour
     private string ButtonHighlightSoundID;
     [SerializeField]
     private string ButtonPressedSoundID;
+    [SerializeField]
+    private string ButtonReleasedSoundID;
 
     private AudioManager _am;
 
     public void Start()
     {
-        var amGO = GameObject.FindGameObjectWithTag("AudioManager");
-        if(amGO)
-        {
-            _am = amGO.GetComponent<AudioManager>(); 
-        }
+        _am = AudioManager.Instance;
     }
 
     public void PlayButtonHighlightedSound()
@@ -33,6 +31,14 @@ public class ButtonSounds : MonoBehaviour
         if(_am)
         {
             _am.Play(ButtonPressedSoundID);
+        }
+    }
+
+    public void PlayButtonReleasedSound()
+    {
+        if (_am)
+        {
+            _am.Play(ButtonReleasedSoundID);
         }
     }
 }

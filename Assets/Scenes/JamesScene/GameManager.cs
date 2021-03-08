@@ -17,6 +17,8 @@ public class GameManager : MonoBehaviour
     public GameObject loadingScreen;
     public Slider progressBar;
 
+    public string loadGameSceneName;
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -31,7 +33,14 @@ public class GameManager : MonoBehaviour
     {
         loadingScreen.SetActive(true);
         scenesLoading.Add(SceneManager.UnloadSceneAsync((int)SceneIndices.TitleScreen));
-        scenesLoading.Add(SceneManager.LoadSceneAsync((int)SceneIndices.ComputeTest, LoadSceneMode.Additive));
+
+        if (loadGameSceneName == null)
+        {
+            scenesLoading.Add(SceneManager.LoadSceneAsync((int)SceneIndices.ComputeTest, LoadSceneMode.Additive));
+        } else
+        {
+            scenesLoading.Add(SceneManager.LoadSceneAsync(loadGameSceneName, LoadSceneMode.Additive));
+        }
 
         StartCoroutine(GetSceneLoadProgress());
     }
