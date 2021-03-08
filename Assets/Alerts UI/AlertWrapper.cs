@@ -35,10 +35,10 @@ public class AlertWrapper : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Alert alert = Alert.GetComponent<Alert>();
         if (State == AlertWrapperState.starting) {
             State = AlertWrapperState.animatingIn;
 
-            Alert alert = Alert.GetComponent<Alert>();
             if (alert.sound != null && AlertManager.AudioSource != null) {
                 AlertManager.AudioSource.PlayOneShot(alert.sound);
             }
@@ -58,12 +58,13 @@ public class AlertWrapper : MonoBehaviour
                 float desiredHeight = GetAlertHeight();
                 GetComponent<LayoutElement>().preferredHeight = desiredHeight + spacing;
                 GetComponent<CanvasGroup>().alpha = 1;
+            } else if (!alert.alive) {
+                State = AlertWrapperState.animatingOut;
             } else {
                 AnimateIn();
             }
 
         } else if (State == AlertWrapperState.waiting) {
-            Alert alert = Alert.GetComponent<Alert>();
             if (alert.DoesAutoDismiss) {
                 alert.TimeLeft -= Time.deltaTime;
                 alert.TimeLeft = Mathf.Max(alert.TimeLeft, 0f);

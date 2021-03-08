@@ -22,4 +22,8 @@ public class PubSubSender : MonoBehaviour
     public void Publish(string key) {
         pubSubMan.Publish(key, gameObject, null);
     }
+
+    public void Publish(string key, object value) {
+        pubSubMan.Publish(key, gameObject, value);
+    }
 }
