@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/JacobScene.unity
     guid: d453516f7ce6e7f459a0eb669bf18d84
+  - enabled: 1
+    path: Assets/Scenes/JamesScene/Scenes/OiligarchMain.unity
+    guid: 4da7bc58e05338e4aaed580803d7ab1d
   m_configObjects: {}
