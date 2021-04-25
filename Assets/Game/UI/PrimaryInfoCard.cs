@@ -35,16 +35,16 @@ public class PrimaryInfoCard : MonoBehaviour
     /// Accepts a DateTime
     public void DateDidChange(PubSubListenerEvent e) {
         DateTime newTime = (DateTime)e.value;
-        string timeString = newTime.ToString("m, yyyy");
+        string timeString = newTime.ToString("MMMM, yyyy");
         date.SetText(timeString);
     }
 
     /// Accepts a PrimaryInfoCardResourcesDollarsUpdate
     public void DollarsDidChange(PubSubListenerEvent e) {
         PrimaryInfoCardResourcesDollarsUpdate update = (PrimaryInfoCardResourcesDollarsUpdate)e.value;
-        dollars.SetText(update.dollarsAmount.ToString("N2"));
-        income.SetText(update.dollarsIncomePerSecond.ToString("N2"));
-        expenses.SetText(update.dolarsExpensesPerSecond.ToString("N2"));
+        dollars.SetText(update.dollarsAmount.ToString("N0"));
+        income.SetText(update.dollarsIncomePerSecond.ToString("N0"));
+        expenses.SetText(update.dolarsExpensesPerSecond.ToString("N0"));
     }
 
     /// PrimaryInfoCardResourcesOilUpdate
@@ -68,17 +68,17 @@ public class PrimaryInfoCard : MonoBehaviour
 
     // Accepts a double
     public void EvironmentalChange(PubSubListenerEvent e) {
-        environmentSlider.progress = ((float) e.value) / 100f;
+        environmentSlider.progress = ((float) e.value);
     }
 
     // Accepts a double
     public void PublicSentimentDidChange(PubSubListenerEvent e) {
-        sentimentSlider.progress = ((float) e.value) / 100f;
+        sentimentSlider.progress = ((float) e.value);
     }
 
     // Accepts a double
     public void OilStorageDidChange(PubSubListenerEvent e) {
-        oilStorageSlider.progress = ((float) e.value) / 100f;
+        oilStorageSlider.progress = ((float) e.value);
     }
 }
 

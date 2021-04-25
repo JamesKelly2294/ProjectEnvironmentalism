@@ -228,6 +228,7 @@ MonoBehaviour:
   BoxSelectable: 1
   isSelected: 0
   isHighlighted: 0
+  SelectionType: city
 --- !u!61 &9175632000467820245
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -3,6 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
+public interface ISelectableSpriteDelegate
+{
+    void OnSelect();
+    void OnDeelect();
+    void OnHighlight();
+    void OnUnhighlight();
+}
+
 [RequireComponent(typeof(PubSubSender))]
 [RequireComponent(typeof(Collider2D))]
 public class SelectableSprite : MonoBehaviour
@@ -12,8 +20,10 @@ public class SelectableSprite : MonoBehaviour
     public bool BoxHighlightable = false;
     public bool BoxSelectable = false;
 
-    public bool isSelected = false;
-    public bool isHighlighted = false;
+    private bool isSelected = false;
+    private bool isHighlighted = false;
+
+    public string SelectionType = "selectablesprite";
 
     // Start is called before the first frame update
     void Start()
@@ -22,7 +32,47 @@ public class SelectableSprite : MonoBehaviour
     }
 
     private PubSubSender _sender;
-    
+
+    public void Selected()
+    {
+        if(isSelected)
+        {
+            return;
+        }
+        isSelected = true;
+        _sender.Publish(SelectionType + ".gameobject.select", this);
+    }
+
+    public void Highlighted()
+    {
+        if (isHighlighted)
+        {
+            return;
+        }
+        isHighlighted = true;
+        _sender.Publish(SelectionType + ".gameobject.highlight", this);
+    }
+
+    public void Deselected()
+    {
+        if (!isSelected)
+        {
+            return;
+        }
+        isSelected = false;
+        _sender.Publish(SelectionType + ".gameobject.deselect", this);
+    }
+
+    public void Unhighlighted()
+    {
+        if (!isHighlighted)
+        {
+            return;
+        }
+        isHighlighted = false;
+        _sender.Publish(SelectionType + ".gameobject.unhighlight", this);
+    }
+
     public void OnMouseEnter()
     {
         if (Highlightable)
@@ -31,7 +81,7 @@ public class SelectableSprite : MonoBehaviour
         }
         if(BoxHighlightable)
         {
-            _sender.Publish("boxselectable.highlight.begin", this);
+            _sender.Publish("boxselectable.highlight.toggle", this);
         }
     }
 
@@ -43,7 +93,7 @@ public class SelectableSprite : MonoBehaviour
         }
         if (BoxHighlightable)
         {
-            _sender.Publish("boxselectable.highlight.end", this);
+            _sender.Publish("boxselectable.highlight.toggle", this);
         }
     }
 

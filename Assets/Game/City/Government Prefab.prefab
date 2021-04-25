@@ -348,6 +348,7 @@ MonoBehaviour:
   BoxSelectable: 1
   isSelected: 0
   isHighlighted: 0
+  SelectionType: government
 --- !u!1 &6326149566407318424
 GameObject:
   m_ObjectHideFlags: 0
