@@ -1065,12 +1065,12 @@ PrefabInstance:
     - target: {fileID: 4690584796809817807, guid: 2000768c1e3b72f4e96c41f37d022444,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -32.04
+      value: -31
       objectReference: {fileID: 0}
     - target: {fileID: 4690584796809817807, guid: 2000768c1e3b72f4e96c41f37d022444,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -45.7
+      value: -44.9
       objectReference: {fileID: 0}
     - target: {fileID: 4690584796809817807, guid: 2000768c1e3b72f4e96c41f37d022444,
         type: 3}
@@ -1831,12 +1831,12 @@ PrefabInstance:
     - target: {fileID: 4690584796809817807, guid: 2000768c1e3b72f4e96c41f37d022444,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -86.3
+      value: -83.3
       objectReference: {fileID: 0}
     - target: {fileID: 4690584796809817807, guid: 2000768c1e3b72f4e96c41f37d022444,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 32.2
+      value: 28.8
       objectReference: {fileID: 0}
     - target: {fileID: 4690584796809817807, guid: 2000768c1e3b72f4e96c41f37d022444,
         type: 3}
@@ -2036,7 +2036,7 @@ PrefabInstance:
     - target: {fileID: 4690584796809817807, guid: 2000768c1e3b72f4e96c41f37d022444,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -85.57
+      value: -83.9
       objectReference: {fileID: 0}
     - target: {fileID: 4690584796809817807, guid: 2000768c1e3b72f4e96c41f37d022444,
         type: 3}
@@ -5022,12 +5022,12 @@ PrefabInstance:
     - target: {fileID: 4690584796809817807, guid: 2000768c1e3b72f4e96c41f37d022444,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -82.43
+      value: -81.9
       objectReference: {fileID: 0}
     - target: {fileID: 4690584796809817807, guid: 2000768c1e3b72f4e96c41f37d022444,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 46
+      value: 45.7
       objectReference: {fileID: 0}
     - target: {fileID: 4690584796809817807, guid: 2000768c1e3b72f4e96c41f37d022444,
         type: 3}
