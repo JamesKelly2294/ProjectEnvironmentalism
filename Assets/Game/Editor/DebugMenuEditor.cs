@@ -14,5 +14,17 @@ public class DebugMenuEditor : Editor
         {
             debugMenu.BuildOilExtractor();
         }
+        if (GUILayout.Button("Setup Houston Route"))
+        {
+            debugMenu.SetupTradeRoute("Houston");
+        }
+        if (GUILayout.Button("Setup New Orleans Route"))
+        {
+            debugMenu.SetupTradeRoute("New Orleans");
+        }
+        if (GUILayout.Button("Setup Matamoros Route"))
+        {
+            debugMenu.SetupTradeRoute("Matamoros");
+        }
     }
 }

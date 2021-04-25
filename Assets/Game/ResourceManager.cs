@@ -48,6 +48,8 @@ public class ResourceManager : MonoBehaviour
     private List<OilExtractor> oilExtractors = new List<OilExtractor>();
     private List<OilSlick> purchasedOilSlicks = new List<OilSlick>();
 
+    public List<City> Cities = new List<City>();
+
     void Awake()
     {
         _sender = GetComponent<PubSubSender>();
@@ -201,6 +203,49 @@ public class ResourceManager : MonoBehaviour
         oilExtractors.Remove(oilExtractor);
     }
 
+    public void RegisterCity(City city)
+    {
+        if (Cities.Contains(city))
+        {
+            return;
+        }
+        Cities.Add(city);
+    }
+
+    public void UnregisterCity(City city)
+    {
+        Cities.Remove(city);
+    }
+
+    public bool AttemptToReserveVehicle(OilSlickType type) { 
+        if (type == OilSlickType.Land)
+        {
+            if (CurrentOilTrucks < MaximumOilTrucks)
+            {
+                CurrentOilTrucks += 1;
+                PublishEquipmentUpdate();
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        else
+        {
+            if (CurrentOilTankers < MaximumOilTankers)
+            {
+                CurrentOilTankers += 1;
+                PublishEquipmentUpdate();
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+    }
+
     public bool AttemptPurchase(float amount)
     {
         if(amount < 0)
@@ -233,6 +278,7 @@ public class ResourceManager : MonoBehaviour
             oilExtractor.transform.position = oilSlick.transform.position;
             oilExtractor.GetComponent<OilExtractor>().SetOilSlick(oilSlick);
             purchasedOilSlicks.Add(oilSlick);
+            AudioManager.Instance.Play("Resource/KaChing");
         } 
     }
 

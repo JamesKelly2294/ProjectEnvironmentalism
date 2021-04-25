@@ -648,7 +648,7 @@ GameObject:
   - component: {fileID: 1464487965636894885}
   - component: {fileID: 9151228158571058888}
   m_Layer: 0
-  m_Name: Oil Derrick Prefab
+  m_Name: Oil Extractor Prefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -741,6 +741,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03bfa1dd8e2733443b9bf81e58069f35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TradeRoutePrefab: {fileID: 6643712745366701630, guid: be4dc8368dcb9c146b1c35d5dd6d76be,
+    type: 3}
   oilDerrickGraphic: {fileID: 567597999727978140}
   oilRigGraphic: {fileID: 489441691287141802}
   OilReservesSlider: {fileID: 3971854168051842330}

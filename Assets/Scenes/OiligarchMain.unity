@@ -688,6 +688,7 @@ MonoBehaviour:
   EnvironmentHealth: 50
   PublicSentiment: 30
   OilStorage: 0
+  Cities: []
 --- !u!114 &240580801
 MonoBehaviour:
   m_ObjectHideFlags: 0

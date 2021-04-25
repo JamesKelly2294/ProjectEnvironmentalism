@@ -20,10 +20,16 @@ public class City : MonoBehaviour
 
     public TMPro.TextMeshPro Label;
 
+    private ResourceManager _resourceManager;
+
+    public List<TradeRoute> TradeRoutes = new List<TradeRoute>();
+
     // Start is called before the first frame update
     void Start()
     {
         Label.text = Name;
+        _resourceManager = FindObjectOfType<ResourceManager>();
+        _resourceManager.RegisterCity(this);
     }
 
     // Update is called once per frame
@@ -36,5 +42,24 @@ public class City : MonoBehaviour
     void UpdateOilDemand()
     {
         CurrentOilDemand = Mathf.Min(MaximumOilDemand, CurrentOilDemand + OilDemandIncreaseRate * Time.deltaTime);
+    }
+
+    private void OnDestroy()
+    {
+        _resourceManager.UnregisterCity(this);
+    }
+
+    public void RegisterTradeRoute(TradeRoute tradeRoute)
+    {
+        if (TradeRoutes.Contains(tradeRoute))
+        {
+            return;
+        }
+        TradeRoutes.Add(tradeRoute);
+    }
+
+    public void UnregisterTradeRoute(TradeRoute tradeRoute)
+    {
+        TradeRoutes.Remove(tradeRoute);
     }
 }

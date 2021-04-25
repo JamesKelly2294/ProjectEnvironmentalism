@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class OilExtractor : MonoBehaviour
 {
+    public GameObject TradeRoutePrefab;
+
     public OilSlick ExtractedOilSlick { get; protected set; }
 
     public GameObject oilDerrickGraphic;
@@ -19,6 +21,10 @@ public class OilExtractor : MonoBehaviour
     public float CurrentOilStorage = 0;
     [Range(0, 50)]
     public float OilExtractionRate = 10; // units per second
+
+    public OilSlickType ExtractedOilType { get { return ExtractedOilSlick.type; } }
+
+    public List<TradeRoute> TradeRoutes = new List<TradeRoute>();
 
     private ResourceManager _resourceManager;
 
@@ -74,8 +80,36 @@ public class OilExtractor : MonoBehaviour
         CurrentOilStorage += extractedOil;
     }
 
+    public void EstablishTradeRoute(City city)
+    {
+        if (city == null) { return; }
+        if (false == _resourceManager.AttemptToReserveVehicle(ExtractedOilSlick.type)) { return; }
+        var go = Instantiate(TradeRoutePrefab);
+        go.transform.position = transform.position;
+        go.transform.parent = transform;
+        go.transform.name = city.Name + " Trade Route";
+
+        TradeRoute tradeRoute = go.GetComponent<TradeRoute>();
+        tradeRoute.City = city;
+        tradeRoute.OilExtractor = this;
+    }
+
     private void OnDestroy()
     {
         _resourceManager.UnregisterOilExtractor(this);
+    }
+
+    public void RegisterTradeRoute(TradeRoute tradeRoute)
+    {
+        if (TradeRoutes.Contains(tradeRoute))
+        {
+            return;
+        }
+        TradeRoutes.Add(tradeRoute);
+    }
+
+    public void UnregisterTradeRoute(TradeRoute tradeRoute)
+    {
+        TradeRoutes.Remove(tradeRoute);
     }
 }
