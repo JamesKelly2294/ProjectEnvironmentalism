@@ -46,11 +46,13 @@ public class OilExtractor : MonoBehaviour
         {
             oilRigGraphic.SetActive(false);
             oilDerrickGraphic.SetActive(true);
+            gameObject.GetComponent<SelectableSprite>().SelectionType = "oilderrick";
         }
         else
         {
             oilRigGraphic.SetActive(true);
             oilDerrickGraphic.SetActive(false);
+            gameObject.GetComponent<SelectableSprite>().SelectionType = "oilrig";
         }
     }
 

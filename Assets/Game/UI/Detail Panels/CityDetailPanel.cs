@@ -10,6 +10,8 @@ public class CityDetailPanel : MonoBehaviour
     public TextMeshProUGUI title;
     public TextMeshProUGUI subtitle;
 
+    public ProgressSlider environment, sentiment, demand;
+
     public Image flag;
 
     public City city;
@@ -25,21 +27,25 @@ public class CityDetailPanel : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (city == null) {
+            return;
+        }
+
+        demand.progress = city.CurrentOilDemand / city.MaximumOilDemand;
     }
 
     void refresh() {
-        title.SetText(city.name);
+        subtitle.SetText(city.Population.ToString("N0") + " souls");
 
         if (city.Country == Country.UnitedStates) {
             flag.sprite = flagUS;
-            subtitle.SetText("United States");
+            title.SetText(city.name + ", U.S.");
         } else if (city.Country == Country.Cuba) {
             flag.sprite = flagCuba;
-            subtitle.SetText("Cuba");
+            title.SetText(city.name + ", Cuba");
         } else if (city.Country == Country.Mexico) {
             flag.sprite = flagMexico;
-            subtitle.SetText("Mexico");
+            title.SetText(city.name + ", Mexico");
         }
 
     }

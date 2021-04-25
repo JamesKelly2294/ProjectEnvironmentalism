@@ -6,14 +6,16 @@ public class DetailViewManager : MonoBehaviour
 {
 
     public CityDetailPanel cityDetailPanel;
+    public OilDerrickDetailPanel derrickDetailPanel;
+    public EventDetailPanel eventDetailPanel;
     public GovernmentDetailPanel governmentDetailPanel;
-
     public OilSlickDetailPanel oilSlickDetailPanel;
+    public RigDetailPanel rigDetailPanel;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -59,5 +61,39 @@ public class DetailViewManager : MonoBehaviour
         if (oilSlickDetailPanel.oilSlick == oilSlick) {
             oilSlickDetailPanel.gameObject.SetActive(false);
         }
+    }
+
+    public void DidSelectOilDerrick(PubSubListenerEvent e) {
+        OilExtractor oilExtractor = ((GameObject) e.value).gameObject.GetComponent<OilExtractor>();
+        derrickDetailPanel.SetOilExtractor(oilExtractor);
+        derrickDetailPanel.gameObject.SetActive(true);
+    }
+
+    public void DidDeselectOilDerrick(PubSubListenerEvent e) {
+        OilExtractor oilExtractor = ((GameObject) e.value).gameObject.GetComponent<OilExtractor>();
+        if (derrickDetailPanel.oilExtractor == oilExtractor) {
+            derrickDetailPanel.gameObject.SetActive(false);
+        }
+    }
+
+    public void DidSelectOilRig(PubSubListenerEvent e) {
+        OilExtractor oilExtractor = ((GameObject) e.value).gameObject.GetComponent<OilExtractor>();
+        rigDetailPanel.SetOilExtractor(oilExtractor);
+        rigDetailPanel.gameObject.SetActive(true);
+    }
+
+    public void DidDeselectOilRig(PubSubListenerEvent e) {
+        OilExtractor oilExtractor = ((GameObject) e.value).gameObject.GetComponent<OilExtractor>();
+        if (rigDetailPanel.oilExtractor == oilExtractor) {
+            rigDetailPanel.gameObject.SetActive(false);
+        }
+    }
+
+    public void DidSelectEvent(PubSubListenerEvent e) {
+        
+    }
+
+    public void DidDeselectEvent(PubSubListenerEvent e) {
+        
     }
 }

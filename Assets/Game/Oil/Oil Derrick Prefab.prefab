@@ -728,7 +728,7 @@ MonoBehaviour:
   Highlightable: 1
   BoxHighlightable: 1
   BoxSelectable: 1
-  SelectionType: selectablesprite
+  SelectionType: oilderrick
 --- !u!114 &9151228158571058888
 MonoBehaviour:
   m_ObjectHideFlags: 0

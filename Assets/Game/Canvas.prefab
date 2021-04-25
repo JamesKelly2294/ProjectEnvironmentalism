@@ -56,8 +56,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cityDetailPanel: {fileID: 9185594965948106991}
+  derrickDetailPanel: {fileID: 4646162227307716220}
+  eventDetailPanel: {fileID: 8573224009533255162}
   governmentDetailPanel: {fileID: 4556373475112399409}
   oilSlickDetailPanel: {fileID: 6583414561578926288}
+  rigDetailPanel: {fileID: 5343039913661594901}
 --- !u!114 &4353738939905330940
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -152,6 +155,96 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 3149414180918255750}
           m_MethodName: DidDeselectOilSlick
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - Key: oilderrick.gameobject.select
+    Delegate:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 3149414180918255750}
+          m_MethodName: DidSelectOilDerrick
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - Key: oilderrick.gameobject.deselect
+    Delegate:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 3149414180918255750}
+          m_MethodName: DidDeselectOilDerrick
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - Key: oilrig.gameobject.select
+    Delegate:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 3149414180918255750}
+          m_MethodName: DidSelectOilRig
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - Key: oilrig.gameobject.deselect
+    Delegate:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 3149414180918255750}
+          m_MethodName: DidDeselectOilRig
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - Key: event.gameobject.select
+    Delegate:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 3149414180918255750}
+          m_MethodName: DidSelectEvent
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - Key: event.gameobject.deselect
+    Delegate:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 3149414180918255750}
+          m_MethodName: DidDeselectEvent
           m_Mode: 0
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -2750,6 +2843,18 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 1265662494416828069}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &8573224009533255162 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7451975814686153567, guid: b7afb0988bece8745b3b30e6deb16a75,
+    type: 3}
+  m_PrefabInstance: {fileID: 1265662494416828069}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36585a4dea59eec4d830ec6361ac277b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &6265214347177074151
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3155,6 +3260,18 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 6265214347177074151}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &4646162227307716220 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1623821087356224411, guid: 4cc72624753e44d4ba607115221a6e2b,
+    type: 3}
+  m_PrefabInstance: {fileID: 6265214347177074151}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92c408bd507ca5448a8941e6ed170bab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &8586361018008360970 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2439370567687456237, guid: 4cc72624753e44d4ba607115221a6e2b,
@@ -4033,6 +4150,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 49b9e299c37a12b44b57b551840eea60, type: 3}
+--- !u!224 &1408577510343971534 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 7461325817545507412, guid: 49b9e299c37a12b44b57b551840eea60,
+    type: 3}
+  m_PrefabInstance: {fileID: 8360846417000419482}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &9185594965948106991 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 828231806080538741, guid: 49b9e299c37a12b44b57b551840eea60,
@@ -4045,12 +4168,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc8671f54d5129c4e9b892bef4fe284a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!224 &1408577510343971534 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 7461325817545507412, guid: 49b9e299c37a12b44b57b551840eea60,
-    type: 3}
-  m_PrefabInstance: {fileID: 8360846417000419482}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8918958375602079940
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4445,12 +4562,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 235309d270ca97844b27dd53ab283a7e, type: 3}
---- !u!224 &9082367670369944454 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 418144434306501442, guid: 235309d270ca97844b27dd53ab283a7e,
-    type: 3}
-  m_PrefabInstance: {fileID: 8918958375602079940}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &6583414561578926288 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2349328464316336148, guid: 235309d270ca97844b27dd53ab283a7e,
@@ -4463,6 +4574,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b1c27e1549f36f4cb731f955b0fdf07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!224 &9082367670369944454 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 418144434306501442, guid: 235309d270ca97844b27dd53ab283a7e,
+    type: 3}
+  m_PrefabInstance: {fileID: 8918958375602079940}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &9147877737531185226
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4863,3 +4980,15 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 9147877737531185226}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &5343039913661594901 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3807089984746841439, guid: e9d9156949f43d94584faf207f3f941a,
+    type: 3}
+  m_PrefabInstance: {fileID: 9147877737531185226}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f1d82100f254eb47a2a49d275779d43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
