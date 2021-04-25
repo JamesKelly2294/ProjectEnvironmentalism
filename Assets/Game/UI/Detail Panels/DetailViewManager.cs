@@ -6,6 +6,9 @@ public class DetailViewManager : MonoBehaviour
 {
 
     public CityDetailPanel cityDetailPanel;
+    public GovernmentDetailPanel governmentDetailPanel;
+
+    public OilSlickDetailPanel oilSlickDetailPanel;
 
     // Start is called before the first frame update
     void Start()
@@ -29,6 +32,32 @@ public class DetailViewManager : MonoBehaviour
         City city = ((GameObject) e.value).gameObject.GetComponent<City>();
         if (cityDetailPanel.city.name == city.name) {
             cityDetailPanel.gameObject.SetActive(false);
+        }
+    }
+
+    public void DidSelectGovernment(PubSubListenerEvent e) {
+        Government government = ((GameObject) e.value).gameObject.GetComponent<Government>();
+        governmentDetailPanel.SetGovernment(government);
+        governmentDetailPanel.gameObject.SetActive(true);
+    }
+
+    public void DidDeselectGovernment(PubSubListenerEvent e) {
+        Government government = ((GameObject) e.value).gameObject.GetComponent<Government>();
+        if (governmentDetailPanel.government.name == government.name) {
+            governmentDetailPanel.gameObject.SetActive(false);
+        }
+    }
+
+    public void DidSelectOilSlick(PubSubListenerEvent e) {
+        OilSlick oilSlick = ((GameObject) e.value).gameObject.GetComponent<OilSlick>();
+        oilSlickDetailPanel.SetOilSlick(oilSlick);
+        oilSlickDetailPanel.gameObject.SetActive(true);
+    }
+
+    public void DidDeselectOilSlick(PubSubListenerEvent e) {
+        OilSlick oilSlick = ((GameObject) e.value).gameObject.GetComponent<OilSlick>();
+        if (oilSlickDetailPanel.oilSlick == oilSlick) {
+            oilSlickDetailPanel.gameObject.SetActive(false);
         }
     }
 }

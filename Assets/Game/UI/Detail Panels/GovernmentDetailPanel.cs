@@ -4,15 +4,14 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class CityDetailPanel : MonoBehaviour
+public class GovernmentDetailPanel : MonoBehaviour
 {
-
     public TextMeshProUGUI title;
     public TextMeshProUGUI subtitle;
 
     public Image flag;
 
-    public City city;
+    public Government government;
 
     public Sprite flagUS, flagCuba, flagMexico;
 
@@ -29,23 +28,23 @@ public class CityDetailPanel : MonoBehaviour
     }
 
     void refresh() {
-        title.SetText(city.name);
+        subtitle.SetText(government.name);
 
-        if (city.Country == Country.UnitedStates) {
+        if (government.Country == Country.UnitedStates) {
+            title.SetText("The U.S. Government");
             flag.sprite = flagUS;
-            subtitle.SetText("United States");
-        } else if (city.Country == Country.Cuba) {
+        } else if (government.Country == Country.Cuba) {
+            title.SetText("The Cuban Government");
             flag.sprite = flagCuba;
-            subtitle.SetText("Cuba");
-        } else if (city.Country == Country.Mexico) {
+        } else if (government.Country == Country.Mexico) {
+            title.SetText("The Mexican Government");
             flag.sprite = flagMexico;
-            subtitle.SetText("Mexico");
         }
 
     }
 
-    public void SetCity(City city) {
-        this.city = city;
+    public void SetGovernment(Government government) {
+        this.government = government;
         refresh();
     }
 }
