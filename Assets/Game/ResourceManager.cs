@@ -39,6 +39,8 @@ public class ResourceManager : MonoBehaviour
     public float PublicSentiment = 30f;
     [Range(0, 1.0f)]
     public float OilStorage = 0.5f;
+    
+    private List<OilExtractor> oilExtractors = new List<OilExtractor>();
 
     void Awake()
     {
@@ -97,6 +99,17 @@ public class ResourceManager : MonoBehaviour
 
     void CalculateOilStorage()
     {
+        float totalOilStorageCapacity = 0;
+        float totalOilStored = 0;
+
+        oilExtractors.ForEach(e =>
+        {
+            totalOilStorageCapacity += e.MaxOilStorage;
+            totalOilStored += e.CurrentOilStorage;
+        });
+
+        OilStorage = totalOilStored / totalOilStorageCapacity;
+
         PublishOilStorageUpdate();
     }
 
@@ -159,5 +172,19 @@ public class ResourceManager : MonoBehaviour
     void PublishOilStorageUpdate()
     {
         _sender.Publish("game.oil.storage.usage", OilStorage);
+    }
+
+    public void RegisterOilExtractor(OilExtractor oilExtractor)
+    {
+        if(oilExtractors.Contains(oilExtractor))
+        {
+            return;
+        }
+        oilExtractors.Add(oilExtractor);
+    }
+
+    public void UnregisterOilExtractor(OilExtractor oilExtractor)
+    {
+        oilExtractors.Remove(oilExtractor);
     }
 }
