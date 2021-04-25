@@ -4935,28 +4935,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &2075386941 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4803647191773405650, guid: 05ed9a247bdc683419d87eb28bbe39a6,
-    type: 3}
-  m_PrefabInstance: {fileID: 3895863440760688713}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2075386946
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2075386941}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 11253117baff55244b6bd3b10709a994, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Name: New Orleans
-  Population: 1000000
-  Country: 0
-  Label: {fileID: 0}
 --- !u!1001 &2075888641
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5113,6 +5091,11 @@ PrefabInstance:
         type: 3}
       propertyPath: Country
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3621916750239466185, guid: 05ed9a247bdc683419d87eb28bbe39a6,
+        type: 3}
+      propertyPath: Name
+      value: New Orleans
       objectReference: {fileID: 0}
     - target: {fileID: 3621916750828158080, guid: 05ed9a247bdc683419d87eb28bbe39a6,
         type: 3}

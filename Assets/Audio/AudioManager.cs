@@ -68,7 +68,7 @@ public class AudioManager : MonoBehaviour
         sounds[soundInfo.id] = soundInfo;
     }
     
-    public void Play(string id)
+    public void Play(string id, bool loop = false)
     {
         //Debug.Log("Play " + id);
         AudioSource audioSource = null;
@@ -106,6 +106,7 @@ public class AudioManager : MonoBehaviour
 
         audioSource.clip = soundInfo.audioClips[Random.Range(0, soundInfo.audioClips.Length - 1)];
         audioSource.outputAudioMixerGroup = soundInfo.audioMixerGroup;
+        audioSource.loop = loop;
         audioSource.Play();
     }
 
@@ -135,7 +136,7 @@ public class AudioManager : MonoBehaviour
     private void Start()
     {
         InitializeVolumes();
-        Play(Sounds.Music.Test);
+        Play(Sounds.Music.Test, true);
     }
 
     float GetVolumeFromPrefs(string volumeKey)
