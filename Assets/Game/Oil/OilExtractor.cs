@@ -5,7 +5,10 @@ using UnityEngine.UI;
 
 public class OilExtractor : MonoBehaviour
 {
-    public OilSlick ExtractedOilSlick;
+    public OilSlick ExtractedOilSlick { get; protected set; }
+
+    public GameObject oilDerrickGraphic;
+    public GameObject oilRigGraphic;
 
     public Slider OilReservesSlider;
     public Slider OilStorageSlider;
@@ -26,6 +29,29 @@ public class OilExtractor : MonoBehaviour
 
         _resourceManager = GameObject.FindObjectOfType<ResourceManager>();
         _resourceManager.RegisterOilExtractor(this);
+    }
+
+    public void SetOilSlick(OilSlick incomingOilSlick)
+    {
+        if(ExtractedOilSlick != null)
+        {
+            return;
+        }
+
+        ExtractedOilSlick = incomingOilSlick;
+        incomingOilSlick.transform.parent = transform;
+        ExtractedOilSlick.gameObject.SetActive(false);
+
+        if(ExtractedOilSlick.type == OilSlickType.Land)
+        {
+            oilRigGraphic.SetActive(false);
+            oilDerrickGraphic.SetActive(true);
+        }
+        else
+        {
+            oilRigGraphic.SetActive(true);
+            oilDerrickGraphic.SetActive(false);
+        }
     }
 
     // Update is called once per frame

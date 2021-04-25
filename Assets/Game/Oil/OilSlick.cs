@@ -26,6 +26,14 @@ public class OilSlick : MonoBehaviour
     public Color NonPurchasableColor = new Color(1, 1, 1, 6.0f / 100.0f);
     public SelectableSprite Selectable;
     public bool Purchasable = true;
+    public float CostToPurchase
+    {
+        get
+        {
+            float baseCost = 100000;
+            return baseCost * Mathf.Pow(3.5f, (float)level);
+        }
+    }
 
     // Start is called before the first frame update
     void Start()

@@ -49,7 +49,6 @@ public class DetailViewManager : MonoBehaviour
     }
 
     public void DidSelectOilSlick(PubSubListenerEvent e) {
-        Debug.Log("OIL");
         OilSlick oilSlick = ((GameObject) e.value).gameObject.GetComponent<OilSlick>();
         oilSlickDetailPanel.SetOilSlick(oilSlick);
         oilSlickDetailPanel.gameObject.SetActive(true);

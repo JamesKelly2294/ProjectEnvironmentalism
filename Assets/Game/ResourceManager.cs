@@ -4,8 +4,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(PubSubSender))]
+[RequireComponent(typeof(PubSubListener))]
 public class ResourceManager : MonoBehaviour
 {
+    public GameObject OilExtractorPrefab;
+
+    public OilSlick StartingOilSlick;
+
     [Range(0, 10)]
     public int MaximumOilDerricks;
     public int CurrentOilDerricks;
@@ -32,15 +37,16 @@ public class ResourceManager : MonoBehaviour
     public float BasePublicSentimentDecayRate = 0.5f;
 
     private PubSubSender _sender;
-    
+
     [Range(0, 100)]
     public float EnvironmentHealth = 50f;
     [Range(0, 100)]
     public float PublicSentiment = 30f;
     [Range(0, 1.0f)]
     public float OilStorage = 0.5f;
-    
+
     private List<OilExtractor> oilExtractors = new List<OilExtractor>();
+    private List<OilSlick> purchasedOilSlicks = new List<OilSlick>();
 
     void Awake()
     {
@@ -56,6 +62,13 @@ public class ResourceManager : MonoBehaviour
         PublishEnvironmentHealthUpdate();
         PublishPublicSentimentUpdate();
         PublishOilStorageUpdate();
+
+        PurchaseStartingOilSlick();
+    }
+
+    void PurchaseStartingOilSlick()
+    {
+        PurchaseOilSlick(StartingOilSlick);
     }
 
     void CalculateOilMetrics()
@@ -108,7 +121,7 @@ public class ResourceManager : MonoBehaviour
             totalOilStored += e.CurrentOilStorage;
         });
 
-        OilStorage = totalOilStored / totalOilStorageCapacity;
+        OilStorage = totalOilStorageCapacity > 0 ? totalOilStored / totalOilStorageCapacity: 1.0f;
 
         PublishOilStorageUpdate();
     }
@@ -186,5 +199,49 @@ public class ResourceManager : MonoBehaviour
     public void UnregisterOilExtractor(OilExtractor oilExtractor)
     {
         oilExtractors.Remove(oilExtractor);
+    }
+
+    public bool AttemptPurchase(float amount)
+    {
+        if(amount < 0)
+        {
+            return false;
+        }
+        else if (amount > CurrentMoney)
+        {
+            return false;
+        }
+        else
+        {
+            CurrentMoney -= amount;
+            return true;
+        }
+    }
+
+    public void PurchaseOilSlick(OilSlick oilSlick)
+    {
+        if(!oilSlick)
+        {
+            return;
+        }
+
+        Debug.Log("Purchase oil slick: " + oilSlick);
+        float oilSlickCost = purchasedOilSlicks.Count == 0 ? 0 : oilSlick.CostToPurchase;
+        if (AttemptPurchase(oilSlickCost))
+        {
+            var oilExtractor = Instantiate(OilExtractorPrefab);
+            oilExtractor.transform.position = oilSlick.transform.position;
+            oilExtractor.GetComponent<OilExtractor>().SetOilSlick(oilSlick);
+            purchasedOilSlicks.Add(oilSlick);
+        } 
+    }
+
+    public void PurchaseOilSlickEvent(PubSubListenerEvent e)
+    {
+        var oilSlick = e.value as OilSlick;
+        if (oilSlick)
+        {
+            PurchaseOilSlick(oilSlick);
+        }
     }
 }
