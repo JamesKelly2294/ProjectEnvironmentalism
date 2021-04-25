@@ -40,6 +40,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 227925745771891110}
     m_Modifications:
+    - target: {fileID: 991106894756419697, guid: f16a90a2cba543245ba4e3a5c00af115,
+        type: 3}
+      propertyPath: Name
+      value: Washington, D.C.
+      objectReference: {fileID: 0}
     - target: {fileID: 1799565868026487419, guid: f16a90a2cba543245ba4e3a5c00af115,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -170,6 +175,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 227925745771891110}
     m_Modifications:
+    - target: {fileID: 991106894756419697, guid: f16a90a2cba543245ba4e3a5c00af115,
+        type: 3}
+      propertyPath: Name
+      value: Havanna
+      objectReference: {fileID: 0}
+    - target: {fileID: 991106894756419697, guid: f16a90a2cba543245ba4e3a5c00af115,
+        type: 3}
+      propertyPath: Country
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1799565868026487419, guid: f16a90a2cba543245ba4e3a5c00af115,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -310,6 +325,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 227925745771891110}
     m_Modifications:
+    - target: {fileID: 991106894756419697, guid: f16a90a2cba543245ba4e3a5c00af115,
+        type: 3}
+      propertyPath: Name
+      value: Mexico City
+      objectReference: {fileID: 0}
+    - target: {fileID: 991106894756419697, guid: f16a90a2cba543245ba4e3a5c00af115,
+        type: 3}
+      propertyPath: Country
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 991106894756419697, guid: f16a90a2cba543245ba4e3a5c00af115,
+        type: 3}
+      propertyPath: Population
+      value: 127600000
+      objectReference: {fileID: 0}
     - target: {fileID: 1799565868026487419, guid: f16a90a2cba543245ba4e3a5c00af115,
         type: 3}
       propertyPath: m_Materials.Array.data[0]

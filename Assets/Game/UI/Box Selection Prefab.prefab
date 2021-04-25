@@ -148,7 +148,7 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 701163627}
-          m_MethodName: Unhighlight
+          m_MethodName: ToggleHighlight
           m_Mode: 0
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
