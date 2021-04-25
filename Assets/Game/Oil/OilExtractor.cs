@@ -15,6 +15,8 @@ public class OilExtractor : MonoBehaviour
     public Slider OilReservesSlider;
     public Slider OilStorageSlider;
 
+    public Transform DockingArea;
+
     public float MaxOilReserves = 1200;
     public float CurrentOilReserves;
     public float MaxOilStorage = 100;

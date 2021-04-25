@@ -26,7 +26,7 @@ public class SelectableSprite : MonoBehaviour
     public string SelectionType = "selectablesprite";
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         _sender = GetComponent<PubSubSender>();
     }
@@ -73,6 +73,38 @@ public class SelectableSprite : MonoBehaviour
         _sender.Publish(SelectionType + ".gameobject.unhighlight", this.gameObject);
     }
 
+    public void TriggerBoxHighlight()
+    {
+        if (BoxHighlightable && !isHighlighted)
+        {
+            _sender.Publish("boxselectable.highlight.toggle", this);
+        }
+    }
+
+    public void TriggerBoxSelect()
+    {
+        if (BoxSelectable && !isSelected)
+        {
+            _sender.Publish("boxselectable.select.toggle", this);
+        }
+    }
+
+    public void TriggerBoxUnhighlight()
+    {
+        if (BoxHighlightable && isHighlighted)
+        {
+            _sender.Publish("boxselectable.highlight.toggle", this);
+        }
+    }
+
+    public void TriggerBoxDeselect()
+    {
+        if (BoxSelectable && isSelected)
+        {
+            _sender.Publish("boxselectable.select.toggle", this);
+        }
+    }
+
     public void OnMouseEnter()
     {
         if (Highlightable)
@@ -114,7 +146,18 @@ public class SelectableSprite : MonoBehaviour
         if (Selectable)
         {
             _sender.Publish("button.press.end");
-            _sender.Publish("button.select.toggle");
+        }
+    }
+
+    private void OnDisable()
+    {
+        if (isHighlighted)
+        {
+            _sender.Publish("boxselectable.highlight.toggle", this);
+        }
+        if (isSelected)
+        {
+            _sender.Publish("boxselectable.select.toggle", this);
         }
     }
 }

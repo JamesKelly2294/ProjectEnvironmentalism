@@ -31,6 +31,5 @@ public class OilSlickDetailPanel : MonoBehaviour
     public void Buy() {
         PubSubSender sender = gameObject.GetComponent<PubSubSender>();
         sender.Publish("oilslick.purchase", oilSlick);
-        sender.Publish("boxselectable.select.toggle");
     }
 }

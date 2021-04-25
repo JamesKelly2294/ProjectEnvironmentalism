@@ -224,10 +224,12 @@ public class ResourceManager : MonoBehaviour
             {
                 CurrentOilTrucks += 1;
                 PublishEquipmentUpdate();
+                AudioManager.Instance.Play("Resource/Purchase/OilTruck");
                 return true;
             }
             else
             {
+                AudioManager.Instance.Play("Resource/Error");
                 return false;
             }
         }
@@ -237,10 +239,12 @@ public class ResourceManager : MonoBehaviour
             {
                 CurrentOilTankers += 1;
                 PublishEquipmentUpdate();
+                AudioManager.Instance.Play("Resource/Purchase/OilTanker");
                 return true;
             }
             else
             {
+                AudioManager.Instance.Play("Resource/Error");
                 return false;
             }
         }
@@ -279,6 +283,8 @@ public class ResourceManager : MonoBehaviour
             oilExtractor.GetComponent<OilExtractor>().SetOilSlick(oilSlick);
             purchasedOilSlicks.Add(oilSlick);
             AudioManager.Instance.Play("Resource/KaChing");
+
+            oilExtractor.GetComponent<SelectableSprite>().TriggerBoxSelect();
         } 
     }
 

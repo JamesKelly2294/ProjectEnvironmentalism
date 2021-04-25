@@ -4933,7 +4933,7 @@ PrefabInstance:
     - target: {fileID: 2986441138496727338, guid: 2000768c1e3b72f4e96c41f37d022444,
         type: 3}
       propertyPath: Purchasable
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4067154382767380229, guid: 2000768c1e3b72f4e96c41f37d022444,
         type: 3}

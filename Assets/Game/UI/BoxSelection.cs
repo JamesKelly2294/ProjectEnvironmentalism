@@ -62,12 +62,14 @@ public class BoxSelection : MonoBehaviour
         SelectedObject = incomingSprite;
         if (!isSelected)
         {
+            Debug.Log("Deselect " + SelectedObject);
             BoxSelectionSprite.enabled = false;
             SelectedObject.Deselected();
             SelectedObject = null;
         }
         else
         {
+            Debug.Log("Select " + SelectedObject);
             BoxSelectionSprite.transform.position = incomingSprite.transform.position;
             SelectedObject.Selected();
             BoxSelectionSprite.enabled = true;
