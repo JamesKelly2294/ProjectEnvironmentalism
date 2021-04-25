@@ -12,8 +12,9 @@ GameObject:
   - component: {fileID: 4276058046593927931}
   - component: {fileID: 7488315998147298795}
   - component: {fileID: 3122041236069326838}
+  - component: {fileID: 2986441138496727338}
   m_Layer: 0
-  m_Name: Oil Spot Prefab
+  m_Name: Oil Slick Prefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -90,6 +91,22 @@ MonoBehaviour:
   BoxSelectable: 1
   isSelected: 0
   isHighlighted: 0
+--- !u!114 &2986441138496727338
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2895661148108833111}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45f99084f4bd9ae4391fe1e2446f027e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OilSlickSprite: {fileID: 4067154382767380229}
+  NonPurchasableColor: {r: 1, g: 1, b: 1, a: 0.023529412}
+  Selectable: {fileID: 3122041236069326838}
+  Purchasable: 0
 --- !u!1 &6174503261436685539
 GameObject:
   m_ObjectHideFlags: 0
