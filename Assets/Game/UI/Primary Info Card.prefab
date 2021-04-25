@@ -5720,6 +5720,7 @@ GameObject:
   - component: {fileID: 9179424600016273212}
   - component: {fileID: 9179424600016273213}
   - component: {fileID: 7165259700029280843}
+  - component: {fileID: 7845145267265354393}
   m_Layer: 5
   m_Name: Primary Info Card
   m_TagString: Untagged
@@ -5842,6 +5843,151 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 051ff3383fdf72f40b4d85923f0f4b52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buisnessName: {fileID: 9179424598138904290}
+  date: {fileID: 9179424598199073099}
+  dollars: {fileID: 9179424598725259151}
+  income: {fileID: 9179424598825412094}
+  expenses: {fileID: 9179424598362229882}
+  oilPrice: {fileID: 9179424598534995966}
+  oilProduction: {fileID: 9179424599760132427}
+  oilDemand: {fileID: 9179424599668501007}
+  derricks: {fileID: 9179424599835022955}
+  rigs: {fileID: 9179424599426450990}
+  trucks: {fileID: 9179424598048971343}
+  ships: {fileID: 9179424599400984679}
   environmentSlider: {fileID: 5984030062294748783}
   sentimentSlider: {fileID: 2762655241193671105}
   oilStorageSlider: {fileID: 8376366282736068548}
+--- !u!114 &7845145267265354393
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9179424600016273201}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d56e1a9b13b922d428fcbf4039d56d94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Subscriptions:
+  - Key: game.buisness.name
+    Delegate:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 7165259700029280843}
+          m_MethodName: NameDidChange
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - Key: game.date
+    Delegate:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 7165259700029280843}
+          m_MethodName: DateDidChange
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - Key: game.dollars.totals
+    Delegate:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 7165259700029280843}
+          m_MethodName: DollarsDidChange
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - Key: game.oil.totals
+    Delegate:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 7165259700029280843}
+          m_MethodName: OilDidChange
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - Key: game.equipment.totals
+    Delegate:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 7165259700029280843}
+          m_MethodName: EquipmentDidChange
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - Key: game.environment.health
+    Delegate:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 7165259700029280843}
+          m_MethodName: EvironmentalChange
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - Key: game.sentiment.value
+    Delegate:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 7165259700029280843}
+          m_MethodName: PublicSentimentDidChange
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - Key: game.oil.storage.usage
+    Delegate:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 7165259700029280843}
+          m_MethodName: OilStorageDidChange
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
