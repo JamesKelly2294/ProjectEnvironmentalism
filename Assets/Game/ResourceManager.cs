@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -21,9 +22,23 @@ public class ResourceManager : MonoBehaviour
     public int MaximumOilTankers;
     public int CurrentOilTankers;
     
-    public int CurrentMoney = 1_000_000;
+    public float CurrentMoney = 1_000_000;
+    public decimal CurrentOilPrice = new decimal(97.05);
+
+    [Range(0, 1)]
+
+    public float BaseGreenProgressRate = 0.5f;
+    [Range(0, 1)]
+    public float BasePublicSentimentDecayRate = 0.5f;
 
     private PubSubSender _sender;
+    
+    [Range(0, 100)]
+    public float EnvironmentHealth = 50f;
+    [Range(0, 100)]
+    public float PublicSentiment = 30f;
+    [Range(0, 1.0f)]
+    public float OilStorage = 0.5f;
 
     void Awake()
     {
@@ -33,6 +48,7 @@ public class ResourceManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        PublishOilUpdate();
         PublishMoneyUpdate();
         PublishEquipmentUpdate();
         PublishEnvironmentHealthUpdate();
@@ -40,11 +56,75 @@ public class ResourceManager : MonoBehaviour
         PublishOilStorageUpdate();
     }
 
+    void CalculateOilMetrics()
+    {
+        PublishOilUpdate();
+    }
+
+    void CalculateMoney()
+    {
+        PublishMoneyUpdate();
+    }
+
+    void CalculateEnvironmentHealth()
+    {
+        // The world marches ever onwards towards green energy
+        EnvironmentHealth += (BaseGreenProgressRate * Time.deltaTime);
+        EnvironmentHealth = Mathf.Clamp(EnvironmentHealth, 0.0f, 100.0f);
+        PublishEnvironmentHealthUpdate();
+    }
+
+    void CalculatePublicSentiment()
+    {
+        // Public sentiment trends towards the center
+        if (PublicSentiment < (50.0f - 0.001f))
+        {
+            PublicSentiment += BasePublicSentimentDecayRate * Time.deltaTime;
+            PublicSentiment = Mathf.Min(PublicSentiment, 50.0f);
+        }
+        else if (PublicSentiment > (50.0f + 0.001f))
+        {
+            PublicSentiment -= BasePublicSentimentDecayRate * Time.deltaTime;
+            PublicSentiment = Mathf.Max(PublicSentiment, 50.0f);
+        }
+        else
+        {
+            PublicSentiment = 50.0f;
+        }
+        PublicSentiment = Mathf.Clamp(PublicSentiment, 0.0f, 100.0f);
+        PublishPublicSentimentUpdate();
+    }
+
+    void CalculateOilStorage()
+    {
+        PublishOilStorageUpdate();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        CalculateOilMetrics();
+        CalculateMoney();
+        CalculateEnvironmentHealth();
+        CalculatePublicSentiment();
+        CalculateOilStorage();
+    }
+
+    void PublishOilUpdate()
+    {
+        PrimaryInfoCardResourcesOilUpdate dollarsUpdate = new PrimaryInfoCardResourcesOilUpdate
+        {
+            oilPrice = CurrentOilPrice
+        };
+
+        _sender.Publish("game.oil.totals", dollarsUpdate);
+    }
+    
     void PublishMoneyUpdate()
     {
         PrimaryInfoCardResourcesDollarsUpdate dollarsUpdate = new PrimaryInfoCardResourcesDollarsUpdate
         {
-            dollarsAmount = CurrentMoney
+            dollarsAmount = Mathf.RoundToInt(CurrentMoney)
         };
 
         _sender.Publish("game.dollars.totals", dollarsUpdate);
@@ -68,25 +148,16 @@ public class ResourceManager : MonoBehaviour
 
     void PublishEnvironmentHealthUpdate()
     {
-        float environmentHealth = 0.5f;
-        _sender.Publish("game.environment.health", environmentHealth);
+        _sender.Publish("game.environment.health", EnvironmentHealth / 100.0f);
     }
 
     void PublishPublicSentimentUpdate()
     {
-        float publicSentiment = 0.5f;
-        _sender.Publish("game.sentiment.value", publicSentiment);
+        _sender.Publish("game.sentiment.value", PublicSentiment / 100.0f);
     }
 
     void PublishOilStorageUpdate()
     {
-        float oilStorage = 0.5f;
-        _sender.Publish("game.oil.storage.usage", oilStorage);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        _sender.Publish("game.oil.storage.usage", OilStorage);
     }
 }

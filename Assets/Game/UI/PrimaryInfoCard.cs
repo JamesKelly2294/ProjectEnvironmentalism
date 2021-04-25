@@ -50,7 +50,7 @@ public class PrimaryInfoCard : MonoBehaviour
     /// PrimaryInfoCardResourcesOilUpdate
     public void OilDidChange(PubSubListenerEvent e) {
         PrimaryInfoCardResourcesOilUpdate update = (PrimaryInfoCardResourcesOilUpdate)e.value;
-        oilPrice.SetText(update.oilPrice.ToString("N2"));
+        oilPrice.SetText("$" + update.oilPrice.ToString("N2"));
         oilProduction.SetText(update.oilProducedPerSecond.ToString("N2"));
         oilDemand.SetText(update.oilConsumedPerSecond.ToString("N2"));
     }

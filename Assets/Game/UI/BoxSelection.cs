@@ -14,8 +14,8 @@ public class BoxSelection : MonoBehaviour
     private bool isHighlighted = false;
     private bool isSelected = false;
 
-    private SelectableSprite selectedObject;
-    private SelectableSprite highlightedObject;
+    public SelectableSprite SelectedObject { get; private set; }
+    public SelectableSprite HighlightedObject { get; private set; }
 
     public void ToggleSelect(PubSubListenerEvent e)
     {
@@ -38,7 +38,7 @@ public class BoxSelection : MonoBehaviour
         }
         else
         {
-            incomingSprite = selectedObject;
+            incomingSprite = SelectedObject;
         }
 
         if(!incomingSprite)
@@ -46,30 +46,30 @@ public class BoxSelection : MonoBehaviour
             return;
         }
 
-        if (incomingSprite == selectedObject)
+        if (incomingSprite == SelectedObject)
         {
             isSelected = !isSelected;
         }
         else
         {
             isSelected = true;
-            if (selectedObject)
+            if (SelectedObject)
             {
-                selectedObject.Deselected();
+                SelectedObject.Deselected();
             }
         }
 
-        selectedObject = incomingSprite;
+        SelectedObject = incomingSprite;
         if (!isSelected)
         {
             BoxSelectionSprite.enabled = false;
-            selectedObject.Deselected();
-            selectedObject = null;
+            SelectedObject.Deselected();
+            SelectedObject = null;
         }
         else
         {
             BoxSelectionSprite.transform.position = incomingSprite.transform.position;
-            selectedObject.Selected();
+            SelectedObject.Selected();
             BoxSelectionSprite.enabled = true;
         }
     }
@@ -85,7 +85,7 @@ public class BoxSelection : MonoBehaviour
         }
         else
         {
-            incomingSprite = highlightedObject;
+            incomingSprite = HighlightedObject;
         }
 
         if (!incomingSprite)
@@ -93,30 +93,30 @@ public class BoxSelection : MonoBehaviour
             return;
         }
 
-        if (incomingSprite == highlightedObject)
+        if (incomingSprite == HighlightedObject)
         {
             isHighlighted = !isHighlighted;
         }
         else
         {
             isHighlighted = true;
-            if (highlightedObject)
+            if (HighlightedObject)
             {
-                highlightedObject.Unhighlighted();
+                HighlightedObject.Unhighlighted();
             }
         }
 
-        highlightedObject = incomingSprite;
+        HighlightedObject = incomingSprite;
         if (!isHighlighted)
         {
             BoxHighlightSprite.enabled = false;
-            highlightedObject.Unhighlighted();
-            highlightedObject = null;
+            HighlightedObject.Unhighlighted();
+            HighlightedObject = null;
         }
         else
         {
             BoxHighlightSprite.transform.position = incomingSprite.transform.position;
-            highlightedObject.Highlighted();
+            HighlightedObject.Highlighted();
             BoxHighlightSprite.enabled = true;
         }
     }

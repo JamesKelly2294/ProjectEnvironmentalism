@@ -104,7 +104,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Miama
+  m_text: 'Miami
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: e73a58f6e2794ae7b1b7e50b7fb811b0, type: 2}
@@ -187,6 +189,7 @@ GameObject:
   - component: {fileID: 2999269071240453538}
   - component: {fileID: 9175632000467820245}
   - component: {fileID: 5012369810140164662}
+  - component: {fileID: 311664474308697108}
   m_Layer: 0
   m_Name: City Prefab
   m_TagString: Untagged
@@ -226,8 +229,6 @@ MonoBehaviour:
   Highlightable: 1
   BoxHighlightable: 1
   BoxSelectable: 1
-  isSelected: 0
-  isHighlighted: 0
   SelectionType: city
 --- !u!61 &9175632000467820245
 BoxCollider2D:
@@ -267,6 +268,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f292d19e8ac687f4796ed88f9f22cd01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &311664474308697108
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8410780732623699727}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11253117baff55244b6bd3b10709a994, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Miami
+  Population: 1000000
+  Country: 0
+  Label: {fileID: 5157316790700814564}
 --- !u!1 &9079956793227763728
 GameObject:
   m_ObjectHideFlags: 0
