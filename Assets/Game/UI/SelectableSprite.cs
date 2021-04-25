@@ -40,7 +40,7 @@ public class SelectableSprite : MonoBehaviour
             return;
         }
         isSelected = true;
-        _sender.Publish(SelectionType + ".gameobject.select", this);
+        _sender.Publish(SelectionType + ".gameobject.select", this.gameObject);
     }
 
     public void Highlighted()
@@ -50,7 +50,7 @@ public class SelectableSprite : MonoBehaviour
             return;
         }
         isHighlighted = true;
-        _sender.Publish(SelectionType + ".gameobject.highlight", this);
+        _sender.Publish(SelectionType + ".gameobject.highlight", this.gameObject);
     }
 
     public void Deselected()
@@ -60,7 +60,7 @@ public class SelectableSprite : MonoBehaviour
             return;
         }
         isSelected = false;
-        _sender.Publish(SelectionType + ".gameobject.deselect", this);
+        _sender.Publish(SelectionType + ".gameobject.deselect", this.gameObject);
     }
 
     public void Unhighlighted()
@@ -70,7 +70,7 @@ public class SelectableSprite : MonoBehaviour
             return;
         }
         isHighlighted = false;
-        _sender.Publish(SelectionType + ".gameobject.unhighlight", this);
+        _sender.Publish(SelectionType + ".gameobject.unhighlight", this.gameObject);
     }
 
     public void OnMouseEnter()
