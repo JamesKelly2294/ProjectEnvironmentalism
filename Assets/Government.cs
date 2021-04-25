@@ -2,13 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class City : MonoBehaviour
+public enum Country
+{
+    UnitedStates,
+    Mexico,
+    Cuba
+}
+
+public class Government : MonoBehaviour
 {
     public string Name;
-    [Range(0, 10_000_000)]
     public int Population;
     public Country Country;
-
+    
     public TMPro.TextMeshPro Label;
 
     // Start is called before the first frame update

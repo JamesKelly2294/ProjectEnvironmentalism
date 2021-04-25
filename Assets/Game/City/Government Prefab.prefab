@@ -268,6 +268,7 @@ GameObject:
   - component: {fileID: 1172463694676803126}
   - component: {fileID: 4190809544979667602}
   - component: {fileID: 7667160579821476941}
+  - component: {fileID: 991106894756419697}
   m_Layer: 0
   m_Name: Government Prefab
   m_TagString: Untagged
@@ -346,9 +347,23 @@ MonoBehaviour:
   Highlightable: 1
   BoxHighlightable: 1
   BoxSelectable: 1
-  isSelected: 0
-  isHighlighted: 0
   SelectionType: government
+--- !u!114 &991106894756419697
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5242177498304195358}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f285922f47106b84ca8447dc8b02b15f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: United States
+  Population: 328200000
+  Country: 0
+  Label: {fileID: 5825297999150451953}
 --- !u!1 &6326149566407318424
 GameObject:
   m_ObjectHideFlags: 0
