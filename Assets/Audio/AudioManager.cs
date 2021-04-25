@@ -70,7 +70,7 @@ public class AudioManager : MonoBehaviour
     
     public void Play(string id)
     {
-        Debug.Log("Play " + id);
+        //Debug.Log("Play " + id);
         AudioSource audioSource = null;
         for (int i = 0; i < NUMBER_OF_AUDIO_SOURCES; i++)
         {
@@ -78,11 +78,11 @@ public class AudioManager : MonoBehaviour
             {
                 audioSource = audioSources[i];
                 break;
-            } else
-            {
-
-                Debug.Log(audioSources[i] + " is playing");
             }
+            //else
+            //{
+            //    Debug.Log(audioSources[i] + " is playing");
+            //}
         }
 
         if(audioSource == null)

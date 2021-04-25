@@ -16,4 +16,4 @@ MonoBehaviour:
   audioMixerGroup: {fileID: 1122707990295499701, guid: a0420a807fa813e4cb71d6b63902ac1c,
     type: 2}
   audioClips:
-  - {fileID: 8300000, guid: 474d241739737ec4aa4d6098fcd9dd74, type: 3}
+  - {fileID: 8300000, guid: d6a51293d7d23014bbd68eef451b8c5b, type: 3}
