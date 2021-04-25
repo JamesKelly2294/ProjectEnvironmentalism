@@ -680,7 +680,7 @@ MonoBehaviour:
   CurrentOilRigs: 0
   MaximumOilTrucks: 2
   CurrentOilTrucks: 0
-  MaximumOilTankers: 0
+  MaximumOilTankers: 1
   CurrentOilTankers: 0
   CurrentMoney: 1000000
   BaseGreenProgressRate: 0.617
