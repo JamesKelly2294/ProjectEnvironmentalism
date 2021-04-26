@@ -16,6 +16,9 @@ public class RigDetailPanel : MonoBehaviour
     public GameObject routesList;
     public TextMeshProUGUI routesUsedScreen;
 
+    public Button digDeeperButton;
+    public TextMeshProUGUI digDeeperButtonText;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -32,6 +35,10 @@ public class RigDetailPanel : MonoBehaviour
         extraction.SetText("Extracts " + oilExtractor.OilExtractionRate.ToString() + "/s");
         oilReserves.progress = oilExtractor.CurrentOilReserves / oilExtractor.MaxOilReserves;
         oilStorage.progress = oilExtractor.CurrentOilStorage / oilExtractor.MaxOilStorage;
+
+        ResourceManager rm = GameObject.FindObjectOfType<ResourceManager>();
+        digDeeperButton.interactable = rm.CurrentMoney >= oilExtractor.digDeeperCost;
+        digDeeperButtonText.SetText("Dig Deeper ($" + oilExtractor.digDeeperCost.ToString("N2") + ")");
     }
 
     public void routesDidChange() {
@@ -106,5 +113,9 @@ public class RigDetailPanel : MonoBehaviour
         routesTab.SetActive(true);
         productionTabButton.GetComponent<Image>().enabled = false;
         routesTabButton.GetComponent<Image>().enabled = true;
+    }
+    
+    public void DigDeeper() {
+        oilExtractor.DigDeeper();
     }
 }
