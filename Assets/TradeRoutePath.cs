@@ -9,6 +9,12 @@ public class TradeRoutePath : MonoBehaviour
 
     [Range(0, 25.0f)]
     public float VehicleSpeed = 7.5f;
+    
+    [Range(0, 25.0f)]
+    public float VehicleAcceleration = 1.0f;
+
+    private bool _accelerating;
+    private float _currentSpeed;
 
     TradeRoute _tradeRoute;
     GameObject _oilVehicle;
@@ -27,7 +33,28 @@ public class TradeRoutePath : MonoBehaviour
         _oilVehicle = _tradeRoute.OilVehicle;
 
         _currentPathManagerEdge = PathManagerEdges[0];
+        _currentSpeed = 0.01f;
+        _accelerating = true;
+        _oilVehicle.SetActive(true);
         MoveToEndOfPathManagerSegment();
+    }
+    
+    void Update()
+    {
+        if(_currentSplineMove == null)
+        {
+            return;
+        }
+        if(_accelerating)
+        {
+            _currentSpeed += (VehicleAcceleration * Time.deltaTime);
+            if (_currentSpeed > VehicleSpeed)
+            {
+                _currentSpeed = VehicleSpeed;
+                _accelerating = false;
+            }
+            _currentSplineMove.ChangeSpeed(_currentSpeed);
+        }
     }
 
     void MoveToEndOfPathManagerSegment()
@@ -43,7 +70,9 @@ public class TradeRoutePath : MonoBehaviour
         _currentSplineMove.onStart = true;
         _currentSplineMove.moveToPath = false;
         _currentSplineMove.loopType = splineMove.LoopType.none;
-        _currentSplineMove.speed = VehicleSpeed;
+        _currentSplineMove.speed = _currentSpeed;
+        _currentSplineMove.easeType = DG.Tweening.Ease.Linear;
+        
         var startIndex = _currentPathManagerEdge.EntryWaypoint.transform.GetSiblingIndex();
         var endIndex = _currentPathManagerEdge.ExitWaypoint.transform.GetSiblingIndex();
         if (reversed)
@@ -57,6 +86,9 @@ public class TradeRoutePath : MonoBehaviour
         var defaultPoints = 10;
         var startIndexMultiplier = (bezierPathManager != null ? Mathf.CeilToInt(bezierPathManager.pathDetail * defaultPoints) : 1);
         _currentSplineMove.startPoint = startIndex * startIndexMultiplier + (bezierPathManager != null ? 1 : 0);
+
+        _oilVehicle.transform.position = _currentPathManagerEdge.PathManager.waypoints[startIndex].transform.position;
+
         StartCoroutine(WaitForSplineInitialization());
     }
 
@@ -67,6 +99,8 @@ public class TradeRoutePath : MonoBehaviour
         if ((!reversed && _currentPathManagerEdge.NextEdge == null) || (reversed && _currentPathManagerEdge.PreviousEdge == null))
         {
             reversed = !reversed;
+            _currentSpeed = 0.01f;
+            _accelerating = true;
         }
         else
         {
@@ -81,12 +115,7 @@ public class TradeRoutePath : MonoBehaviour
         }
         MoveToEndOfPathManagerSegment();
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-    }
-
+    
     public IEnumerator WaitForSplineInitialization()
     {
         var numberOfFrames = firstPathInitialized ? 1 : 2;

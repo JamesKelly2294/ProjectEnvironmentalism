@@ -24,8 +24,8 @@ public class TradeRoute : MonoBehaviour
         {
             OilVehicle = OilTanker;
         }
-        OilVehicle.SetActive(true);
-        OilVehicle.transform.position = OilExtractor.DockingArea.transform.position;
+        //OilVehicle.SetActive(true);
+        //OilVehicle.transform.position = OilExtractor.DockingArea.transform.position;
 
         City.RegisterTradeRoute(this);
         OilExtractor.RegisterTradeRoute(this);
