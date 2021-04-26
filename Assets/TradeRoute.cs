@@ -21,11 +21,14 @@ public class TradeRoute : MonoBehaviour
     bool _isUnloadingOil;
     float _startingLoadedOil;
 
+    private ResourceManager _resourceManager;
     private RoadManager _roadManager;
 
     // Start is called before the first frame update
     void Start()
     {
+        _resourceManager = FindObjectOfType<ResourceManager>();
+
         if (OilExtractor.ExtractedOilSlick.type == OilSlickType.Land)
         {
             OilVehicle = OilTruck;
@@ -83,11 +86,14 @@ public class TradeRoute : MonoBehaviour
 
             if (CurrentlyLoadedOil <= (0.001f))
             {
+                float revenue = (float)((decimal)_startingLoadedOil * _resourceManager.CurrentOilPrice);
+                _resourceManager.DepositFunds(revenue);
+
                 CurrentlyLoadedOil = 0.0f;
-                _isUnloadingOil = false;
                 _startingLoadedOil = 0.0f;
+                _isUnloadingOil = false;
+
                 TradeRoutePath.ResumePath();
-                AudioManager.Instance.Play("Resource/KaChing", pitchMin: 0.8f, pitchMax: 1.2f, volumeMin: 0.45f, volumeMax: 0.65f);
             }
 
         }

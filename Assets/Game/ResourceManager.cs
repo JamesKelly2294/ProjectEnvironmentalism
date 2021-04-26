@@ -262,6 +262,13 @@ public class ResourceManager : MonoBehaviour
         PublishEquipmentUpdate();
     }
 
+    public bool DepositFunds(float amount)
+    {
+        AudioManager.Instance.Play("Resource/KaChing", pitchMin: 0.8f, pitchMax: 1.2f, volumeMin: 0.45f, volumeMax: 0.65f);
+        CurrentMoney += amount;
+        return true;
+    }
+
     public bool AttemptPurchase(float amount)
     {
         if(amount < 0)
