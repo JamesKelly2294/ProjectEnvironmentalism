@@ -1172,7 +1172,7 @@ MonoBehaviour:
   CurrentOilDerricks: 0
   MaximumOilRigs: 0
   CurrentOilRigs: 0
-  MaximumOilTrucks: 2
+  MaximumOilTrucks: 10
   CurrentOilTrucks: 0
   MaximumOilTankers: 1
   CurrentOilTankers: 0
