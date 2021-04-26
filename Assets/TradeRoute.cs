@@ -9,23 +9,29 @@ public class TradeRoute : MonoBehaviour
     public GameObject OilTruck;
     public GameObject OilTanker;
 
-    private GameObject _oilVehicle;
+    public GameObject OilVehicle { get; private set; }
+
+    private RoadManager _roadManager;
 
     // Start is called before the first frame update
     void Start()
     {
         if (OilExtractor.ExtractedOilSlick.type == OilSlickType.Land)
         {
-            _oilVehicle = OilTruck;
+            OilVehicle = OilTruck;
         }
         else
         {
-            _oilVehicle = OilTanker;
+            OilVehicle = OilTanker;
         }
-        _oilVehicle.SetActive(true);
+        OilVehicle.SetActive(true);
+        OilVehicle.transform.position = OilExtractor.DockingArea.transform.position;
 
         City.RegisterTradeRoute(this);
         OilExtractor.RegisterTradeRoute(this);
+
+        _roadManager = FindObjectOfType<RoadManager>();
+        _roadManager.GenerateTradeRoutePath(this);
     }
 
     // Update is called once per frame
