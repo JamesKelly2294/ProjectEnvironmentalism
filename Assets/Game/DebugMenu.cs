@@ -63,4 +63,10 @@ public class DebugMenu : MonoBehaviour
             oilExtractor.EstablishTradeRoute(city);
         }
     }
+
+    public void UnlockOilSlickLevel(OilSlickLevel level)
+    {
+        var manager = FindObjectOfType<OilSlickManager>();
+        manager.UnlockOilSlickLevel(level);
+    }
 }

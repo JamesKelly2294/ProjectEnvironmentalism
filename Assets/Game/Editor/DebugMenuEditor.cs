@@ -7,6 +7,8 @@ using UnityEngine;
 [CanEditMultipleObjects]
 public class DebugMenuEditor : Editor
 {
+    public OilSlickLevel oilSlickLevel;
+
     public override void OnInspectorGUI()
     {
         DebugMenu debugMenu = (DebugMenu)target;
@@ -45,6 +47,11 @@ public class DebugMenuEditor : Editor
         if (GUILayout.Button("Setup Merida Route"))
         {
             debugMenu.SetupTradeRoute("Merida");
+        }
+        oilSlickLevel = (OilSlickLevel)EditorGUILayout.EnumPopup("Oil Slick Level to Unlock:", oilSlickLevel);
+        if (GUILayout.Button("Unlock"))
+        {
+            debugMenu.UnlockOilSlickLevel(oilSlickLevel);
         }
     }
 }

@@ -27,8 +27,14 @@ public class OilSlick : MonoBehaviour
     public SelectableSprite Selectable;
     public bool Purchasable = true;
 
-    // Start is called before the first frame update
-    void Start()
+    public void SetPurchasable(bool purchasable)
+    {
+        if(Purchasable == purchasable) { return; }
+        Purchasable = purchasable;
+        UpdatePurchasableState();
+    }
+
+    void UpdatePurchasableState()
     {
         if (!Purchasable)
         {
@@ -39,11 +45,20 @@ public class OilSlick : MonoBehaviour
 
             OilSlickSprite.color = NonPurchasableColor;
         }
+        else
+        {
+            Selectable.BoxHighlightable = true;
+            Selectable.BoxSelectable = true;
+            Selectable.Selectable = true;
+            Selectable.Highlightable = true;
+
+            OilSlickSprite.color = Color.white;
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    // Start is called before the first frame update
+    void Start()
     {
-        
+        UpdatePurchasableState();
     }
 }
