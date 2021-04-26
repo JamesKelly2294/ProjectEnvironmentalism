@@ -3580,6 +3580,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Road Manager
       objectReference: {fileID: 0}
+    - target: {fileID: 4530239070778051024, guid: d92bc69bdd5178c46abe380a89263e88,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4530239070778051024, guid: d92bc69bdd5178c46abe380a89263e88,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4530239070778051024, guid: d92bc69bdd5178c46abe380a89263e88,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d92bc69bdd5178c46abe380a89263e88, type: 3}
 --- !u!4 &5220872302401125770 stripped
