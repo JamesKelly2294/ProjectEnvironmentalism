@@ -437,12 +437,64 @@ public class ResourceManager : MonoBehaviour
         return (allowedToBuy, money >= cost, cost);
     }
 
+    public float PriceToBuyOilDerrick() {
+        return 100_000f * (float)Math.Pow(1.06, MaximumOilDerricks);
+    }
+
+    public float PriceToBuyOilRig() {
+        return 10_000_000f * (float)Math.Pow(1.06, MaximumOilRigs);
+    }
+
+    public float PriceToBuyOilTruck() {
+        return 14_000f * (float)Math.Pow(1.06, MaximumOilTrucks);
+    }
+
+    public float PriceToBuyOilTanker() {
+        return 1_000_000f * (float)Math.Pow(1.06, MaximumOilTankers);
+    }
+
     public void PurchaseOilSlickEvent(PubSubListenerEvent e)
     {
         var oilSlick = e.value as OilSlick;
         if (oilSlick)
         {
             PurchaseOilSlick(oilSlick);
+        }
+    }
+
+    public void BuyDerrick() {
+        float priceForDerrick = PriceToBuyOilDerrick();
+
+        if(AttemptPurchase(priceForDerrick)) {
+            MaximumOilDerricks += 1;
+            PublishEquipmentUpdate();
+        }
+    }
+
+    public void BuyRig() {
+        float priceForRig = PriceToBuyOilRig();
+
+        if(AttemptPurchase(priceForRig)) {
+            MaximumOilRigs += 1;
+            PublishEquipmentUpdate();
+        }
+    }
+
+    public void BuyTruck() {
+        float priceForTruck = PriceToBuyOilTruck();
+
+        if(AttemptPurchase(priceForTruck)) {
+            MaximumOilTrucks += 1;
+            PublishEquipmentUpdate();
+        }
+    }
+
+    public void BuyTanker() {
+        float priceForTanker = PriceToBuyOilTanker();
+
+        if(AttemptPurchase(priceForTanker)) {
+            MaximumOilTankers += 1;
+            PublishEquipmentUpdate();
         }
     }
 }
