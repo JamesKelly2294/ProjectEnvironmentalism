@@ -37,7 +37,9 @@ public class EventManager : MonoBehaviour
 
     public void SummonDryExtractorNotification(OilExtractor extractor) {
         AlertWasDismissedDelegate showMore = wasUser => {
-            extractor.gameObject.GetComponent<SelectableSprite>().TriggerBoxSelect();
+            if (wasUser) {
+                extractor.gameObject.GetComponent<SelectableSprite>().TriggerBoxSelect();
+            }
         };
 
         if (extractor.ExtractedOilType == OilSlickType.Land) {
