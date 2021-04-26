@@ -1,0 +1,91 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4436508221308187561
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4436508221308187540}
+  - component: {fileID: 4436508221308187543}
+  - component: {fileID: 4436508221308187542}
+  m_Layer: 0
+  m_Name: EventManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4436508221308187540
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4436508221308187561}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 17.858149, y: 6.6385317, z: -122.27963}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4436508221308187543
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4436508221308187561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7679401cfa079b4ea363902f3479a76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alertManager: {fileID: 0}
+  alertPrefab: {fileID: 4807977542639517462, guid: c63312d9d6c8a41f18b112ce3a16562c,
+    type: 3}
+  truck: {fileID: 21300000, guid: 78b6619f6c05e4954bab55ad1f7b6990, type: 3}
+  ship: {fileID: 21300000, guid: fa367c83b9b294d49a478e0acf3f1701, type: 3}
+  derrick: {fileID: 21300000, guid: caa035c7489005445b5dbcdba30d84e0, type: 3}
+  rig: {fileID: 21300000, guid: fea0f2a4caa202a469acd4ff396c20fc, type: 3}
+  fire: {fileID: 21300000, guid: 91e7cbaa6d8134ae0b1e8b6c7ae07920, type: 3}
+  leaf: {fileID: 21300000, guid: 8d7ff7846afc84325a7e4324862e1e2b, type: 3}
+  happy: {fileID: 21300000, guid: 6dc6ae751df304b7f8783c271416cabb, type: 3}
+  mad: {fileID: 21300000, guid: fa6434d6329a242dd880751ce84cca39, type: 3}
+  oilEmpty: {fileID: 21300000, guid: 1315e0d9f6a28ea4c8455360df5e15d2, type: 3}
+  oilFull: {fileID: 21300000, guid: 5f7eb317b7d582a44975816f6b9dfae8, type: 3}
+  oilReserveEmpty: {fileID: 21300000, guid: ab402e04e593b4689b947a8d7bef309a, type: 3}
+  oilReserveFull: {fileID: 21300000, guid: a5500a4d222ce4178b5a321c6fe0f303, type: 3}
+  normalSound: {fileID: 8300000, guid: 578be48a2adaea54b9f351a3e4cba888, type: 3}
+  angerSound: {fileID: 8300000, guid: 28889046690900b42a721c9b12637fe4, type: 3}
+--- !u!114 &4436508221308187542
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4436508221308187561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d56e1a9b13b922d428fcbf4039d56d94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Subscriptions:
+  - Key: game.date
+    Delegate:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 4436508221308187543}
+          m_MethodName: TimeDidChange
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
