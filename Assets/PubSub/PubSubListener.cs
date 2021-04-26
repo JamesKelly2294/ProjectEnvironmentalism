@@ -45,7 +45,10 @@ public class PubSubListener : MonoBehaviour
 
     public void Unsubscribe() {
         foreach (var sub in Subscriptions) {
-            pubSubMan.Unsubscribe(sub.Key, this);
+            if (pubSubMan)
+            {
+                pubSubMan.Unsubscribe(sub.Key, this);
+            }
         }
         Subscriptions.Clear();
     }

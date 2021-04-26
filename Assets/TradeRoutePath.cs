@@ -96,7 +96,6 @@ public class TradeRoutePath : MonoBehaviour
             numberOfFrames -= 1;
         }
         firstPathInitialized = true;
-        Debug.Log("=====COUNT=" + _currentSplineMove.events.Count);
         var index = reversed ? _currentPathManagerEdge.EntryWaypoint.transform.GetSiblingIndex() : _currentPathManagerEdge.ExitWaypoint.transform.GetSiblingIndex();
         _currentSplineMove.events[index].AddListener(PathManagerSegmentComplete);
 
