@@ -153,6 +153,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   oilSlick: {fileID: 0}
+  buyButton: {fileID: 6580172699201405789}
+  buyButtonText: {fileID: 1909724112554896937}
 --- !u!114 &5617640016509159734
 MonoBehaviour:
   m_ObjectHideFlags: 0

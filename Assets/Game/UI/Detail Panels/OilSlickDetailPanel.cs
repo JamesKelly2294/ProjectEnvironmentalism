@@ -25,22 +25,16 @@ public class OilSlickDetailPanel : MonoBehaviour
 
     public void refresh() {
         ResourceManager rm = GameObject.FindObjectOfType<ResourceManager>();
+        (bool, bool, float) affordability = rm.PriceToBuyOilSlick(oilSlick);
+        
+        buyButton.interactable = affordability.Item1 && affordability.Item2;
 
-        float money = rm.CurrentMoney;
-        bool allowedToBuy = true;
-        float cost = 0;
-        if (oilSlick.type == OilSlickType.Land) {
-            allowedToBuy = rm.CurrentOilDerricks < rm.MaximumOilDerricks;
-            // cost
-
-
-        } else {
-            allowedToBuy = rm.CurrentOilRigs < rm.MaximumOilRigs;
-
-
-
+        string text = "Purchase ($" + affordability.Item3.ToString("N2") + ")";
+        if (!affordability.Item1) {
+            text += " (Out of slots)";
         }
 
+        buyButtonText.SetText(text);
     }
 
     public void SetOilSlick(OilSlick oilSlick) {

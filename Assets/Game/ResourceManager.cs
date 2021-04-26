@@ -30,6 +30,9 @@ public class ResourceManager : MonoBehaviour
     public float CurrentMoney = 1_000_000;
     public decimal CurrentOilPrice = new decimal(97.05);
 
+    public float BaseCostDerrick = 1_000;
+    public float BaseCostRig = 5_000;
+
     [Range(0, 1)]
 
     public float BaseGreenProgressRate = 0.5f;
@@ -284,7 +287,8 @@ public class ResourceManager : MonoBehaviour
         }
 
         Debug.Log("Purchase oil slick: " + oilSlick);
-        float oilSlickCost = purchasedOilSlicks.Count == 0 ? 0 : oilSlick.CostToPurchase;
+        (bool, bool, float) affordability = PriceToBuyOilSlick(oilSlick);
+        float oilSlickCost = affordability.Item3;
         if (AttemptPurchase(oilSlickCost))
         {
             var oilExtractor = Instantiate(OilExtractorPrefab);
@@ -305,6 +309,39 @@ public class ResourceManager : MonoBehaviour
             oilExtractor.GetComponent<SelectableSprite>().TriggerBoxSelect();
             PublishEquipmentUpdate();
         } 
+    }
+
+    public (bool, bool, float) PriceToBuyOilSlick(OilSlick oilSlick) {
+
+        float money = CurrentMoney;
+        bool allowedToBuy = true;
+        float cost = 0;
+
+        if (oilSlick.type == OilSlickType.Land) {
+            allowedToBuy = CurrentOilDerricks < MaximumOilDerricks;
+            cost = BaseCostDerrick * (float)Math.Pow(1.1, CurrentOilDerricks);
+
+            if (CurrentOilDerricks == 0) {
+                cost = 0;
+                allowedToBuy = true;
+            }
+
+        } else {
+            allowedToBuy = CurrentOilRigs < MaximumOilRigs;
+
+            int level = 1;
+            if (oilSlick.level == OilSlickLevel.Sea2) {
+                level = 2;
+            } else if (oilSlick.level == OilSlickLevel.Sea3) {
+                level = 3;
+            } else if (oilSlick.level == OilSlickLevel.Sea4) {
+                level = 4;
+            }
+
+            cost = BaseCostRig * (float)Math.Pow(1.1, CurrentOilRigs) * (float)Math.Pow(3.5, level);
+        }
+
+        return (allowedToBuy, money >= cost, cost);
     }
 
     public void PurchaseOilSlickEvent(PubSubListenerEvent e)
