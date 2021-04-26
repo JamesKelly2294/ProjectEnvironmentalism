@@ -11,6 +11,16 @@ public class TradeRoute : MonoBehaviour
 
     public GameObject OilVehicle { get; private set; }
 
+    public TradeRoutePath TradeRoutePath;
+
+    public float LoadedOilCapacity = 100.0f;
+    public float CurrentlyLoadedOil = 0.0f;
+    public float OilLoadRate = 20.0f; // Unit/Second
+
+    bool _isLoadingOil;
+    bool _isUnloadingOil;
+    float _startingLoadedOil;
+
     private RoadManager _roadManager;
 
     // Start is called before the first frame update
@@ -30,14 +40,63 @@ public class TradeRoute : MonoBehaviour
         City.RegisterTradeRoute(this);
         OilExtractor.RegisterTradeRoute(this);
 
-        _roadManager = FindObjectOfType<RoadManager>();
+        _roadManager = OilExtractor.ExtractedOilSlick.type == OilSlickType.Land ? GameObject.FindGameObjectWithTag("TruckRoadManager").GetComponent<RoadManager>() :
+            GameObject.FindGameObjectWithTag("SeaLaneManager").GetComponent<RoadManager>();
         _roadManager.GenerateTradeRoutePath(this);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if(_isLoadingOil)
+        {
+            float remainingOilCapacity = LoadedOilCapacity - CurrentlyLoadedOil;
+            float loadableOil = Mathf.Min(remainingOilCapacity, Mathf.Min(OilExtractor.CurrentOilStorage, OilLoadRate * Time.deltaTime));
+            if (loadableOil > 0)
+            {
+                OilExtractor.CurrentOilStorage -= loadableOil;
+                CurrentlyLoadedOil += loadableOil;
+            }
+            
+            if(CurrentlyLoadedOil >= (LoadedOilCapacity - 0.001f))
+            {
+                CurrentlyLoadedOil = LoadedOilCapacity;
+                _isLoadingOil = false;
+                TradeRoutePath.ResumePath();
+            }
+        }
+
+        if (_isUnloadingOil)
+        {
+            float remainingOilDemand = City.CurrentOilDemand;
+            float unloadableOil = Mathf.Min(remainingOilDemand, Mathf.Min(CurrentlyLoadedOil, OilLoadRate * Time.deltaTime));
+            if (unloadableOil > 0)
+            {
+                City.CurrentOilDemand -= unloadableOil;
+                CurrentlyLoadedOil -= unloadableOil;
+            }
+
+            if (CurrentlyLoadedOil <= (0.001f))
+            {
+                CurrentlyLoadedOil = 0.0f;
+                _isUnloadingOil = false;
+                _startingLoadedOil = 0.0f;
+                TradeRoutePath.ResumePath();
+                AudioManager.Instance.Play("Resource/KaChing", pitchMin: 0.8f, pitchMax: 1.2f, volumeMin: 0.6f, volumeMax: 0.8f);
+            }
+
+        }
+    }
+
+    public void BeginUnloadingOil()
+    {
+        _isUnloadingOil = true;
+        _startingLoadedOil = CurrentlyLoadedOil;
+    }
+
+    public void BeginLoadingOil()
+    {
+        _isLoadingOil = true;
     }
 
     private void OnDestroy()

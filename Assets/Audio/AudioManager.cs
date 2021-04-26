@@ -68,7 +68,7 @@ public class AudioManager : MonoBehaviour
         sounds[soundInfo.id] = soundInfo;
     }
     
-    public void Play(string id, bool loop = false)
+    public void Play(string id, bool loop = false, float pitchMin = 1.0f, float pitchMax = 1.0f, float volumeMin = 1.0f, float volumeMax = 1.0f)
     {
         //Debug.Log("Play " + id);
         AudioSource audioSource = null;
@@ -104,6 +104,8 @@ public class AudioManager : MonoBehaviour
             return;
         }
 
+        audioSource.pitch = Random.Range(pitchMin, pitchMax);
+        audioSource.volume = Random.Range(volumeMin, volumeMax);
         audioSource.clip = soundInfo.audioClips[Random.Range(0, soundInfo.audioClips.Length - 1)];
         audioSource.outputAudioMixerGroup = soundInfo.audioMixerGroup;
         audioSource.loop = loop;

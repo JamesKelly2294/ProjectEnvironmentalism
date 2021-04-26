@@ -21,11 +21,11 @@ public class Node
     [NonSerialized]
     public List<Node> Neighbors;
 
-    public BezierPathManager PathManager
+    public PathManager PathManager
     {
         get
         {
-            return Waypoint.transform.parent.GetComponent<BezierPathManager>();
+            return Waypoint.transform.parent.GetComponent<PathManager>();
         }
     }
 
@@ -65,7 +65,7 @@ public struct GraphEdge
 
 public class PathManagerEdge
 {
-    public BezierPathManager PathManager;
+    public PathManager PathManager;
     public GameObject EntryWaypoint;
     public GameObject ExitWaypoint;
 
@@ -91,19 +91,19 @@ public class RoadManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        List<BezierPathManager> pathManagers = new List<BezierPathManager>();
+        List<PathManager> pathManagers = new List<PathManager>();
         // First, grab all of the path managers we want to know about
         for (int i = 0; i < WaypointManager.transform.childCount; i++)
         {
             var child = WaypointManager.transform.GetChild(i);
-            var pathManager = child.GetComponent<BezierPathManager>();
+            var pathManager = child.GetComponent<PathManager>();
             if (pathManager != null)
             {
                 pathManagers.Add(pathManager);
             }
         }
         
-         Dictionary<GameObject, Node> waypointsToNodes = new Dictionary<GameObject, Node>();
+        Dictionary<GameObject, Node> waypointsToNodes = new Dictionary<GameObject, Node>();
         // Next, build the nodes
         foreach(var pathManager in pathManagers)
         {
@@ -182,7 +182,7 @@ public class RoadManager : MonoBehaviour
     {
         var city = tradeRoute.City;
         var oilSlick = tradeRoute.OilExtractor.ExtractedOilSlick;
-        Debug.Log("Find path between " + city + " <-> " + oilSlick);
+        Debug.Log("(" + gameObject.tag + ") Find path between " + city + " <-> " + oilSlick);
 
         Node startNode = _cityNodes[city];
         Node endNode = _oilSlickNodes[oilSlick];

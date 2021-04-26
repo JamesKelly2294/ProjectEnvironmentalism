@@ -1,4 +1,5 @@
-﻿using SWS;
+﻿using DG.Tweening;
+using SWS;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,13 +9,15 @@ public class TradeRoutePath : MonoBehaviour
     public List<PathManagerEdge> PathManagerEdges;
 
     [Range(0, 25.0f)]
-    public float VehicleSpeed = 7.5f;
+    public float VehicleSpeed = 6f;
     
     [Range(0, 25.0f)]
-    public float VehicleAcceleration = 1.0f;
+    public float VehicleAcceleration = 0.75f;
 
     private bool _accelerating;
     private float _currentSpeed;
+
+    bool _isPaused;
 
     TradeRoute _tradeRoute;
     GameObject _oilVehicle;
@@ -30,12 +33,26 @@ public class TradeRoutePath : MonoBehaviour
     void Start()
     {
         _tradeRoute = transform.GetComponent<TradeRoute>();
+        _tradeRoute.TradeRoutePath = this;
         _oilVehicle = _tradeRoute.OilVehicle;
 
         _currentPathManagerEdge = PathManagerEdges[0];
         _currentSpeed = 0.01f;
         _accelerating = true;
         _oilVehicle.SetActive(true);
+        _isPaused = true;
+        _oilVehicle.transform.position = _currentPathManagerEdge.PathManager.waypoints[_currentPathManagerEdge.EntryWaypoint.transform.GetSiblingIndex()].transform.position;
+        _tradeRoute.BeginLoadingOil();
+    }
+
+    public void ResumePath()
+    {
+        if(!_isPaused)
+        {
+            return;
+        }
+        
+        _isPaused = false;
         MoveToEndOfPathManagerSegment();
     }
     
@@ -61,6 +78,7 @@ public class TradeRoutePath : MonoBehaviour
     {
         if (_currentSplineMove)
         {
+            _currentSplineMove.Stop();
             Destroy(_currentSplineMove);
         }
 
@@ -85,7 +103,7 @@ public class TradeRoutePath : MonoBehaviour
         var bezierPathManager = _currentPathManagerEdge.PathManager as BezierPathManager;
         var defaultPoints = 10;
         var startIndexMultiplier = (bezierPathManager != null ? Mathf.CeilToInt(bezierPathManager.pathDetail * defaultPoints) : 1);
-        _currentSplineMove.startPoint = startIndex * startIndexMultiplier + (bezierPathManager != null ? 1 : 0);
+        _currentSplineMove.startPoint = startIndex * startIndexMultiplier + (bezierPathManager != null ? 0 : 0);
 
         _oilVehicle.transform.position = _currentPathManagerEdge.PathManager.waypoints[startIndex].transform.position;
 
@@ -101,6 +119,19 @@ public class TradeRoutePath : MonoBehaviour
             reversed = !reversed;
             _currentSpeed = 0.01f;
             _accelerating = true;
+
+            if(reversed)
+            {
+                _tradeRoute.BeginUnloadingOil();
+            }
+            else
+            {
+                _tradeRoute.BeginLoadingOil();
+            }
+            
+            _isPaused = true;
+            _currentSplineMove.Pause();
+            return;
         }
         else
         {

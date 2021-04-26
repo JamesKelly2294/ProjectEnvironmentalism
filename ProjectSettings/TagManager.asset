@@ -6,6 +6,8 @@ TagManager:
   tags:
   - AudioManager
   - RootCanvas
+  - TruckRoadManager
+  - SeaLaneManager
   layers:
   - Default
   - TransparentFX
