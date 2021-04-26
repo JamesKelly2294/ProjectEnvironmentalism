@@ -34,12 +34,14 @@ public class Government : MonoBehaviour
 
         int cities = 0;
         float allEnvironment = 0;
+        float minEnvironment = 1;
         float allSentiment = 0;
         ResourceManager rm = GameObject.FindObjectOfType<ResourceManager>();
         foreach( City city in rm.Cities ) {
             if (city.Country == Country) {
                 cities += 1;
                 allEnvironment += city.environment;
+                minEnvironment = Mathf.Min(minEnvironment, city.environment);
                 allSentiment += city.sentiment;
             }
         }
@@ -47,7 +49,7 @@ public class Government : MonoBehaviour
         allSentiment /= cities;
 
         sentiment = (sentiment * 0.9f) + (allSentiment * 0.1f);
-        environment = (environment * 0.5f) + (allEnvironment * 0.5f);
+        environment = (environment * 0.9f) + (allEnvironment * 0.08f) + (minEnvironment * 0.02f);
     }
 
     public void ExpandOilRights () {

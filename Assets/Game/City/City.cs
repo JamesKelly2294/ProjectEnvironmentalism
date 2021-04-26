@@ -78,8 +78,8 @@ public class City : MonoBehaviour
         }
 
         float demand = CurrentOilDemand / MaximumOilDemand;
-        if (demand > 0.75) {
-            float envimpact = Mathf.Pow(1.10f, numberOfTimesInvested) * 0.02f * Time.deltaTime ;
+        if (demand > 0.9) {
+            float envimpact = Mathf.Pow(1.10f, numberOfTimesInvested) * 0.01f * Time.deltaTime ;
             environment = Mathf.Clamp(environment + ((demand - 0.75f) * 4) * envimpact, 0, 1);
         }
     }

@@ -236,6 +236,9 @@ public class ResourceManager : MonoBehaviour
 
     void PublishOilUpdate()
     {
+
+        CurrentOilPrice = (Decimal)Math.Round((EnvironmentHealth + PublicSentiment) * 100f) / 200;
+
         PrimaryInfoCardResourcesOilUpdate dollarsUpdate = new PrimaryInfoCardResourcesOilUpdate
         {
             oilPrice = CurrentOilPrice,
