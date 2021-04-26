@@ -88,6 +88,9 @@ public class ResourceManager : MonoBehaviour
 
     private List<OilExtractor> oilExtractors = new List<OilExtractor>();
     private List<OilSlick> purchasedOilSlicks = new List<OilSlick>();
+
+    public float BaseExtractionRate = 10f;
+    public float BaseOilLoadUnloadRate = 10f;
     
     private float elapsedTime = 0.0f;
 
@@ -131,6 +134,23 @@ public class ResourceManager : MonoBehaviour
 
     void CalculateOilMetrics()
     {
+        foreach (OilExtractor extractor in oilExtractors) {
+            if (extractor.ExtractedOilType == OilSlickType.Land) {
+                extractor.OilExtractionRate = BaseExtractionRate;
+            } else {
+                int level = 1;
+                if (extractor.ExtractedOilSlick.level == OilSlickLevel.Sea2) {
+                    level = 2;
+                } else if (extractor.ExtractedOilSlick.level == OilSlickLevel.Sea3) {
+                    level = 3;
+                } else if (extractor.ExtractedOilSlick.level == OilSlickLevel.Sea4) {
+                    level = 4;
+                }
+
+                extractor.OilExtractionRate = (float)Math.Pow(2, level) * BaseExtractionRate;
+            }
+        }
+
         PublishOilUpdate();
     }
 
