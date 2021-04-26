@@ -19,6 +19,8 @@ public class Government : MonoBehaviour
     
     public TMPro.TextMeshPro Label;
 
+    public bool hasGrantedExpandedOilRights = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -45,5 +47,16 @@ public class Government : MonoBehaviour
 
         sentiment = (sentiment * 0.9f) + (allSentiment * 0.1f);
         environment = (environment * 0.5f) + (allEnvironment * 0.5f);
+    }
+
+    public void ExpandOilRights () {
+        ResourceManager rm = GameObject.FindObjectOfType<ResourceManager>();
+        OilSlickManager osm = GameObject.FindObjectOfType<OilSlickManager>();
+        (bool, float) affordability = osm.PriceToUnlockNextOilSlick();
+
+        if (rm.AttemptPurchase(affordability.Item2)) {
+            hasGrantedExpandedOilRights = true;
+            osm.UnlockOilSlickLevel(osm.CurrentOilSlickLevel + 1);
+        }
     }
 }
