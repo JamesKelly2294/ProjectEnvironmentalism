@@ -21,6 +21,9 @@ public class Node
     [NonSerialized]
     public List<Node> Neighbors;
 
+    [NonSerialized]
+    public bool isLoop = false;
+
     public PathManager PathManager
     {
         get
@@ -107,6 +110,7 @@ public class RoadManager : MonoBehaviour
         // Next, build the nodes
         foreach(var pathManager in pathManagers)
         {
+            Debug.Log("Processing path manager " + pathManager);
             for (int i = 0; i < pathManager.transform.childCount; i++)
             {
                 var waypoint = pathManager.transform.GetChild(i);
@@ -149,13 +153,11 @@ public class RoadManager : MonoBehaviour
             {
                 var city = existingNode.Data.GetComponent<City>();
                 _cityNodes[city] = existingNode;
-                Debug.Log("_cityNodes " + city + " = " + existingNode);
             }
             else if (supplementalNode.Type == NodeType.OilSlick)
             {
                 var oilSlick = existingNode.Data.GetComponent<OilSlick>();
                 _oilSlickNodes[oilSlick] = existingNode;
-                Debug.Log("_oilSlickNodes " + oilSlick + " = " + existingNode);
             }
             Debug.Log("Patched node: " + waypointsToNodes[supplementalNode.Waypoint]);
         }
@@ -170,6 +172,13 @@ public class RoadManager : MonoBehaviour
             secondNode.Neighbors.Add(firstNode);
             Debug.Log("Patched node 1: " + waypointsToNodes[supplementalEdge.FirstWaypoint]);
             Debug.Log("Patched node 2: " + waypointsToNodes[supplementalEdge.SecondWaypoint]);
+
+            // this is a fucking hack
+            if (firstNode.PathManager == secondNode.PathManager)
+            {
+                firstNode.isLoop = true;
+                secondNode.isLoop = true;
+            }
         }
     }
 
@@ -196,7 +205,7 @@ public class RoadManager : MonoBehaviour
         candidateNodes.Enqueue(startNode);
         bool foundPath = false;
         int currentIterations = 0;
-        while (candidateNodes.Count > 0 && currentIterations < 100)
+        while (candidateNodes.Count > 0)
         {
             currentIterations += 1;
             Node currentNode = candidateNodes.Dequeue();
@@ -224,7 +233,7 @@ public class RoadManager : MonoBehaviour
         List<Node> path = new List<Node>();
         Node currentPathNode = endNode;
         currentIterations = 0;
-        while (currentPathNode != null && currentIterations < 100)
+        while (currentPathNode != null)
         {
             currentIterations += 1;
             path.Add(currentPathNode);
@@ -245,7 +254,7 @@ public class RoadManager : MonoBehaviour
                 entryWaypoint = curPathNode.Waypoint;
             }
 
-            if (nextPathNode == null || curPathNode.PathManager != nextPathNode.PathManager)
+            if (nextPathNode == null || curPathNode.PathManager != nextPathNode.PathManager || (curPathNode.PathManager == nextPathNode.PathManager && curPathNode.isLoop && nextPathNode.isLoop))
             {
                 pathManagerEdges.Add(new PathManagerEdge()
                 {

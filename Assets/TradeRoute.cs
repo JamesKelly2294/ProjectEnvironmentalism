@@ -83,8 +83,7 @@ public class TradeRoute : MonoBehaviour
 
             if (CurrentlyLoadedOil <= (0.001f))
             {
-                float revenue = (float)((decimal)_startingLoadedOil * _resourceManager.CurrentOilPrice);
-                _resourceManager.DepositFunds(revenue);
+                AudioManager.Instance.Play("Resource/KaChing", pitchMin: 0.8f, pitchMax: 1.2f, volumeMin: 0.45f, volumeMax: 0.65f);
 
                 CurrentlyLoadedOil = 0.0f;
                 _startingLoadedOil = 0.0f;

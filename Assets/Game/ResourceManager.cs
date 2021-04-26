@@ -256,9 +256,12 @@ public class ResourceManager : MonoBehaviour
         PublishEquipmentUpdate();
     }
 
-    public bool DepositFunds(float amount)
+    public bool DepositFunds(float amount, bool playSoundEffect = true)
     {
-        AudioManager.Instance.Play("Resource/KaChing", pitchMin: 0.8f, pitchMax: 1.2f, volumeMin: 0.45f, volumeMax: 0.65f);
+        if (playSoundEffect)
+        {
+            AudioManager.Instance.Play("Resource/KaChing", pitchMin: 0.8f, pitchMax: 1.2f, volumeMin: 0.45f, volumeMax: 0.65f);
+        }
         CurrentMoney += amount;
         return true;
     }
@@ -287,7 +290,7 @@ public class ResourceManager : MonoBehaviour
     }
 
     public void SellOil(float amount) {
-        CurrentMoney += (float)CurrentOilPrice * amount;
+        DepositFunds((float)CurrentOilPrice * amount, playSoundEffect: false);
     }
 
     public void PurchaseOilSlick(OilSlick oilSlick)
