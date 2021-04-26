@@ -227,12 +227,12 @@ public class ResourceManager : MonoBehaviour
             {
                 CurrentOilTrucks += 1;
                 PublishEquipmentUpdate();
-                AudioManager.Instance.Play("Resource/Purchase/OilTruck");
+                AudioManager.Instance.Play("Resource/Purchase/OilTruck", pitchMin: 0.95f, pitchMax: 1.05f);
                 return true;
             }
             else
             {
-                AudioManager.Instance.Play("Resource/Error");
+                AudioManager.Instance.Play("Resource/Error", pitchMin: 0.8f, pitchMax: 1.2f);
                 return false;
             }
         }
@@ -242,12 +242,12 @@ public class ResourceManager : MonoBehaviour
             {
                 CurrentOilTankers += 1;
                 PublishEquipmentUpdate();
-                AudioManager.Instance.Play("Resource/Purchase/OilTanker");
+                AudioManager.Instance.Play("Resource/Purchase/OilTanker", pitchMin: 0.95f, pitchMax: 1.05f);
                 return true;
             }
             else
             {
-                AudioManager.Instance.Play("Resource/Error");
+                AudioManager.Instance.Play("Resource/Error", pitchMin: 0.8f, pitchMax: 1.2f);
                 return false;
             }
         }
@@ -266,15 +266,21 @@ public class ResourceManager : MonoBehaviour
     {
         if(amount < 0)
         {
+            AudioManager.Instance.Play("Resource/Error", pitchMin: 0.8f, pitchMax: 1.2f);
             return false;
         }
         else if (amount > CurrentMoney)
         {
+            AudioManager.Instance.Play("Resource/Error", pitchMin: 0.8f, pitchMax: 1.2f);
             return false;
         }
         else
         {
             CurrentMoney -= amount;
+            if (amount != 0)
+            {
+                AudioManager.Instance.Play("Resource/KaChing", pitchMin: 0.8f, pitchMax: 1.2f);
+            }
             return true;
         }
     }
@@ -300,10 +306,6 @@ public class ResourceManager : MonoBehaviour
                 CurrentOilDerricks += 1;
             } else {
                 CurrentOilRigs += 1;
-            }
-
-            if (oilSlickCost != 0) {
-                AudioManager.Instance.Play("Resource/KaChing");
             }
 
             oilExtractor.GetComponent<SelectableSprite>().TriggerBoxSelect();

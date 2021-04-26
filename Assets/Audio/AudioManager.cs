@@ -61,7 +61,7 @@ public class AudioManager : MonoBehaviour
     public float SFXVolume { get; protected set; }
     public float EnvironmentVolume { get; protected set; }
 
-    private const int NUMBER_OF_AUDIO_SOURCES = 8;
+    private const int NUMBER_OF_AUDIO_SOURCES = 16;
 
     public void RegisterSoundInfo(SoundInfo soundInfo)
     {
@@ -138,7 +138,8 @@ public class AudioManager : MonoBehaviour
     private void Start()
     {
         InitializeVolumes();
-        Play(Sounds.Music.Test, true);
+        Play("Ambiance/Background", true, volumeMin: 0.25f, volumeMax: 0.25f);
+        Play("Music/Background", true, volumeMin: 0.5f, volumeMax: 0.5f);
     }
 
     float GetVolumeFromPrefs(string volumeKey)
