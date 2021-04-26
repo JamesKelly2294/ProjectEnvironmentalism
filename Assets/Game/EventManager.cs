@@ -35,6 +35,26 @@ public class EventManager : MonoBehaviour
         Debug.Log(byUser);
     }
 
+    public void SummonDryExtractorNotification(OilExtractor extractor) {
+        AlertWasDismissedDelegate showMore = wasUser => {
+            extractor.gameObject.GetComponent<SelectableSprite>().TriggerBoxSelect();
+        };
+
+        if (extractor.ExtractedOilType == OilSlickType.Land) {
+            GameObject notification = alertManager.SummonNotification(alertPrefab, "A Derrick has run dry", "You must dig deeper to get more oil from this extractor.", derrick, Color.white, true, 20,showMore , normalSound);
+        } else {
+            GameObject notification = alertManager.SummonNotification(alertPrefab, "A Rig has run dry", "You must dig deeper to get more oil from this extractor.", rig, Color.white, true, 20, showMore, normalSound);
+        }
+    }
+
+
+
+
+
+
+
+
+
     public void TimeDidChange(PubSubListenerEvent e) {
         DateTime currentTime = (DateTime) e.value;
 
@@ -58,9 +78,7 @@ public class EventManager : MonoBehaviour
     }
 
     public void MonthDidChange(DateTime time) {
-        if (time.Month == 5 && time.Year == 2022) {
-            SummonAngryMobNotification();
-        }
+
     }
 
     public void YearDidChange(DateTime time) {

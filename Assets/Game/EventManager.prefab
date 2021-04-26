@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4436508221308187540}
   - component: {fileID: 4436508221308187543}
   - component: {fileID: 4436508221308187542}
+  - component: {fileID: 8608403053102833648}
   m_Layer: 0
   m_Name: EventManager
   m_TagString: Untagged
@@ -89,3 +90,15 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+--- !u!114 &8608403053102833648
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4436508221308187561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f292d19e8ac687f4796ed88f9f22cd01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

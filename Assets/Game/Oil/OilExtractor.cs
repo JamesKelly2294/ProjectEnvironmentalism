@@ -31,6 +31,8 @@ public class OilExtractor : MonoBehaviour
     private ResourceManager _resourceManager;
     private PubSubSender _sender;
 
+    public float digDeeperCost = 100;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -76,12 +78,20 @@ public class OilExtractor : MonoBehaviour
 
     void UpdateOilExtraction()
     {
+        float prevCurrentOilReserves = CurrentOilReserves;
+        float prevCurrentOilStorage = CurrentOilStorage;
+
         float extractionRate = OilExtractionRate * Time.deltaTime;
         float extractableOil = CurrentOilReserves < extractionRate ? CurrentOilReserves : extractionRate;
         float storableOil = MaxOilStorage - CurrentOilStorage;
         float extractedOil = storableOil < extractableOil ? storableOil : extractableOil;
         CurrentOilReserves -= extractedOil;
         CurrentOilStorage += extractedOil;
+
+        if (prevCurrentOilReserves > 0 && CurrentOilReserves <= 0) {
+            EventManager em = GameObject.FindObjectOfType<EventManager>();
+            em.SummonDryExtractorNotification(this);
+        }
     }
 
     public void EstablishTradeRoute(City city)
@@ -132,5 +142,14 @@ public class OilExtractor : MonoBehaviour
         _resourceManager.ReturnVehicle(ExtractedOilSlick.type);
 
         _sender.Publish("oilextractor.traderoute.changed", this);
+    }
+
+    public void DigDeeper() {
+        ResourceManager rm = GameObject.FindObjectOfType<ResourceManager>();
+        if (rm.AttemptPurchase(digDeeperCost)) {
+            digDeeperCost *= 2;
+            CurrentOilReserves += MaxOilReserves;
+            MaxOilReserves *= 2;
+        }
     }
 }
