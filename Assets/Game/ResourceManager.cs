@@ -292,11 +292,6 @@ public class ResourceManager : MonoBehaviour
         }
     }
 
-    public void SellOil(float amount) {
-        Debug.Log(amount);
-        CurrentMoney += (float)CurrentOilPrice * amount;
-    }
-
     public void PurchaseOilSlick(OilSlick oilSlick)
     {
         if(!oilSlick)
