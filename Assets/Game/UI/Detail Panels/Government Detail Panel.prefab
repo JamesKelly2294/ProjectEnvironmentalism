@@ -2793,6 +2793,8 @@ MonoBehaviour:
   flagUS: {fileID: 21300000, guid: c6157c1a9351c184d8ac67f9c3074bb7, type: 3}
   flagCuba: {fileID: 21300000, guid: b9bd8bf4980a02344a8780214ce9f72e, type: 3}
   flagMexico: {fileID: 21300000, guid: bfd64787bdb6721418c6c583460a15f1, type: 3}
+  environmentSlider: {fileID: 8626463656652628372}
+  sentimentSlider: {fileID: 8505542212147256384}
 --- !u!1 &8847827035582076228
 GameObject:
   m_ObjectHideFlags: 0

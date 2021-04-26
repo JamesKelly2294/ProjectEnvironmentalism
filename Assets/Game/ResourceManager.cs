@@ -88,30 +88,24 @@ public class ResourceManager : MonoBehaviour
 
     void CalculateEnvironmentHealth()
     {
-        // The world marches ever onwards towards green energy
-        EnvironmentHealth += (BaseGreenProgressRate * Time.deltaTime);
-        EnvironmentHealth = Mathf.Clamp(EnvironmentHealth, 0.0f, 100.0f);
+        
+        float env = 0;
+        foreach (City city in Cities) {
+            env += city.environment * 100.0f;
+        }
+        EnvironmentHealth = env / Cities.Count;
+
         PublishEnvironmentHealthUpdate();
     }
 
     void CalculatePublicSentiment()
     {
-        // Public sentiment trends towards the center
-        if (PublicSentiment < (50.0f - 0.001f))
-        {
-            PublicSentiment += BasePublicSentimentDecayRate * Time.deltaTime;
-            PublicSentiment = Mathf.Min(PublicSentiment, 50.0f);
+        float sentiment = 0;
+        foreach (City city in Cities) {
+            sentiment += city.sentiment * 100.0f;
         }
-        else if (PublicSentiment > (50.0f + 0.001f))
-        {
-            PublicSentiment -= BasePublicSentimentDecayRate * Time.deltaTime;
-            PublicSentiment = Mathf.Max(PublicSentiment, 50.0f);
-        }
-        else
-        {
-            PublicSentiment = 50.0f;
-        }
-        PublicSentiment = Mathf.Clamp(PublicSentiment, 0.0f, 100.0f);
+        PublicSentiment = sentiment / Cities.Count;
+
         PublishPublicSentimentUpdate();
     }
 
@@ -290,6 +284,10 @@ public class ResourceManager : MonoBehaviour
             }
             return true;
         }
+    }
+
+    public void SellOil(float amount) {
+        CurrentMoney += (float)CurrentOilPrice * amount;
     }
 
     public void PurchaseOilSlick(OilSlick oilSlick)

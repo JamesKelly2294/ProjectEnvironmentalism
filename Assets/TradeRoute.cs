@@ -74,9 +74,10 @@ public class TradeRoute : MonoBehaviour
         {
             float remainingOilDemand = City.CurrentOilDemand;
             float unloadableOil = Mathf.Min(remainingOilDemand, Mathf.Min(CurrentlyLoadedOil, OilLoadRate * Time.deltaTime));
+
             if (unloadableOil > 0)
             {
-                City.CurrentOilDemand -= unloadableOil;
+                City.SellOil(unloadableOil);
                 CurrentlyLoadedOil -= unloadableOil;
             }
 

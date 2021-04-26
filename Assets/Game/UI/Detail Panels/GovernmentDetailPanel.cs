@@ -15,6 +15,8 @@ public class GovernmentDetailPanel : MonoBehaviour
 
     public Sprite flagUS, flagCuba, flagMexico;
 
+    public ProgressSlider environmentSlider, sentimentSlider;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,7 +26,8 @@ public class GovernmentDetailPanel : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        environmentSlider.progress = government.environment;
+        sentimentSlider.progress = government.sentiment;
     }
 
     void refresh() {

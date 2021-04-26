@@ -38,6 +38,7 @@ public class CityDetailPanel : MonoBehaviour
             return;
         }
 
+        environment.progress = city.environment;
         demand.progress = city.CurrentOilDemand / city.MaximumOilDemand;
         sentiment.progress = city.sentiment;
 

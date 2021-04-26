@@ -868,6 +868,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 311664474308697108, guid: 37d2c8f653cb1f447af67090831f08b2,
         type: 3}
+      propertyPath: CurrentOilDemand
+      value: 600
+      objectReference: {fileID: 0}
+    - target: {fileID: 311664474308697108, guid: 37d2c8f653cb1f447af67090831f08b2,
+        type: 3}
       propertyPath: demandMetSentimentBonus
       value: 0.001
       objectReference: {fileID: 0}
@@ -983,6 +988,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 311664474308697108, guid: 37d2c8f653cb1f447af67090831f08b2,
         type: 3}
+      propertyPath: CurrentOilDemand
+      value: 600
+      objectReference: {fileID: 0}
+    - target: {fileID: 311664474308697108, guid: 37d2c8f653cb1f447af67090831f08b2,
+        type: 3}
       propertyPath: demandMetSentimentBonus
       value: 0.001
       objectReference: {fileID: 0}
@@ -1095,6 +1105,11 @@ PrefabInstance:
         type: 3}
       propertyPath: Country
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 311664474308697108, guid: 37d2c8f653cb1f447af67090831f08b2,
+        type: 3}
+      propertyPath: CurrentOilDemand
+      value: 600
       objectReference: {fileID: 0}
     - target: {fileID: 311664474308697108, guid: 37d2c8f653cb1f447af67090831f08b2,
         type: 3}
@@ -1218,6 +1233,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 311664474308697108, guid: 37d2c8f653cb1f447af67090831f08b2,
         type: 3}
+      propertyPath: sentiment
+      value: 0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 311664474308697108, guid: 37d2c8f653cb1f447af67090831f08b2,
+        type: 3}
+      propertyPath: CurrentOilDemand
+      value: 600
+      objectReference: {fileID: 0}
+    - target: {fileID: 311664474308697108, guid: 37d2c8f653cb1f447af67090831f08b2,
+        type: 3}
       propertyPath: demandMetSentimentBonus
       value: 0.001
       objectReference: {fileID: 0}
@@ -1333,6 +1358,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 311664474308697108, guid: 37d2c8f653cb1f447af67090831f08b2,
         type: 3}
+      propertyPath: CurrentOilDemand
+      value: 600
+      objectReference: {fileID: 0}
+    - target: {fileID: 311664474308697108, guid: 37d2c8f653cb1f447af67090831f08b2,
+        type: 3}
       propertyPath: demandMetSentimentBonus
       value: 0.001
       objectReference: {fileID: 0}
@@ -1440,6 +1470,11 @@ PrefabInstance:
         type: 3}
       propertyPath: Name
       value: Tampa
+      objectReference: {fileID: 0}
+    - target: {fileID: 311664474308697108, guid: 37d2c8f653cb1f447af67090831f08b2,
+        type: 3}
+      propertyPath: CurrentOilDemand
+      value: 600
       objectReference: {fileID: 0}
     - target: {fileID: 311664474308697108, guid: 37d2c8f653cb1f447af67090831f08b2,
         type: 3}
@@ -1555,6 +1590,11 @@ PrefabInstance:
         type: 3}
       propertyPath: Country
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 311664474308697108, guid: 37d2c8f653cb1f447af67090831f08b2,
+        type: 3}
+      propertyPath: CurrentOilDemand
+      value: 600
       objectReference: {fileID: 0}
     - target: {fileID: 311664474308697108, guid: 37d2c8f653cb1f447af67090831f08b2,
         type: 3}
@@ -1683,6 +1723,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 311664474308697108, guid: 37d2c8f653cb1f447af67090831f08b2,
         type: 3}
+      propertyPath: CurrentOilDemand
+      value: 600
+      objectReference: {fileID: 0}
+    - target: {fileID: 311664474308697108, guid: 37d2c8f653cb1f447af67090831f08b2,
+        type: 3}
       propertyPath: demandMetSentimentBonus
       value: 0.001
       objectReference: {fileID: 0}
@@ -1800,6 +1845,16 @@ PrefabInstance:
         type: 3}
       propertyPath: Country
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 311664474308697108, guid: 37d2c8f653cb1f447af67090831f08b2,
+        type: 3}
+      propertyPath: sentiment
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 311664474308697108, guid: 37d2c8f653cb1f447af67090831f08b2,
+        type: 3}
+      propertyPath: CurrentOilDemand
+      value: 600
       objectReference: {fileID: 0}
     - target: {fileID: 311664474308697108, guid: 37d2c8f653cb1f447af67090831f08b2,
         type: 3}

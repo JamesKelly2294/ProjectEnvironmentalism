@@ -45,6 +45,16 @@ PrefabInstance:
       propertyPath: Name
       value: Washington, D.C.
       objectReference: {fileID: 0}
+    - target: {fileID: 991106894756419697, guid: f16a90a2cba543245ba4e3a5c00af115,
+        type: 3}
+      propertyPath: sentiment
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 991106894756419697, guid: f16a90a2cba543245ba4e3a5c00af115,
+        type: 3}
+      propertyPath: environment
+      value: 0.9
+      objectReference: {fileID: 0}
     - target: {fileID: 1799565868026487419, guid: f16a90a2cba543245ba4e3a5c00af115,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -184,6 +194,16 @@ PrefabInstance:
         type: 3}
       propertyPath: Country
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 991106894756419697, guid: f16a90a2cba543245ba4e3a5c00af115,
+        type: 3}
+      propertyPath: sentiment
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 991106894756419697, guid: f16a90a2cba543245ba4e3a5c00af115,
+        type: 3}
+      propertyPath: environment
+      value: 0.85
       objectReference: {fileID: 0}
     - target: {fileID: 1799565868026487419, guid: f16a90a2cba543245ba4e3a5c00af115,
         type: 3}
@@ -337,8 +357,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 991106894756419697, guid: f16a90a2cba543245ba4e3a5c00af115,
         type: 3}
+      propertyPath: sentiment
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 991106894756419697, guid: f16a90a2cba543245ba4e3a5c00af115,
+        type: 3}
       propertyPath: Population
       value: 127600000
+      objectReference: {fileID: 0}
+    - target: {fileID: 991106894756419697, guid: f16a90a2cba543245ba4e3a5c00af115,
+        type: 3}
+      propertyPath: environment
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 1799565868026487419, guid: f16a90a2cba543245ba4e3a5c00af115,
         type: 3}
