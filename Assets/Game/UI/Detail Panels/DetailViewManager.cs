@@ -12,6 +12,8 @@ public class DetailViewManager : MonoBehaviour
     public OilSlickDetailPanel oilSlickDetailPanel;
     public RigDetailPanel rigDetailPanel;
 
+    public HQDetailPane hqDetailPane;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -95,5 +97,13 @@ public class DetailViewManager : MonoBehaviour
 
     public void DidDeselectEvent(PubSubListenerEvent e) {
         
+    }
+
+    public void DidSelectHQ(PubSubListenerEvent e) {
+        hqDetailPane.gameObject.SetActive(true);
+    }
+
+    public void DidDeselectHQ(PubSubListenerEvent e) {
+        hqDetailPane.gameObject.SetActive(false);
     }
 }
