@@ -24,6 +24,12 @@ public class City : MonoBehaviour
 
     public List<TradeRoute> TradeRoutes = new List<TradeRoute>();
 
+    public float sentiment = 0.5f;
+    public float demandMetSentimentBonus = 0.01f, demandNotMetSentimentPenilty = 0.05f;
+    public float bribeCost = 100;
+    public float investCost = 10_000;
+    public float requiredInvestSentiment = 0.5f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -37,6 +43,11 @@ public class City : MonoBehaviour
     {
         UpdateOilDemand();
         OilDemandSlider.normalizedValue = CurrentOilDemand / MaximumOilDemand;
+        if ((CurrentOilDemand / MaximumOilDemand) > 0.9) {
+            sentiment = Mathf.Max(0, sentiment - (demandNotMetSentimentPenilty * Time.deltaTime ));
+        } else if ((CurrentOilDemand / MaximumOilDemand) < 0.1) {
+            sentiment = Mathf.Min(1, sentiment + (demandNotMetSentimentPenilty * Time.deltaTime ));
+        }
     }
 
     void UpdateOilDemand()
@@ -61,5 +72,27 @@ public class City : MonoBehaviour
     public void UnregisterTradeRoute(TradeRoute tradeRoute)
     {
         TradeRoutes.Remove(tradeRoute);
+    }
+
+    public void Bribe() {
+        ResourceManager rm = GameObject.FindObjectOfType<ResourceManager>();
+
+        if (rm.AttemptPurchase(bribeCost)) {
+            bribeCost *= 2;
+            sentiment = 1;
+        }
+    }
+
+    public void Invest() {
+        ResourceManager rm = GameObject.FindObjectOfType<ResourceManager>();
+
+        if (sentiment < requiredInvestSentiment) {
+            return;
+        }
+
+        if (rm.AttemptPurchase(investCost)) {
+            investCost *= 2;
+            OilDemandIncreaseRate *= 2;
+        }
     }
 }

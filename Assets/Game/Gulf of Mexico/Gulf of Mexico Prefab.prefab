@@ -866,6 +866,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3895863440080771041}
     m_Modifications:
+    - target: {fileID: 311664474308697108, guid: 37d2c8f653cb1f447af67090831f08b2,
+        type: 3}
+      propertyPath: demandMetSentimentBonus
+      value: 0.001
+      objectReference: {fileID: 0}
+    - target: {fileID: 311664474308697108, guid: 37d2c8f653cb1f447af67090831f08b2,
+        type: 3}
+      propertyPath: demandNotMetSentimentPenilty
+      value: 0.005
+      objectReference: {fileID: 0}
     - target: {fileID: 632565601691550527, guid: 37d2c8f653cb1f447af67090831f08b2,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -971,6 +981,16 @@ PrefabInstance:
       propertyPath: Name
       value: New Orleans
       objectReference: {fileID: 0}
+    - target: {fileID: 311664474308697108, guid: 37d2c8f653cb1f447af67090831f08b2,
+        type: 3}
+      propertyPath: demandMetSentimentBonus
+      value: 0.001
+      objectReference: {fileID: 0}
+    - target: {fileID: 311664474308697108, guid: 37d2c8f653cb1f447af67090831f08b2,
+        type: 3}
+      propertyPath: demandNotMetSentimentPenilty
+      value: 0.005
+      objectReference: {fileID: 0}
     - target: {fileID: 632565601691550527, guid: 37d2c8f653cb1f447af67090831f08b2,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -1075,6 +1095,16 @@ PrefabInstance:
         type: 3}
       propertyPath: Country
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 311664474308697108, guid: 37d2c8f653cb1f447af67090831f08b2,
+        type: 3}
+      propertyPath: demandMetSentimentBonus
+      value: 0.001
+      objectReference: {fileID: 0}
+    - target: {fileID: 311664474308697108, guid: 37d2c8f653cb1f447af67090831f08b2,
+        type: 3}
+      propertyPath: demandNotMetSentimentPenilty
+      value: 0.005
       objectReference: {fileID: 0}
     - target: {fileID: 632565601691550527, guid: 37d2c8f653cb1f447af67090831f08b2,
         type: 3}
@@ -1186,6 +1216,16 @@ PrefabInstance:
       propertyPath: Name
       value: Houston
       objectReference: {fileID: 0}
+    - target: {fileID: 311664474308697108, guid: 37d2c8f653cb1f447af67090831f08b2,
+        type: 3}
+      propertyPath: demandMetSentimentBonus
+      value: 0.001
+      objectReference: {fileID: 0}
+    - target: {fileID: 311664474308697108, guid: 37d2c8f653cb1f447af67090831f08b2,
+        type: 3}
+      propertyPath: demandNotMetSentimentPenilty
+      value: 0.005
+      objectReference: {fileID: 0}
     - target: {fileID: 632565601691550527, guid: 37d2c8f653cb1f447af67090831f08b2,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -1291,6 +1331,16 @@ PrefabInstance:
       propertyPath: Country
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 311664474308697108, guid: 37d2c8f653cb1f447af67090831f08b2,
+        type: 3}
+      propertyPath: demandMetSentimentBonus
+      value: 0.001
+      objectReference: {fileID: 0}
+    - target: {fileID: 311664474308697108, guid: 37d2c8f653cb1f447af67090831f08b2,
+        type: 3}
+      propertyPath: demandNotMetSentimentPenilty
+      value: 0.005
+      objectReference: {fileID: 0}
     - target: {fileID: 632565601691550527, guid: 37d2c8f653cb1f447af67090831f08b2,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -1390,6 +1440,16 @@ PrefabInstance:
         type: 3}
       propertyPath: Name
       value: Tampa
+      objectReference: {fileID: 0}
+    - target: {fileID: 311664474308697108, guid: 37d2c8f653cb1f447af67090831f08b2,
+        type: 3}
+      propertyPath: demandMetSentimentBonus
+      value: 0.001
+      objectReference: {fileID: 0}
+    - target: {fileID: 311664474308697108, guid: 37d2c8f653cb1f447af67090831f08b2,
+        type: 3}
+      propertyPath: demandNotMetSentimentPenilty
+      value: 0.005
       objectReference: {fileID: 0}
     - target: {fileID: 632565601691550527, guid: 37d2c8f653cb1f447af67090831f08b2,
         type: 3}
@@ -1495,6 +1555,16 @@ PrefabInstance:
         type: 3}
       propertyPath: Country
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 311664474308697108, guid: 37d2c8f653cb1f447af67090831f08b2,
+        type: 3}
+      propertyPath: demandMetSentimentBonus
+      value: 0.001
+      objectReference: {fileID: 0}
+    - target: {fileID: 311664474308697108, guid: 37d2c8f653cb1f447af67090831f08b2,
+        type: 3}
+      propertyPath: demandNotMetSentimentPenilty
+      value: 0.005
       objectReference: {fileID: 0}
     - target: {fileID: 632565601691550527, guid: 37d2c8f653cb1f447af67090831f08b2,
         type: 3}
@@ -1611,6 +1681,16 @@ PrefabInstance:
       propertyPath: Name
       value: Pensacola
       objectReference: {fileID: 0}
+    - target: {fileID: 311664474308697108, guid: 37d2c8f653cb1f447af67090831f08b2,
+        type: 3}
+      propertyPath: demandMetSentimentBonus
+      value: 0.001
+      objectReference: {fileID: 0}
+    - target: {fileID: 311664474308697108, guid: 37d2c8f653cb1f447af67090831f08b2,
+        type: 3}
+      propertyPath: demandNotMetSentimentPenilty
+      value: 0.005
+      objectReference: {fileID: 0}
     - target: {fileID: 632565601691550527, guid: 37d2c8f653cb1f447af67090831f08b2,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -1720,6 +1800,16 @@ PrefabInstance:
         type: 3}
       propertyPath: Country
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 311664474308697108, guid: 37d2c8f653cb1f447af67090831f08b2,
+        type: 3}
+      propertyPath: demandMetSentimentBonus
+      value: 0.001
+      objectReference: {fileID: 0}
+    - target: {fileID: 311664474308697108, guid: 37d2c8f653cb1f447af67090831f08b2,
+        type: 3}
+      propertyPath: demandNotMetSentimentPenilty
+      value: 0.005
       objectReference: {fileID: 0}
     - target: {fileID: 632565601691550527, guid: 37d2c8f653cb1f447af67090831f08b2,
         type: 3}

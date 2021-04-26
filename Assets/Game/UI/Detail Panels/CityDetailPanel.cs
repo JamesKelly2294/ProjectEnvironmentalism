@@ -18,6 +18,13 @@ public class CityDetailPanel : MonoBehaviour
 
     public Sprite flagUS, flagCuba, flagMexico;
 
+
+    public Button bribeButton, investButton;
+    public TextMeshProUGUI bribeButtonText, investButtonText;
+
+
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -32,6 +39,19 @@ public class CityDetailPanel : MonoBehaviour
         }
 
         demand.progress = city.CurrentOilDemand / city.MaximumOilDemand;
+        sentiment.progress = city.sentiment;
+
+
+        ResourceManager rm = GameObject.FindObjectOfType<ResourceManager>();
+        bribeButton.interactable = rm.CurrentMoney >= city.bribeCost;
+        bribeButtonText.SetText("Bribe ($" + city.bribeCost.ToString("N2") + ")");
+        
+        investButton.interactable = (rm.CurrentMoney >= city.investCost) && (city.sentiment >= city.requiredInvestSentiment);
+        string investButtonString = "Invest ($" + city.investCost.ToString("N2") + ")";
+        if (city.sentiment < city.requiredInvestSentiment) {
+            investButtonString += " (Sentiment must be >= " + (city.requiredInvestSentiment * 100).ToString("N0") + "%)";
+        }
+        investButtonText.SetText(investButtonString);
     }
 
     void refresh() {
@@ -53,5 +73,13 @@ public class CityDetailPanel : MonoBehaviour
     public void SetCity(City city) {
         this.city = city;
         refresh();
+    }
+
+    public void Bribe() {
+        city.Bribe();
+    }
+
+    public void Invest() {
+        city.Invest();
     }
 }
