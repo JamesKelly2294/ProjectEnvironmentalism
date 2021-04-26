@@ -151,6 +151,12 @@ public class ResourceManager : MonoBehaviour
             }
         }
 
+        foreach (City city in Cities) {
+            foreach (TradeRoute tradeRoute in city.TradeRoutes) {
+                tradeRoute.OilLoadRate = BaseOilLoadUnloadRate;
+            }
+        }
+
         PublishOilUpdate();
     }
 
