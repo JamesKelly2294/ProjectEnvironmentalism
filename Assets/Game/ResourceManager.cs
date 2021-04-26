@@ -3,6 +3,44 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public class RunningAverage
+{
+    private float[] dataBuffer = new float[60];
+    private int dataPointer = 0;
+    private int dataBufferSize = 0;
+
+    private float calculatedAverage = 0.0f;
+    private bool dirty = false;
+
+    public void InsertNewValue(float value)
+    {
+        dataBuffer[dataPointer] = value;
+
+        dataBufferSize = Math.Min(dataBufferSize + 1, 60);
+
+        dataPointer = (dataPointer + 1) % 60;
+
+        dirty = true;
+    }
+
+    public float CalculatedAverage()
+    {
+        if(dirty)
+        {
+            float runningIncomeRate = 0.0f;
+            for (int i = 0; i < dataBufferSize; i++)
+            {
+                runningIncomeRate += dataBuffer[i];
+            }
+            runningIncomeRate /= dataBufferSize;
+            calculatedAverage = runningIncomeRate;
+            dirty = false;
+        }
+
+        return calculatedAverage;
+    }
+}
+
 [RequireComponent(typeof(PubSubSender))]
 [RequireComponent(typeof(PubSubListener))]
 public class ResourceManager : MonoBehaviour
@@ -50,6 +88,21 @@ public class ResourceManager : MonoBehaviour
 
     private List<OilExtractor> oilExtractors = new List<OilExtractor>();
     private List<OilSlick> purchasedOilSlicks = new List<OilSlick>();
+    
+    private float elapsedTime = 0.0f;
+
+    RunningAverage incomeRunningAvg = new RunningAverage();
+    RunningAverage expensesRunningAvg = new RunningAverage();
+
+    RunningAverage oilProductionRunningAvg = new RunningAverage();
+    RunningAverage oilExportRunningAvg = new RunningAverage();
+
+    private float _depositedFunds = 0.0f;
+    private float _withdrawnFunds = 0.0f;
+    private float _producedOil = 0.0f;
+    private float _exportedOil = 0.0f;
+
+
 
     public List<City> Cities = new List<City>();
 
@@ -128,6 +181,24 @@ public class ResourceManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        elapsedTime += Time.deltaTime;
+        if (elapsedTime > 1.0f)
+        {
+            elapsedTime = 0.0f;
+
+            incomeRunningAvg.InsertNewValue(_depositedFunds);
+            expensesRunningAvg.InsertNewValue(_withdrawnFunds);
+
+            oilProductionRunningAvg.InsertNewValue(_producedOil);
+            oilExportRunningAvg.InsertNewValue(_exportedOil);
+
+            _depositedFunds = 0.0f;
+            _withdrawnFunds = 0.0f;
+
+            _producedOil = 0.0f;
+            _exportedOil = 0.0f;
+        }
+
         CalculateOilMetrics();
         CalculateMoney();
         CalculateEnvironmentHealth();
@@ -139,7 +210,9 @@ public class ResourceManager : MonoBehaviour
     {
         PrimaryInfoCardResourcesOilUpdate dollarsUpdate = new PrimaryInfoCardResourcesOilUpdate
         {
-            oilPrice = CurrentOilPrice
+            oilPrice = CurrentOilPrice,
+            oilProducedPerSecond = (decimal)oilProductionRunningAvg.CalculatedAverage(),
+            oilConsumedPerSecond = (decimal)oilExportRunningAvg.CalculatedAverage(),
         };
 
         _sender.Publish("game.oil.totals", dollarsUpdate);
@@ -149,7 +222,9 @@ public class ResourceManager : MonoBehaviour
     {
         PrimaryInfoCardResourcesDollarsUpdate dollarsUpdate = new PrimaryInfoCardResourcesDollarsUpdate
         {
-            dollarsAmount = Mathf.RoundToInt(CurrentMoney)
+            dollarsAmount = Mathf.RoundToInt(CurrentMoney),
+            dollarsIncomePerSecond = (decimal)incomeRunningAvg.CalculatedAverage(),
+            dolarsExpensesPerSecond = (decimal)expensesRunningAvg.CalculatedAverage(),
         };
 
         _sender.Publish("game.dollars.totals", dollarsUpdate);
@@ -263,6 +338,7 @@ public class ResourceManager : MonoBehaviour
             AudioManager.Instance.Play("Resource/KaChing", pitchMin: 0.8f, pitchMax: 1.2f, volumeMin: 0.45f, volumeMax: 0.65f);
         }
         CurrentMoney += amount;
+        _depositedFunds += amount;
         return true;
     }
 
@@ -281,6 +357,7 @@ public class ResourceManager : MonoBehaviour
         else
         {
             CurrentMoney -= amount;
+            _withdrawnFunds += amount;
             if (amount != 0)
             {
                 AudioManager.Instance.Play("Resource/KaChing", pitchMin: 0.8f, pitchMax: 1.2f);
@@ -291,6 +368,12 @@ public class ResourceManager : MonoBehaviour
 
     public void SellOil(float amount) {
         DepositFunds((float)CurrentOilPrice * amount, playSoundEffect: false);
+        _exportedOil += amount;
+    }
+    
+    public void OilProduced(float oilQuantity)
+    {
+        _producedOil += oilQuantity;
     }
 
     public void PurchaseOilSlick(OilSlick oilSlick)

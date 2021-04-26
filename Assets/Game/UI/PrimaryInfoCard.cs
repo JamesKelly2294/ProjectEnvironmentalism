@@ -43,8 +43,8 @@ public class PrimaryInfoCard : MonoBehaviour
     public void DollarsDidChange(PubSubListenerEvent e) {
         PrimaryInfoCardResourcesDollarsUpdate update = (PrimaryInfoCardResourcesDollarsUpdate)e.value;
         dollars.SetText(update.dollarsAmount.ToString("N0"));
-        income.SetText(update.dollarsIncomePerSecond.ToString("N0"));
-        expenses.SetText(update.dolarsExpensesPerSecond.ToString("N0"));
+        income.SetText(update.dollarsIncomePerSecond.ToString("N0") + "/s");
+        expenses.SetText(update.dolarsExpensesPerSecond.ToString("N0") + "/s");
     }
 
     /// PrimaryInfoCardResourcesOilUpdate

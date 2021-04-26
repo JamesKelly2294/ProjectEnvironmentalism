@@ -88,6 +88,8 @@ public class OilExtractor : MonoBehaviour
         CurrentOilReserves -= extractedOil;
         CurrentOilStorage += extractedOil;
 
+        _resourceManager.OilProduced(extractedOil);
+
         if (prevCurrentOilReserves > 0 && CurrentOilReserves <= 0) {
             EventManager em = GameObject.FindObjectOfType<EventManager>();
             em.SummonDryExtractorNotification(this);
