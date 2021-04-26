@@ -29,18 +29,34 @@ public class EndGameEvent : MonoBehaviour
     public void TriggerEndGame()
     {
         HellCity.gameObject.SetActive(true);
-
-        SeaGraphic.color = SeaGraphicDestroyedColor;
-        LandGraphic.color = LandGraphicDestroyedColor;
-        BeachGraphic.color = BeachGraphicDestroyedColor;
-        OutlineGraphic.color = OutlineGraphicDestroyedColor;
-
+        
         foreach(var city in _resourceManager.Cities)
         {
             if(city.Country != Country.Hell)
             {
-                city.DestroyCity();
+                city.DestroyCity(destructionAnimationDuration: 1.0f);
             }
+        }
+
+        StartCoroutine(AnimateWorldColorChange(5.0f));
+    }
+
+    IEnumerator AnimateWorldColorChange(float duration)
+    {
+        float elapsedTime = 0.0f;
+        var seaGraphicStartColor = SeaGraphic.color;
+        var landGraphicStartColor = LandGraphic.color;
+        var beachGraphicStartColor = BeachGraphic.color;
+        var outlineGraphicStartColor = OutlineGraphic.color;
+        while (elapsedTime < duration)
+        {
+            elapsedTime += Time.deltaTime;
+            var pct = elapsedTime / duration;
+            SeaGraphic.color = Color.Lerp(seaGraphicStartColor, SeaGraphicDestroyedColor, pct);
+            LandGraphic.color = Color.Lerp(landGraphicStartColor, LandGraphicDestroyedColor, pct);
+            BeachGraphic.color = Color.Lerp(beachGraphicStartColor, BeachGraphicDestroyedColor, pct);
+            OutlineGraphic.color = Color.Lerp(outlineGraphicStartColor, OutlineGraphicDestroyedColor, pct);
+            yield return new WaitForEndOfFrame();
         }
     }
 

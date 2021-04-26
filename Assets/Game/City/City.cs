@@ -36,9 +36,25 @@ public class City : MonoBehaviour
     public GameObject DestroyedCityGraphic;
     public GameObject CityGraphic;
 
-    public void DestroyCity()
+    public void DestroyCity(float destructionAnimationDuration)
     {
+        StartCoroutine(AnimateCityDestruction(destructionAnimationDuration));
+    }
+
+    IEnumerator AnimateCityDestruction(float duration)
+    {
+        float elapsedTime = 0.0f;
+        var destroyedCitySR = DestroyedCityGraphic.GetComponent<SpriteRenderer>();
+        var citySR = CityGraphic.GetComponent<SpriteRenderer>();
         DestroyedCityGraphic.SetActive(true);
+        while (elapsedTime < duration)
+        {
+            elapsedTime += Time.deltaTime;
+            destroyedCitySR.color = new Color(destroyedCitySR.color.r, destroyedCitySR.color.g, destroyedCitySR.color.b, (elapsedTime / duration));
+            citySR.color = new Color(destroyedCitySR.color.r, destroyedCitySR.color.g, destroyedCitySR.color.b, 1 - (elapsedTime / duration));
+            yield return new WaitForEndOfFrame();
+        }
+
         CityGraphic.SetActive(false);
     }
 
