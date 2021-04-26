@@ -1,20 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
 public class OilDerrickDetailPanel : MonoBehaviour
 {
-
     public TextMeshProUGUI extraction;
-
     public ProgressSlider oilReserves, oilStorage;
-
     public OilExtractor oilExtractor;
-
     public GameObject productionTabButton, routesTabButton;
     public GameObject productionTab, routesTab;
+    public GameObject routeRowPrefab, countryRowPrefab;
+    public GameObject routesList;
+    public TextMeshProUGUI routesUsedScreen;
 
     // Start is called before the first frame update
     void Start()
@@ -34,8 +34,54 @@ public class OilDerrickDetailPanel : MonoBehaviour
         oilStorage.progress = oilExtractor.CurrentOilStorage / oilExtractor.MaxOilStorage;
     }
 
+    public void routesDidChange() {
+        ResourceManager rm = GameObject.FindObjectOfType<ResourceManager>();
+        int trucks = rm.MaximumOilTrucks - rm.CurrentOilTrucks;
+        if (trucks > 1) {
+            routesUsedScreen.SetText(trucks + " trucks are available");
+        } else if ( trucks == 1 ) {
+            routesUsedScreen.SetText("One truck is available");
+        } else {
+            routesUsedScreen.SetText("No trucks are available");
+        }
+        
+    }
+
+    public void refresh() {
+        // Remove the current routes
+        foreach (Transform child in routesList.transform) {
+            Destroy(child.gameObject);
+        }
+
+        ResourceManager rm = GameObject.FindObjectOfType<ResourceManager>();
+        List<City> sortedCities = rm.Cities.OrderBy(c=>c.Name).ToList();
+
+        // Add in Mexican cities
+        GameObject mexico = Instantiate(countryRowPrefab, routesList.transform);
+        mexico.GetComponent<CountryDetailRow>().Setup(Country.Mexico);
+        foreach (City city in sortedCities) {
+            if (city.Country == Country.Mexico) {
+                GameObject routeRow = Instantiate(routeRowPrefab, routesList.transform);
+                routeRow.GetComponent<RouteDetailRow>().Setup(oilExtractor, city);
+            }
+        }
+        
+        // Add in American cities
+        GameObject us = Instantiate(countryRowPrefab, routesList.transform);
+        us.GetComponent<CountryDetailRow>().Setup(Country.UnitedStates);
+        foreach (City city in sortedCities) {
+            if (city.Country == Country.UnitedStates) {
+                GameObject routeRow = Instantiate(routeRowPrefab, routesList.transform);
+                routeRow.GetComponent<RouteDetailRow>().Setup(oilExtractor, city);
+            }
+        }
+
+        routesDidChange();
+    }
+
     public void SetOilExtractor(OilExtractor extractor) {
         this.oilExtractor = extractor;
+        refresh();
     }
 
     public void SwitchToProductionTab() {

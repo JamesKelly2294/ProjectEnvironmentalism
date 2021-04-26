@@ -29,11 +29,13 @@ public class OilExtractor : MonoBehaviour
     public List<TradeRoute> TradeRoutes = new List<TradeRoute>();
 
     private ResourceManager _resourceManager;
+    private PubSubSender _sender;
 
     // Start is called before the first frame update
     void Start()
     {
         CurrentOilReserves = MaxOilReserves;
+        _sender = GetComponent<PubSubSender>();
 
         _resourceManager = GameObject.FindObjectOfType<ResourceManager>();
         _resourceManager.RegisterOilExtractor(this);
@@ -96,6 +98,15 @@ public class OilExtractor : MonoBehaviour
         tradeRoute.OilExtractor = this;
     }
 
+    public void DestroyOneTradeRouteForCity(City city) {
+        foreach(TradeRoute tradeRoute in GetComponentsInChildren<TradeRoute>()) {
+            if (tradeRoute.City == city) {
+                Destroy(tradeRoute.gameObject);
+                return;
+            }
+        }
+    }
+
     private void OnDestroy()
     {
         _resourceManager.UnregisterOilExtractor(this);
@@ -108,10 +119,18 @@ public class OilExtractor : MonoBehaviour
             return;
         }
         TradeRoutes.Add(tradeRoute);
+        _sender.Publish("oilextractor.traderoute.changed", this);
     }
 
     public void UnregisterTradeRoute(TradeRoute tradeRoute)
     {
+        if (!TradeRoutes.Contains(tradeRoute)) {
+            return;
+        }
+
         TradeRoutes.Remove(tradeRoute);
+        _resourceManager.ReturnVehicle(ExtractedOilSlick.type);
+
+        _sender.Publish("oilextractor.traderoute.changed", this);
     }
 }

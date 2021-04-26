@@ -250,6 +250,15 @@ public class ResourceManager : MonoBehaviour
         }
     }
 
+    public void ReturnVehicle(OilSlickType type) {
+        if (type == OilSlickType.Land) {
+            CurrentOilTrucks -= 1;
+        } else {
+            CurrentOilTankers -= 1;
+        }
+        PublishEquipmentUpdate();
+    }
+
     public bool AttemptPurchase(float amount)
     {
         if(amount < 0)
