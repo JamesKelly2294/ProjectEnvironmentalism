@@ -17,6 +17,7 @@ public class TradeRoutePath : MonoBehaviour
 
     splineMove _currentSplineMove;
 
+    bool firstPathInitialized = false;
     bool reversed = false;
 
     // Start is called before the first frame update
@@ -88,8 +89,14 @@ public class TradeRoutePath : MonoBehaviour
 
     public IEnumerator WaitForSplineInitialization()
     {
-        yield return new WaitForEndOfFrame();
-        
+        var numberOfFrames = firstPathInitialized ? 1 : 2;
+        while(numberOfFrames > 0)
+        {
+            yield return new WaitForEndOfFrame();
+            numberOfFrames -= 1;
+        }
+        firstPathInitialized = true;
+        Debug.Log("=====COUNT=" + _currentSplineMove.events.Count);
         var index = reversed ? _currentPathManagerEdge.EntryWaypoint.transform.GetSiblingIndex() : _currentPathManagerEdge.ExitWaypoint.transform.GetSiblingIndex();
         _currentSplineMove.events[index].AddListener(PathManagerSegmentComplete);
 
