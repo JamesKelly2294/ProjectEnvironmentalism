@@ -32,10 +32,12 @@ public class TradeRoute : MonoBehaviour
         if (OilExtractor.ExtractedOilSlick.type == OilSlickType.Land)
         {
             OilVehicle = OilTruck;
+            LoadedOilCapacity = 100f;
         }
         else
         {
             OilVehicle = OilTanker;
+            LoadedOilCapacity = 1_000f;
         }
         //OilVehicle.SetActive(true);
         //OilVehicle.transform.position = OilExtractor.DockingArea.transform.position;

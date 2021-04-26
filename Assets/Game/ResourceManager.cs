@@ -149,6 +149,8 @@ public class ResourceManager : MonoBehaviour
 
                 extractor.OilExtractionRate = (float)Math.Pow(2, level) * BaseExtractionRate;
             }
+
+            extractor.MaxOilStorage = extractor.OilExtractionRate * 60;
         }
 
         foreach (City city in Cities) {
