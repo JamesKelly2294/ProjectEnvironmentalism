@@ -6,7 +6,8 @@ public enum Country
 {
     UnitedStates,
     Mexico,
-    Cuba
+    Cuba,
+    Hell
 }
 
 public class Government : MonoBehaviour

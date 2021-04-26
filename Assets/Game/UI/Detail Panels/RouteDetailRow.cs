@@ -30,7 +30,7 @@ public class RouteDetailRow : MonoBehaviour
     public void refresh() {
         ResourceManager resourceManager = FindObjectOfType<ResourceManager>();
         
-        destination.SetText(destinationCity.name);
+        destination.SetText(destinationCity.Name);
         length.SetText(""); // TODO: Show how far one place is to the next...
 
         int connectionsAmount = 0;

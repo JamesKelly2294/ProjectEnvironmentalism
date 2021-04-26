@@ -16,7 +16,7 @@ public class CityDetailPanel : MonoBehaviour
 
     public City city;
 
-    public Sprite flagUS, flagCuba, flagMexico;
+    public Sprite flagUS, flagCuba, flagMexico, flagHell;
 
 
     public Button bribeButton, investButton;
@@ -60,13 +60,17 @@ public class CityDetailPanel : MonoBehaviour
 
         if (city.Country == Country.UnitedStates) {
             flag.sprite = flagUS;
-            title.SetText(city.name + ", U.S.");
+            title.SetText(city.Name + ", U.S.");
         } else if (city.Country == Country.Cuba) {
             flag.sprite = flagCuba;
-            title.SetText(city.name + ", Cuba");
+            title.SetText(city.Name + ", Cuba");
         } else if (city.Country == Country.Mexico) {
             flag.sprite = flagMexico;
-            title.SetText(city.name + ", Mexico");
+            title.SetText(city.Name + ", Mexico");
+        } else if (city.Country == Country.Hell)
+        {
+            flag.sprite = flagHell;
+            title.SetText(city.Name);
         }
 
     }

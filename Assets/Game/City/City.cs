@@ -6,8 +6,7 @@ using UnityEngine.UI;
 public class City : MonoBehaviour
 {
     public string Name;
-    [Range(0, 10_000_000)]
-    public int Population;
+    public long Population;
     public Country Country;
 
     public float MaximumOilDemand = 1200; // units of oil
@@ -33,6 +32,15 @@ public class City : MonoBehaviour
 
     public float environment = 0.9f;
     public float pollutionPerMillionOil = 10f;
+
+    public GameObject DestroyedCityGraphic;
+    public GameObject CityGraphic;
+
+    public void DestroyCity()
+    {
+        DestroyedCityGraphic.SetActive(true);
+        CityGraphic.SetActive(false);
+    }
 
     // Start is called before the first frame update
     void Start()

@@ -53,5 +53,9 @@ public class DebugMenuEditor : Editor
         {
             debugMenu.UnlockOilSlickLevel(oilSlickLevel);
         }
+        if(GUILayout.Button("Trigger End Game"))
+        {
+            debugMenu.TriggerEndGame();
+        }
     }
 }

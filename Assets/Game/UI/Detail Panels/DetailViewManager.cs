@@ -34,7 +34,7 @@ public class DetailViewManager : MonoBehaviour
 
     public void DidDeselectCity(PubSubListenerEvent e) {
         City city = ((GameObject) e.value).gameObject.GetComponent<City>();
-        if (cityDetailPanel.city.name == city.name) {
+        if (cityDetailPanel.city.Name == city.Name) {
             cityDetailPanel.gameObject.SetActive(false);
         }
     }

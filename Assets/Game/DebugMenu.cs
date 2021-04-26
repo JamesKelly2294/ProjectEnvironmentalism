@@ -7,11 +7,20 @@ public class DebugMenu : MonoBehaviour
 {
     BoxSelection _boxSelection;
     ResourceManager _resourceManager;
+    EndGameEvent _endGameEvent;
+
     // Start is called before the first frame update
     void Start()
     {
         _boxSelection = FindObjectOfType<BoxSelection>();
         _resourceManager = FindObjectOfType<ResourceManager>();
+        _endGameEvent = FindObjectOfType<EndGameEvent>();
+    }
+
+    public void TriggerEndGame()
+    {
+        UnlockOilSlickLevel(OilSlickLevel.Sea4);
+        _endGameEvent.TriggerEndGame();
     }
 
     private OilSlick SelectedOilSlick()
