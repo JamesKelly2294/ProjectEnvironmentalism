@@ -291,9 +291,19 @@ public class ResourceManager : MonoBehaviour
             oilExtractor.transform.position = oilSlick.transform.position;
             oilExtractor.GetComponent<OilExtractor>().SetOilSlick(oilSlick);
             purchasedOilSlicks.Add(oilSlick);
-            AudioManager.Instance.Play("Resource/KaChing");
+
+            if (oilSlick.type == OilSlickType.Land) {
+                CurrentOilDerricks += 1;
+            } else {
+                CurrentOilRigs += 1;
+            }
+
+            if (oilSlickCost != 0) {
+                AudioManager.Instance.Play("Resource/KaChing");
+            }
 
             oilExtractor.GetComponent<SelectableSprite>().TriggerBoxSelect();
+            PublishEquipmentUpdate();
         } 
     }
 
