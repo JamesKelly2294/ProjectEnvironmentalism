@@ -45,6 +45,26 @@ public class GameManager : MonoBehaviour
         StartCoroutine(GetSceneLoadProgress());
     }
 
+    public void ShowLoseScreen()
+    {
+        loadingScreen.SetActive(true);
+        scenesLoading.Add(SceneManager.UnloadSceneAsync(loadGameSceneName));
+        
+        scenesLoading.Add(SceneManager.LoadSceneAsync("LoseScene", LoadSceneMode.Additive));
+ 
+        StartCoroutine(GetSceneLoadProgress());
+    }
+
+    public void ShowWinScreen()
+    {
+        loadingScreen.SetActive(true);
+        scenesLoading.Add(SceneManager.UnloadSceneAsync(loadGameSceneName));
+
+        scenesLoading.Add(SceneManager.LoadSceneAsync("RealWinScene", LoadSceneMode.Additive));
+
+        StartCoroutine(GetSceneLoadProgress());
+    }
+
     public IEnumerator GetSceneLoadProgress()
     {
         foreach(var sceneLoad in scenesLoading)

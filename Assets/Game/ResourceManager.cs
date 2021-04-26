@@ -528,4 +528,15 @@ public class ResourceManager : MonoBehaviour
             PublishEquipmentUpdate();
         }
     }
+
+    public void TriggerGameLose()
+    {
+        _sender.Publish("game.lose");
+    }
+
+    public void TriggerGameWin()
+    {
+        AudioManager.Instance.Play("SFX/DemonVoice");
+        _sender.Publish("game.win");
+    }
 }

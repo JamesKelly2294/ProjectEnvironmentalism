@@ -57,5 +57,13 @@ public class DebugMenuEditor : Editor
         {
             debugMenu.TriggerEndGame();
         }
+        if(GUILayout.Button("Trigger Game Win"))
+        {
+            debugMenu.TriggerGameWin();
+        }
+        if(GUILayout.Button("Trigger Game Lose"))
+        {
+            debugMenu.TriggerGameLose();
+        }
     }
 }

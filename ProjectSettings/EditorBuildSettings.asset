@@ -17,4 +17,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/JacobScene.unity
     guid: d453516f7ce6e7f459a0eb669bf18d84
+  - enabled: 0
+    path: Assets/Game/WinLoseStates/WinScene.unity
+    guid: 9b1980d395c16e546b36c870fa935a88
+  - enabled: 1
+    path: Assets/Game/WinLoseStates/LoseScene.unity
+    guid: 0c629944cccf089438915de2af4f3b4f
+  - enabled: 1
+    path: Assets/Game/WinLoseStates/RealWinScene.unity
+    guid: bf331692ee3ca7a4ba8563b298ab5bc4
   m_configObjects: {}

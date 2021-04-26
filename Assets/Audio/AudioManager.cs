@@ -68,7 +68,7 @@ public class AudioManager : MonoBehaviour
         sounds[soundInfo.id] = soundInfo;
     }
     
-    public void Play(string id, bool loop = false, float pitchMin = 1.0f, float pitchMax = 1.0f, float volumeMin = 1.0f, float volumeMax = 1.0f)
+    public void Play(string id, bool loop = false, float pitchMin = 1.0f, float pitchMax = 1.0f, float volumeMin = 1.0f, float volumeMax = 1.0f, bool isMusic = false)
     {
         //Debug.Log("Play " + id);
         AudioSource audioSource = null;
@@ -110,6 +110,22 @@ public class AudioManager : MonoBehaviour
         audioSource.outputAudioMixerGroup = soundInfo.audioMixerGroup;
         audioSource.loop = loop;
         audioSource.Play();
+
+        if(isMusic)
+        {
+            _musicSource = audioSource;
+        }
+    }
+
+    AudioSource _musicSource;
+
+    public void StopMusic()
+    {
+        if(!_musicSource)
+        {
+            return;
+        }
+        _musicSource.Stop();
     }
 
     void Awake()
@@ -139,7 +155,7 @@ public class AudioManager : MonoBehaviour
     {
         InitializeVolumes();
         Play("Ambiance/Background", true, volumeMin: 0.25f, volumeMax: 0.25f);
-        Play("Music/Background", true, volumeMin: 0.5f, volumeMax: 0.5f);
+        Play("Music/Background", true, volumeMin: 0.5f, volumeMax: 0.5f, isMusic: true);
     }
 
     float GetVolumeFromPrefs(string volumeKey)

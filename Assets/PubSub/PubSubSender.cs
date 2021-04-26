@@ -10,7 +10,7 @@ public class PubSubSender : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        pubSubMan = GameObject.FindObjectOfType<PubSubManager>();
+        pubSubMan = PubSubManager.Instance;
     }
 
     // Update is called once per frame

@@ -10272,7 +10272,7 @@ MonoBehaviour:
   - {fileID: 5180615426341871753}
   - {fileID: 5180615427165471423}
   - {fileID: 5180615426230099535}
-  CurrentOilSlickLevel: 0
+  CurrentOilSlickLevel: 4
 --- !u!1 &1121816299078791337
 GameObject:
   m_ObjectHideFlags: 0
@@ -12766,6 +12766,8 @@ MonoBehaviour:
   EnvironmentHealth: 50
   PublicSentiment: 30
   OilStorage: 0
+  BaseExtractionRate: 10
+  BaseOilLoadUnloadRate: 10
   Cities: []
 --- !u!114 &5180615425942968343
 MonoBehaviour:
@@ -14313,6 +14315,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5180615426980674289}
   - component: {fileID: 5180615426980674288}
+  - component: {fileID: 5180615426980674295}
   m_Layer: 0
   m_Name: DebugMenu
   m_TagString: Untagged
@@ -14320,6 +14323,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &5180615426980674295
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5180615426980674294}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f292d19e8ac687f4796ed88f9f22cd01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &5180615427074219022
 PrefabInstance:
   m_ObjectHideFlags: 0

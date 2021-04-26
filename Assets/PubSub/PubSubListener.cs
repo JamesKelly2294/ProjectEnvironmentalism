@@ -14,7 +14,7 @@ public class PubSubListener : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        pubSubMan = GameObject.FindObjectOfType<PubSubManager>();
+        pubSubMan = PubSubManager.Instance;
         Subscribe();
     }
 

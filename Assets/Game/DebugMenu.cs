@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
+[RequireComponent(typeof(PubSubSender))]
 public class DebugMenu : MonoBehaviour
 {
     BoxSelection _boxSelection;
     ResourceManager _resourceManager;
     EndGameEvent _endGameEvent;
+    PubSubSender _sender;
 
     // Start is called before the first frame update
     void Start()
@@ -15,12 +17,23 @@ public class DebugMenu : MonoBehaviour
         _boxSelection = FindObjectOfType<BoxSelection>();
         _resourceManager = FindObjectOfType<ResourceManager>();
         _endGameEvent = FindObjectOfType<EndGameEvent>();
+        _sender = GetComponent<PubSubSender>();
     }
 
     public void TriggerEndGame()
     {
         UnlockOilSlickLevel(OilSlickLevel.Sea4);
         _endGameEvent.TriggerEndGame();
+    }
+
+    public void TriggerGameLose()
+    {
+        _resourceManager.TriggerGameLose();
+    }
+
+    public void TriggerGameWin()
+    {
+        _resourceManager.TriggerGameWin();
     }
 
     private OilSlick SelectedOilSlick()
