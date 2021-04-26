@@ -63,6 +63,7 @@ public class TradeRoute : MonoBehaviour
                 CurrentlyLoadedOil = LoadedOilCapacity;
                 _isLoadingOil = false;
                 TradeRoutePath.ResumePath();
+                AudioManager.Instance.Play("Resource/OilGlug", pitchMin: 0.8f, pitchMax: 1.2f, volumeMin: 0.45f, volumeMax: 0.65f);
             }
         }
 
@@ -82,7 +83,7 @@ public class TradeRoute : MonoBehaviour
                 _isUnloadingOil = false;
                 _startingLoadedOil = 0.0f;
                 TradeRoutePath.ResumePath();
-                AudioManager.Instance.Play("Resource/KaChing", pitchMin: 0.8f, pitchMax: 1.2f, volumeMin: 0.6f, volumeMax: 0.8f);
+                AudioManager.Instance.Play("Resource/KaChing", pitchMin: 0.8f, pitchMax: 1.2f, volumeMin: 0.45f, volumeMax: 0.65f);
             }
 
         }
