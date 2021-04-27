@@ -1461,6 +1461,21 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -78
       objectReference: {fileID: 0}
+    - target: {fileID: 3959280179413969825, guid: cec63fed5e0bb2949a2cd87a4d49ead3,
+        type: 3}
+      propertyPath: m_text
+      value: '<b>Improving the world through innovation.</b>
+
+
+        Our company
+        consistently delivers breakthroughs in petrochemical research; empowering
+        and enriching our users'' lives. We keep your lights on, your tires rolling,
+        and your planes flying through the air.
+
+
+        At <b>Modest Oil</b>, that''s
+        just what we do.'
+      objectReference: {fileID: 0}
     - target: {fileID: 3985970165379090409, guid: cec63fed5e0bb2949a2cd87a4d49ead3,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -6311,7 +6326,7 @@ GameObject:
   - component: {fileID: 1121816297687032270}
   - component: {fileID: 1121816297687032271}
   m_Layer: 0
-  m_Name: Havanna
+  m_Name: Havana
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16495,6 +16510,11 @@ PrefabInstance:
     - target: {fileID: 1993886964979768283, guid: 05ed9a247bdc683419d87eb28bbe39a6,
         type: 3}
       propertyPath: OilDemandIncreaseRate
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1993886964979768283, guid: 05ed9a247bdc683419d87eb28bbe39a6,
+        type: 3}
+      propertyPath: MinimumOilIncreaseRate
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1993886964979768283, guid: 05ed9a247bdc683419d87eb28bbe39a6,
@@ -16515,6 +16535,11 @@ PrefabInstance:
     - target: {fileID: 3621916749426285703, guid: 05ed9a247bdc683419d87eb28bbe39a6,
         type: 3}
       propertyPath: OilDemandIncreaseRate
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3621916749426285703, guid: 05ed9a247bdc683419d87eb28bbe39a6,
+        type: 3}
+      propertyPath: MinimumOilIncreaseRate
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3621916749426285703, guid: 05ed9a247bdc683419d87eb28bbe39a6,
@@ -16540,6 +16565,11 @@ PrefabInstance:
     - target: {fileID: 3621916749585424252, guid: 05ed9a247bdc683419d87eb28bbe39a6,
         type: 3}
       propertyPath: OilDemandIncreaseRate
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3621916749585424252, guid: 05ed9a247bdc683419d87eb28bbe39a6,
+        type: 3}
+      propertyPath: MinimumOilIncreaseRate
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3621916749585424252, guid: 05ed9a247bdc683419d87eb28bbe39a6,
@@ -16560,6 +16590,11 @@ PrefabInstance:
     - target: {fileID: 3621916749685769166, guid: 05ed9a247bdc683419d87eb28bbe39a6,
         type: 3}
       propertyPath: OilDemandIncreaseRate
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3621916749685769166, guid: 05ed9a247bdc683419d87eb28bbe39a6,
+        type: 3}
+      propertyPath: MinimumOilIncreaseRate
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3621916749685769166, guid: 05ed9a247bdc683419d87eb28bbe39a6,
@@ -16585,6 +16620,11 @@ PrefabInstance:
     - target: {fileID: 3621916750183114507, guid: 05ed9a247bdc683419d87eb28bbe39a6,
         type: 3}
       propertyPath: OilDemandIncreaseRate
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3621916750183114507, guid: 05ed9a247bdc683419d87eb28bbe39a6,
+        type: 3}
+      propertyPath: MinimumOilIncreaseRate
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3621916750183114507, guid: 05ed9a247bdc683419d87eb28bbe39a6,
@@ -16605,12 +16645,22 @@ PrefabInstance:
     - target: {fileID: 3621916750239466185, guid: 05ed9a247bdc683419d87eb28bbe39a6,
         type: 3}
       propertyPath: OilDemandIncreaseRate
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3621916750239466185, guid: 05ed9a247bdc683419d87eb28bbe39a6,
+        type: 3}
+      propertyPath: MinimumOilIncreaseRate
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3621916750239466185, guid: 05ed9a247bdc683419d87eb28bbe39a6,
         type: 3}
       propertyPath: pollutionPerMillionOil
       value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 3621916750828158080, guid: 05ed9a247bdc683419d87eb28bbe39a6,
+        type: 3}
+      propertyPath: Name
+      value: Havana
       objectReference: {fileID: 0}
     - target: {fileID: 3621916750828158080, guid: 05ed9a247bdc683419d87eb28bbe39a6,
         type: 3}
@@ -16630,6 +16680,11 @@ PrefabInstance:
     - target: {fileID: 3621916750828158080, guid: 05ed9a247bdc683419d87eb28bbe39a6,
         type: 3}
       propertyPath: OilDemandIncreaseRate
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3621916750828158080, guid: 05ed9a247bdc683419d87eb28bbe39a6,
+        type: 3}
+      propertyPath: MinimumOilIncreaseRate
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3621916750828158080, guid: 05ed9a247bdc683419d87eb28bbe39a6,
@@ -16655,6 +16710,11 @@ PrefabInstance:
     - target: {fileID: 3621916750975742006, guid: 05ed9a247bdc683419d87eb28bbe39a6,
         type: 3}
       propertyPath: OilDemandIncreaseRate
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3621916750975742006, guid: 05ed9a247bdc683419d87eb28bbe39a6,
+        type: 3}
+      propertyPath: MinimumOilIncreaseRate
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3621916750975742006, guid: 05ed9a247bdc683419d87eb28bbe39a6,
@@ -16675,6 +16735,11 @@ PrefabInstance:
     - target: {fileID: 3621916751366681740, guid: 05ed9a247bdc683419d87eb28bbe39a6,
         type: 3}
       propertyPath: OilDemandIncreaseRate
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3621916751366681740, guid: 05ed9a247bdc683419d87eb28bbe39a6,
+        type: 3}
+      propertyPath: MinimumOilIncreaseRate
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3621916751366681740, guid: 05ed9a247bdc683419d87eb28bbe39a6,
@@ -16742,6 +16807,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4310504840025938502, guid: 05ed9a247bdc683419d87eb28bbe39a6,
+        type: 3}
+      propertyPath: Name
+      value: Havana
+      objectReference: {fileID: 0}
     - target: {fileID: 4528281705053683799, guid: 05ed9a247bdc683419d87eb28bbe39a6,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -16821,6 +16891,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4803647193332146075, guid: 05ed9a247bdc683419d87eb28bbe39a6,
+        type: 3}
+      propertyPath: m_Name
+      value: Havana
+      objectReference: {fileID: 0}
+    - target: {fileID: 8179270725253746800, guid: 05ed9a247bdc683419d87eb28bbe39a6,
+        type: 3}
+      propertyPath: m_text
+      value: Havana
       objectReference: {fileID: 0}
     - target: {fileID: 8477635217469660433, guid: 05ed9a247bdc683419d87eb28bbe39a6,
         type: 3}
@@ -16840,12 +16920,12 @@ PrefabInstance:
     - target: {fileID: 8477635217469660433, guid: 05ed9a247bdc683419d87eb28bbe39a6,
         type: 3}
       propertyPath: CurrentOilDemand
-      value: 100000
+      value: 50000
       objectReference: {fileID: 0}
     - target: {fileID: 8477635217469660433, guid: 05ed9a247bdc683419d87eb28bbe39a6,
         type: 3}
       propertyPath: MaximumOilDemand
-      value: 100000
+      value: 50000
       objectReference: {fileID: 0}
     - target: {fileID: 8477635217469660433, guid: 05ed9a247bdc683419d87eb28bbe39a6,
         type: 3}
@@ -16886,6 +16966,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.y
       value: 39.24
+      objectReference: {fileID: 0}
+    - target: {fileID: 9128540813860219177, guid: 05ed9a247bdc683419d87eb28bbe39a6,
+        type: 3}
+      propertyPath: m_Name
+      value: Havana
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 05ed9a247bdc683419d87eb28bbe39a6, type: 3}

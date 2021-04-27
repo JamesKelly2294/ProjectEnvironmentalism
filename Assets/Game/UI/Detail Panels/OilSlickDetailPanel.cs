@@ -10,21 +10,32 @@ public class OilSlickDetailPanel : MonoBehaviour
     public OilSlick oilSlick;
     public Button buyButton;
     public TextMeshProUGUI buyButtonText;
+    ResourceManager rm;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        Refresh();
     }
 
-    public void refresh() {
-        ResourceManager rm = GameObject.FindObjectOfType<ResourceManager>();
+    public void Refresh() {
+        // wtf?
+        if (rm == null)
+        {
+            rm = FindObjectOfType<ResourceManager>();
+        }
+
+        if (this.oilSlick == null)
+        {
+            return;
+        }
+
         (bool, bool, float) affordability = rm.PriceToBuyOilSlick(oilSlick);
         
         buyButton.interactable = affordability.Item1 && affordability.Item2;
@@ -39,7 +50,7 @@ public class OilSlickDetailPanel : MonoBehaviour
 
     public void SetOilSlick(OilSlick oilSlick) {
         this.oilSlick = oilSlick;
-        refresh();
+        Refresh();
     }
 
     public void Buy() {

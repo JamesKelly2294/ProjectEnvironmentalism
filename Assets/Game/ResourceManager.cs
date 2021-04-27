@@ -248,7 +248,7 @@ public class ResourceManager : MonoBehaviour
         CalculateEnvironmentHealth();
         CalculatePublicSentiment();
         CalculateOilStorage();
-        
+
         if (EnvironmentHealth > 95f && PublicSentiment < 5f)
         {
             TriggerGameLose();
@@ -571,7 +571,8 @@ public class ResourceManager : MonoBehaviour
         }
 
         _gameLost = true;
-        _sender.Publish("game.lose");
+        var gm = GetComponent<GameManager>();
+        gm.ShowLoseScreen();
     }
 
     bool _gameWon = false;
@@ -584,6 +585,7 @@ public class ResourceManager : MonoBehaviour
 
         _gameWon = true;
         AudioManager.Instance.Play("SFX/DemonVoice");
-        _sender.Publish("game.win");
+        var gm = GetComponent<GameManager>();
+        gm.ShowWinScreen();
     }
 }
