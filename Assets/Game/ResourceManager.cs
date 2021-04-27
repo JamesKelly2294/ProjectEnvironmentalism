@@ -249,9 +249,10 @@ public class ResourceManager : MonoBehaviour
         CalculatePublicSentiment();
         CalculateOilStorage();
         
-        if(EnvironmentHealth > 0.9f && PublicSentiment < 0.1f)
+        if (EnvironmentHealth > 95f && PublicSentiment < 5f)
         {
             TriggerGameLose();
+            return;
         }
 
         if(_oilSlickManager.CurrentOilSlickLevel == OilSlickLevel.Sea3)
@@ -564,12 +565,12 @@ public class ResourceManager : MonoBehaviour
     bool _gameLost;
     public void TriggerGameLose()
     {
-        if (_gameWon)
+        if (_gameLost)
         {
             return;
         }
 
-        _gameWon = true;
+        _gameLost = true;
         _sender.Publish("game.lose");
     }
 

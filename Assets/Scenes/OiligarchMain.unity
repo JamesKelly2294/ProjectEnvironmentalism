@@ -401,6 +401,80 @@ MonoBehaviour:
   errorSprite: {fileID: 21300000, guid: f6533ef725303e14a954886d1cb50544, type: 3}
   doneTint: {r: 0.6384499, g: 1, b: 0.5566038, a: 1}
   errorTint: {r: 1, g: 0.8451766, b: 0, a: 1}
+--- !u!1 &772043288
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 772043289}
+  - component: {fileID: 772043291}
+  - component: {fileID: 772043290}
+  m_Layer: 5
+  m_Name: Image (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &772043289
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 772043288}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.2289, y: 0.13447875, z: 0.2289}
+  m_Children: []
+  m_Father: {fileID: 718585810200284536}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -139.1, y: 127.8}
+  m_SizeDelta: {x: 100, y: 300}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &772043290
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 772043288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: a138249ed651dfa4f9aa7eed867b7f60, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &772043291
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 772043288}
+  m_CullTransparentMesh: 0
 --- !u!1 &888512373
 GameObject:
   m_ObjectHideFlags: 0
@@ -8506,7 +8580,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -198.7, y: 127}
+  m_AnchoredPosition: {x: -198.7, y: 142.7001}
   m_SizeDelta: {x: 100, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1121816298399454039
@@ -10622,7 +10696,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 24.5, y: 127.000015}
+  m_AnchoredPosition: {x: 24.5, y: 142.70012}
   m_SizeDelta: {x: 100, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1121816298972489346
@@ -15903,7 +15977,7 @@ PrefabInstance:
     - target: {fileID: 3796113037200366717, guid: b4fd650342f5a7448ab033f21531cf6b,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 125.03001
+      value: 150.35
       objectReference: {fileID: 0}
     - target: {fileID: 3796113037200366717, guid: b4fd650342f5a7448ab033f21531cf6b,
         type: 3}
@@ -15928,12 +16002,12 @@ PrefabInstance:
     - target: {fileID: 3900748181037257677, guid: b4fd650342f5a7448ab033f21531cf6b,
         type: 3}
       propertyPath: m_text
-      value: Oil Extractors & Oil Slicks
+      value: Oil Slicks, Extractors, and the HQ
       objectReference: {fileID: 0}
     - target: {fileID: 3900748181186919823, guid: b4fd650342f5a7448ab033f21531cf6b,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 200.03
+      value: 230
       objectReference: {fileID: 0}
     - target: {fileID: 3900748181186919823, guid: b4fd650342f5a7448ab033f21531cf6b,
         type: 3}
@@ -15943,7 +16017,7 @@ PrefabInstance:
     - target: {fileID: 3900748181186919823, guid: b4fd650342f5a7448ab033f21531cf6b,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 227
+      value: 211.3
       objectReference: {fileID: 0}
     - target: {fileID: 3900748181692249985, guid: b4fd650342f5a7448ab033f21531cf6b,
         type: 3}
@@ -15963,7 +16037,7 @@ PrefabInstance:
     - target: {fileID: 3900748181692249985, guid: b4fd650342f5a7448ab033f21531cf6b,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 135.03
+      value: 160.35
       objectReference: {fileID: 0}
     - target: {fileID: 3900748181692249985, guid: b4fd650342f5a7448ab033f21531cf6b,
         type: 3}
@@ -16173,11 +16247,12 @@ PrefabInstance:
     - target: {fileID: 7686982490707595441, guid: b4fd650342f5a7448ab033f21531cf6b,
         type: 3}
       propertyPath: m_text
-      value: 'Build oil extractors on oil slicks to maximize your productivity!
+      value: 'Build oil extractors on oil slicks to maximize your productivity! Visit
+        your HQ to upgrade and buy new equipment
 
 
-        Oh,
-        and try not to destroy the environment, I suppose.'
+        Oh, and try not to destroy
+        the environment, I suppose.'
       objectReference: {fileID: 0}
     - target: {fileID: 7959477993176450931, guid: b4fd650342f5a7448ab033f21531cf6b,
         type: 3}
