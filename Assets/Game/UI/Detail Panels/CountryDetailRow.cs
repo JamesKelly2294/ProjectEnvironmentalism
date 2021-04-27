@@ -8,7 +8,7 @@ public class CountryDetailRow : MonoBehaviour
 {
 
     public Image image;
-    public Sprite flagUS, flagCuba, flagMexico;
+    public Sprite flagUS, flagCuba, flagMexico, flagHell;
     public TextMeshProUGUI title;
     public Country country;
 
@@ -34,6 +34,10 @@ public class CountryDetailRow : MonoBehaviour
         } else if ( country == Country.Mexico ) {
             image.sprite = flagMexico;
             title.SetText("Mexico");
+        } else if (country == Country.Hell)
+        {
+            image.sprite = flagHell;
+            title.SetText("Hell");
         }
     }
 

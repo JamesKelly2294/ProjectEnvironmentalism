@@ -11817,15 +11817,15 @@ MonoBehaviour:
   OilExtractorPrefab: {fileID: 6792797698615146410, guid: 22811752959492245ae97f395320cfa6,
     type: 3}
   StartingOilSlick: {fileID: 926670498}
-  MaximumOilDerricks: 5
+  MaximumOilDerricks: 2
   CurrentOilDerricks: 0
-  MaximumOilRigs: 5
+  MaximumOilRigs: 1
   CurrentOilRigs: 0
-  MaximumOilTrucks: 10
+  MaximumOilTrucks: 2
   CurrentOilTrucks: 0
-  MaximumOilTankers: 5
+  MaximumOilTankers: 1
   CurrentOilTankers: 0
-  CurrentMoney: 1000000
+  CurrentMoney: 500
   BaseCostDerrick: 1000
   BaseCostRig: 5000
   BaseGreenProgressRate: 0.617
@@ -13796,10 +13796,205 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1993886964979768283, guid: 05ed9a247bdc683419d87eb28bbe39a6,
+        type: 3}
+      propertyPath: bribeCost
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 1993886964979768283, guid: 05ed9a247bdc683419d87eb28bbe39a6,
+        type: 3}
+      propertyPath: CurrentOilDemand
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1993886964979768283, guid: 05ed9a247bdc683419d87eb28bbe39a6,
+        type: 3}
+      propertyPath: OilDemandIncreaseRate
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1993886964979768283, guid: 05ed9a247bdc683419d87eb28bbe39a6,
+        type: 3}
+      propertyPath: pollutionPerMillionOil
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 3621916749426285703, guid: 05ed9a247bdc683419d87eb28bbe39a6,
+        type: 3}
+      propertyPath: bribeCost
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 3621916749426285703, guid: 05ed9a247bdc683419d87eb28bbe39a6,
+        type: 3}
+      propertyPath: CurrentOilDemand
+      value: 600
+      objectReference: {fileID: 0}
+    - target: {fileID: 3621916749426285703, guid: 05ed9a247bdc683419d87eb28bbe39a6,
+        type: 3}
+      propertyPath: OilDemandIncreaseRate
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 3621916749426285703, guid: 05ed9a247bdc683419d87eb28bbe39a6,
         type: 3}
       propertyPath: pollutionPerMillionOil
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 3621916749585424252, guid: 05ed9a247bdc683419d87eb28bbe39a6,
+        type: 3}
+      propertyPath: bribeCost
+      value: 25000
+      objectReference: {fileID: 0}
+    - target: {fileID: 3621916749585424252, guid: 05ed9a247bdc683419d87eb28bbe39a6,
+        type: 3}
+      propertyPath: investCost
+      value: 50000
+      objectReference: {fileID: 0}
+    - target: {fileID: 3621916749585424252, guid: 05ed9a247bdc683419d87eb28bbe39a6,
+        type: 3}
+      propertyPath: CurrentOilDemand
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3621916749585424252, guid: 05ed9a247bdc683419d87eb28bbe39a6,
+        type: 3}
+      propertyPath: OilDemandIncreaseRate
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3621916749585424252, guid: 05ed9a247bdc683419d87eb28bbe39a6,
+        type: 3}
+      propertyPath: pollutionPerMillionOil
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 3621916749685769166, guid: 05ed9a247bdc683419d87eb28bbe39a6,
+        type: 3}
+      propertyPath: bribeCost
       value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 3621916749685769166, guid: 05ed9a247bdc683419d87eb28bbe39a6,
+        type: 3}
+      propertyPath: CurrentOilDemand
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3621916749685769166, guid: 05ed9a247bdc683419d87eb28bbe39a6,
+        type: 3}
+      propertyPath: OilDemandIncreaseRate
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3621916749685769166, guid: 05ed9a247bdc683419d87eb28bbe39a6,
+        type: 3}
+      propertyPath: pollutionPerMillionOil
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 3621916750183114507, guid: 05ed9a247bdc683419d87eb28bbe39a6,
+        type: 3}
+      propertyPath: bribeCost
+      value: 25000
+      objectReference: {fileID: 0}
+    - target: {fileID: 3621916750183114507, guid: 05ed9a247bdc683419d87eb28bbe39a6,
+        type: 3}
+      propertyPath: investCost
+      value: 50000
+      objectReference: {fileID: 0}
+    - target: {fileID: 3621916750183114507, guid: 05ed9a247bdc683419d87eb28bbe39a6,
+        type: 3}
+      propertyPath: CurrentOilDemand
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3621916750183114507, guid: 05ed9a247bdc683419d87eb28bbe39a6,
+        type: 3}
+      propertyPath: OilDemandIncreaseRate
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3621916750183114507, guid: 05ed9a247bdc683419d87eb28bbe39a6,
+        type: 3}
+      propertyPath: pollutionPerMillionOil
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 3621916750239466185, guid: 05ed9a247bdc683419d87eb28bbe39a6,
+        type: 3}
+      propertyPath: bribeCost
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 3621916750239466185, guid: 05ed9a247bdc683419d87eb28bbe39a6,
+        type: 3}
+      propertyPath: CurrentOilDemand
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3621916750239466185, guid: 05ed9a247bdc683419d87eb28bbe39a6,
+        type: 3}
+      propertyPath: OilDemandIncreaseRate
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3621916750239466185, guid: 05ed9a247bdc683419d87eb28bbe39a6,
+        type: 3}
+      propertyPath: pollutionPerMillionOil
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 3621916750828158080, guid: 05ed9a247bdc683419d87eb28bbe39a6,
+        type: 3}
+      propertyPath: bribeCost
+      value: 100000
+      objectReference: {fileID: 0}
+    - target: {fileID: 3621916750828158080, guid: 05ed9a247bdc683419d87eb28bbe39a6,
+        type: 3}
+      propertyPath: investCost
+      value: 250000
+      objectReference: {fileID: 0}
+    - target: {fileID: 3621916750828158080, guid: 05ed9a247bdc683419d87eb28bbe39a6,
+        type: 3}
+      propertyPath: CurrentOilDemand
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3621916750828158080, guid: 05ed9a247bdc683419d87eb28bbe39a6,
+        type: 3}
+      propertyPath: OilDemandIncreaseRate
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3621916750828158080, guid: 05ed9a247bdc683419d87eb28bbe39a6,
+        type: 3}
+      propertyPath: pollutionPerMillionOil
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 3621916750975742006, guid: 05ed9a247bdc683419d87eb28bbe39a6,
+        type: 3}
+      propertyPath: bribeCost
+      value: 25000
+      objectReference: {fileID: 0}
+    - target: {fileID: 3621916750975742006, guid: 05ed9a247bdc683419d87eb28bbe39a6,
+        type: 3}
+      propertyPath: investCost
+      value: 50000
+      objectReference: {fileID: 0}
+    - target: {fileID: 3621916750975742006, guid: 05ed9a247bdc683419d87eb28bbe39a6,
+        type: 3}
+      propertyPath: CurrentOilDemand
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3621916750975742006, guid: 05ed9a247bdc683419d87eb28bbe39a6,
+        type: 3}
+      propertyPath: OilDemandIncreaseRate
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3621916750975742006, guid: 05ed9a247bdc683419d87eb28bbe39a6,
+        type: 3}
+      propertyPath: pollutionPerMillionOil
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 3621916751366681740, guid: 05ed9a247bdc683419d87eb28bbe39a6,
+        type: 3}
+      propertyPath: bribeCost
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 3621916751366681740, guid: 05ed9a247bdc683419d87eb28bbe39a6,
+        type: 3}
+      propertyPath: CurrentOilDemand
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3621916751366681740, guid: 05ed9a247bdc683419d87eb28bbe39a6,
+        type: 3}
+      propertyPath: OilDemandIncreaseRate
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3621916751366681740, guid: 05ed9a247bdc683419d87eb28bbe39a6,
+        type: 3}
+      propertyPath: pollutionPerMillionOil
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 3895863440551510316, guid: 05ed9a247bdc683419d87eb28bbe39a6,
         type: 3}
@@ -13941,6 +14136,36 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8477635217469660433, guid: 05ed9a247bdc683419d87eb28bbe39a6,
+        type: 3}
+      propertyPath: bribeCost
+      value: 1e+10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8477635217469660433, guid: 05ed9a247bdc683419d87eb28bbe39a6,
+        type: 3}
+      propertyPath: investCost
+      value: 1e+10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8477635217469660433, guid: 05ed9a247bdc683419d87eb28bbe39a6,
+        type: 3}
+      propertyPath: pollutionPerMillionOil
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 8477635217469660433, guid: 05ed9a247bdc683419d87eb28bbe39a6,
+        type: 3}
+      propertyPath: demandMetSentimentBonus
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8477635217469660433, guid: 05ed9a247bdc683419d87eb28bbe39a6,
+        type: 3}
+      propertyPath: requiredInvestSentiment
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8477635217469660433, guid: 05ed9a247bdc683419d87eb28bbe39a6,
+        type: 3}
+      propertyPath: demandNotMetSentimentPenilty
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8733199240205779514, guid: 05ed9a247bdc683419d87eb28bbe39a6,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -13950,6 +14175,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9089102965364403305, guid: 05ed9a247bdc683419d87eb28bbe39a6,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -74.74
+      objectReference: {fileID: 0}
+    - target: {fileID: 9089102965364403305, guid: 05ed9a247bdc683419d87eb28bbe39a6,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 39.37
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 05ed9a247bdc683419d87eb28bbe39a6, type: 3}

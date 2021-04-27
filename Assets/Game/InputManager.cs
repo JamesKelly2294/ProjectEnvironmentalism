@@ -6,9 +6,12 @@ using UnityEngine;
 public class InputManager : MonoBehaviour
 {
     PubSubSender _sender;
+    ResourceManager _rm;
+
     private void Awake()
     {
         _sender = GetComponent<PubSubSender>();
+        _rm = FindObjectOfType<ResourceManager>();
     }
     // Update is called once per frame\\\\\\
     void Update()
@@ -31,5 +34,11 @@ public class InputManager : MonoBehaviour
             Application.Quit();
 #endif
         }
+
+        if (Input.GetKey(KeyCode.Space) && Input.GetKey(KeyCode.M))
+        {
+            _rm.DepositFunds(5_000_000 * Time.deltaTime);
+        }
+
     }
 }

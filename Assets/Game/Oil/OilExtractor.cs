@@ -36,7 +36,12 @@ public class OilExtractor : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if(ExtractedOilType == OilSlickType.Sea)
+        {
+            MaxOilReserves *= 8.0f;
+        }
         CurrentOilReserves = MaxOilReserves;
+
         _sender = GetComponent<PubSubSender>();
 
         _resourceManager = GameObject.FindObjectOfType<ResourceManager>();

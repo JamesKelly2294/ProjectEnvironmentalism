@@ -17,6 +17,8 @@ public class TradeRoute : MonoBehaviour
     public float CurrentlyLoadedOil = 0.0f;
     public float OilLoadRate = 20.0f; // Unit/Second
 
+    public float CapacityMultiplier = 1.0f;
+
     bool _isLoadingOil;
     bool _isUnloadingOil;
     float _startingLoadedOil;
@@ -50,13 +52,24 @@ public class TradeRoute : MonoBehaviour
         _roadManager.GenerateTradeRoutePath(this);
     }
 
+    float OilLoadRateVehicleMultiplier()
+    {
+        if (OilExtractor.ExtractedOilType == OilSlickType.Land)
+        {
+            return 1.0f;
+        } else
+        {
+            return 10.0f;
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {
         if(_isLoadingOil)
         {
             float remainingOilCapacity = LoadedOilCapacity - CurrentlyLoadedOil;
-            float loadableOil = Mathf.Min(remainingOilCapacity, Mathf.Min(OilExtractor.CurrentOilStorage, OilLoadRate * Time.deltaTime));
+            float loadableOil = Mathf.Min(remainingOilCapacity, Mathf.Min(OilExtractor.CurrentOilStorage, OilLoadRateVehicleMultiplier() * OilLoadRate * Time.deltaTime));
             if (loadableOil > 0)
             {
                 OilExtractor.CurrentOilStorage -= loadableOil;
@@ -75,7 +88,7 @@ public class TradeRoute : MonoBehaviour
         if (_isUnloadingOil)
         {
             float remainingOilDemand = City.CurrentOilDemand;
-            float unloadableOil = Mathf.Min(remainingOilDemand, Mathf.Min(CurrentlyLoadedOil, OilLoadRate * Time.deltaTime));
+            float unloadableOil = Mathf.Min(remainingOilDemand, Mathf.Min(CurrentlyLoadedOil, OilLoadRateVehicleMultiplier() * OilLoadRate * Time.deltaTime));
 
             if (unloadableOil > 0)
             {

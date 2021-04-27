@@ -448,5 +448,6 @@ MonoBehaviour:
   flagUS: {fileID: 21300000, guid: c6157c1a9351c184d8ac67f9c3074bb7, type: 3}
   flagCuba: {fileID: 21300000, guid: b9bd8bf4980a02344a8780214ce9f72e, type: 3}
   flagMexico: {fileID: 21300000, guid: bfd64787bdb6721418c6c583460a15f1, type: 3}
+  flagHell: {fileID: 21300000, guid: adfb966d7d1aee4449ef245c41118473, type: 3}
   title: {fileID: 2849612668889205234}
-  government: {fileID: 0}
+  country: 0

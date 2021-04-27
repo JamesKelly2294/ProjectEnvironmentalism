@@ -28,6 +28,7 @@ public class EndGameEvent : MonoBehaviour
 
     public void TriggerEndGame()
     {
+        _resourceManager.EndGameActive = true;
         AudioManager.Instance.StopMusic();
         HellCity.gameObject.SetActive(true);
         

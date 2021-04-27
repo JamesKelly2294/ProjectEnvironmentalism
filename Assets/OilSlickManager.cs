@@ -33,16 +33,8 @@ public class OilSlickManager : MonoBehaviour
     public (bool, float) PriceToUnlockNextOilSlick() {
         ResourceManager rm = GameObject.FindObjectOfType<ResourceManager>();
         OilSlickManager osm = GameObject.FindObjectOfType<OilSlickManager>();
-        int currentLevel = 1;
-        if (osm.CurrentOilSlickLevel == OilSlickLevel.Sea2) {
-            currentLevel = 2;
-        } else if (osm.CurrentOilSlickLevel == OilSlickLevel.Sea3) {
-            currentLevel = 3;
-        } else if (osm.CurrentOilSlickLevel == OilSlickLevel.Sea4) {
-            currentLevel = 4;
-        }
-
-        float levelCost = 100000f * Mathf.Pow(3, currentLevel); 
+        
+        float levelCost = 100000f * Mathf.Pow(5, (float)osm.CurrentOilSlickLevel); 
         return (rm.CurrentMoney >= levelCost, levelCost);
     }
 

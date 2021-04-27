@@ -97,11 +97,11 @@ public class HQDetailPane : MonoBehaviour
     }
 
     float priceForNextExtractionUpgrade() {
-        return Mathf.Pow(5, timesUpgradedExtraction) * 100f;
+        return Mathf.Pow(5, timesUpgradedExtraction) * 250f;
     }
 
     float priceForNextMoveUpgrade() {
-        return Mathf.Pow(6, timesUpgradedMove) * 50f;
+        return Mathf.Pow(6, timesUpgradedMove) * 100f;
     }
 
     public void BuyExtractUpgrade() {
@@ -115,7 +115,7 @@ public class HQDetailPane : MonoBehaviour
     public void BuyMoveUpgrade() {
         ResourceManager rm = GameObject.FindObjectOfType<ResourceManager>();
         if (rm.AttemptPurchase(priceForNextMoveUpgrade())) {
-            rm.BaseOilLoadUnloadRate *= 2;
+            rm.BaseOilLoadUnloadRateMultiplier *= 2;
             timesUpgradedMove += 1;
         }
     }

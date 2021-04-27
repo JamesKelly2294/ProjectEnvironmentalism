@@ -63,6 +63,20 @@ public class OilDerrickDetailPanel : MonoBehaviour
         ResourceManager rm = GameObject.FindObjectOfType<ResourceManager>();
         List<City> sortedCities = rm.Cities.OrderBy(c=>c.Name).ToList();
 
+        // Add in Hell cities
+        if (rm.EndGameActive) {
+            GameObject hell = Instantiate(countryRowPrefab, routesList.transform);
+            hell.GetComponent<CountryDetailRow>().Setup(Country.Hell);
+            foreach (City city in sortedCities)
+            {
+                if (city.Country == Country.Hell)
+                {
+                    GameObject routeRow = Instantiate(routeRowPrefab, routesList.transform);
+                    routeRow.GetComponent<RouteDetailRow>().Setup(oilExtractor, city);
+                }
+            }
+        }
+
         // Add in Mexican cities
         GameObject mexico = Instantiate(countryRowPrefab, routesList.transform);
         mexico.GetComponent<CountryDetailRow>().Setup(Country.Mexico);

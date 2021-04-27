@@ -89,9 +89,14 @@ public class ResourceManager : MonoBehaviour
     private List<OilExtractor> oilExtractors = new List<OilExtractor>();
     private List<OilSlick> purchasedOilSlicks = new List<OilSlick>();
 
+    public City HellCity;
+
     public float BaseExtractionRate = 10f;
     public float BaseOilLoadUnloadRate = 10f;
-    
+    public float BaseOilLoadUnloadRateMultiplier = 1.0f;
+
+    public bool EndGameActive = false;
+
     private float elapsedTime = 0.0f;
 
     RunningAverage incomeRunningAvg = new RunningAverage();
@@ -104,15 +109,16 @@ public class ResourceManager : MonoBehaviour
     private float _withdrawnFunds = 0.0f;
     private float _producedOil = 0.0f;
     private float _exportedOil = 0.0f;
-
-
-
+    
     public List<City> Cities = new List<City>();
 
     void Awake()
     {
         _sender = GetComponent<PubSubSender>();
     }
+
+    OilSlickManager _oilSlickManager;
+    EndGameEvent _endGameEvent;
 
     // Start is called before the first frame update
     void Start()
@@ -125,6 +131,9 @@ public class ResourceManager : MonoBehaviour
         PublishOilStorageUpdate();
 
         PurchaseStartingOilSlick();
+
+        _oilSlickManager = FindObjectOfType<OilSlickManager>();
+        _endGameEvent = FindObjectOfType<EndGameEvent>();
     }
 
     void PurchaseStartingOilSlick()
@@ -153,9 +162,13 @@ public class ResourceManager : MonoBehaviour
             extractor.MaxOilStorage = extractor.OilExtractionRate * 60;
         }
 
+        float OilLoadRate = (BaseOilLoadUnloadRate * BaseOilLoadUnloadRateMultiplier);
+        float OilVehicleCapacityModifier = (Mathf.Sqrt(BaseOilLoadUnloadRateMultiplier * 1.2f));
         foreach (City city in Cities) {
-            foreach (TradeRoute tradeRoute in city.TradeRoutes) {
-                tradeRoute.OilLoadRate = BaseOilLoadUnloadRate;
+            foreach (TradeRoute tradeRoute in city.TradeRoutes)
+            {
+                tradeRoute.OilLoadRate = OilLoadRate;
+                tradeRoute.CapacityMultiplier = OilVehicleCapacityModifier;
             }
         }
 
@@ -172,7 +185,10 @@ public class ResourceManager : MonoBehaviour
         
         float env = 0;
         foreach (City city in Cities) {
-            env += city.environment * 100.0f;
+            if (city.Country != Country.Hell)
+            {
+                env += city.environment * 100.0f;
+            }
         }
         EnvironmentHealth = env / Cities.Count;
 
@@ -232,6 +248,22 @@ public class ResourceManager : MonoBehaviour
         CalculateEnvironmentHealth();
         CalculatePublicSentiment();
         CalculateOilStorage();
+        
+        if(EnvironmentHealth > 0.9f && PublicSentiment < 0.1f)
+        {
+            TriggerGameLose();
+        }
+
+        if(_oilSlickManager.CurrentOilSlickLevel == OilSlickLevel.Sea3)
+        {
+            _oilSlickManager.UnlockOilSlickLevel(OilSlickLevel.Sea4);
+            _endGameEvent.TriggerEndGame();
+        }
+
+        if(HellCity.CurrentOilDemand <= 100)
+        {
+            TriggerGameWin();
+        }
     }
 
     void PublishOilUpdate()
@@ -253,7 +285,7 @@ public class ResourceManager : MonoBehaviour
     {
         PrimaryInfoCardResourcesDollarsUpdate dollarsUpdate = new PrimaryInfoCardResourcesDollarsUpdate
         {
-            dollarsAmount = Mathf.RoundToInt(CurrentMoney),
+            dollarsAmount = (decimal)CurrentMoney,
             dollarsIncomePerSecond = (decimal)incomeRunningAvg.CalculatedAverage(),
             dolarsExpensesPerSecond = (decimal)expensesRunningAvg.CalculatedAverage(),
         };
@@ -473,7 +505,7 @@ public class ResourceManager : MonoBehaviour
     }
 
     public float PriceToBuyOilRig() {
-        return 10_000_000f * (float)Math.Pow(1.06, MaximumOilRigs);
+        return 1_000_000f * (float)Math.Pow(1.06, MaximumOilRigs);
     }
 
     public float PriceToBuyOilTruck() {
@@ -481,7 +513,7 @@ public class ResourceManager : MonoBehaviour
     }
 
     public float PriceToBuyOilTanker() {
-        return 1_000_000f * (float)Math.Pow(1.06, MaximumOilTankers);
+        return 100_000f * (float)Math.Pow(1.06, MaximumOilTankers);
     }
 
     public void PurchaseOilSlickEvent(PubSubListenerEvent e)
@@ -529,13 +561,27 @@ public class ResourceManager : MonoBehaviour
         }
     }
 
+    bool _gameLost;
     public void TriggerGameLose()
     {
+        if (_gameWon)
+        {
+            return;
+        }
+
+        _gameWon = true;
         _sender.Publish("game.lose");
     }
 
+    bool _gameWon = false;
     public void TriggerGameWin()
     {
+        if(_gameWon)
+        {
+            return;
+        }
+
+        _gameWon = true;
         AudioManager.Instance.Play("SFX/DemonVoice");
         _sender.Publish("game.win");
     }

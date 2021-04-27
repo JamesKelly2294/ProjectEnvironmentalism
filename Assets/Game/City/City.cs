@@ -10,10 +10,13 @@ public class City : MonoBehaviour
     public Country Country;
 
     public float MaximumOilDemand = 1200; // units of oil
-    public float CurrentOilDemand = 10; // units of oil
+    public float CurrentOilDemand = 0; // units of oil
 
     [Range(0, 50)]
     public float OilDemandIncreaseRate = 10; // units per second
+
+    [Range(0, 50)]
+    public float MinimumOilIncreaseRate = 5; // units per second
 
     public Slider OilDemandSlider;
 
@@ -69,23 +72,33 @@ public class City : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        UpdateOilDemand();
-        OilDemandSlider.normalizedValue = CurrentOilDemand / MaximumOilDemand;
-        if ((CurrentOilDemand / MaximumOilDemand) > 0.9) {
-            sentiment = Mathf.Max(0, sentiment - (demandNotMetSentimentPenilty * Time.deltaTime ));
-        } else if ((CurrentOilDemand / MaximumOilDemand) < 0.1) {
-            sentiment = Mathf.Min(1, sentiment + (demandNotMetSentimentPenilty * Time.deltaTime ));
+        if (Country != Country.Hell)
+        {
+            UpdateOilDemand();
+            if ((CurrentOilDemand / MaximumOilDemand) > 0.9)
+            {
+                sentiment = Mathf.Max(0, sentiment - (demandNotMetSentimentPenilty * Time.deltaTime));
+            }
+            else if ((CurrentOilDemand / MaximumOilDemand) < 0.1)
+            {
+                sentiment = Mathf.Min(1, sentiment + (demandNotMetSentimentPenilty * Time.deltaTime));
+            }
+
+            float demand = CurrentOilDemand / MaximumOilDemand;
+            if (demand > 0.9)
+            {
+                float envimpact = Mathf.Pow(1.10f, numberOfTimesInvested) * 0.01f * Time.deltaTime;
+                environment = Mathf.Clamp(environment + ((demand - 0.75f) * 4) * envimpact, 0, 1);
+            }
         }
 
-        float demand = CurrentOilDemand / MaximumOilDemand;
-        if (demand > 0.9) {
-            float envimpact = Mathf.Pow(1.10f, numberOfTimesInvested) * 0.01f * Time.deltaTime ;
-            environment = Mathf.Clamp(environment + ((demand - 0.75f) * 4) * envimpact, 0, 1);
-        }
+        OilDemandSlider.normalizedValue = CurrentOilDemand / MaximumOilDemand;
     }
 
     void UpdateOilDemand()
     {
+        float oilIncreaseRate = MinimumOilIncreaseRate + ((OilDemandIncreaseRate - MinimumOilIncreaseRate) * sentiment);
+        float oilIncrease = oilIncreaseRate * Time.deltaTime;
         CurrentOilDemand = Mathf.Min(MaximumOilDemand, CurrentOilDemand + OilDemandIncreaseRate * Time.deltaTime);
     }
 
