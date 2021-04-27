@@ -571,7 +571,7 @@ public class ResourceManager : MonoBehaviour
         }
 
         _gameLost = true;
-        var gm = GetComponent<GameManager>();
+        var gm = GameObject.FindObjectOfType<GameManager>();
         gm.ShowLoseScreen();
     }
 
@@ -585,7 +585,7 @@ public class ResourceManager : MonoBehaviour
 
         _gameWon = true;
         AudioManager.Instance.Play("SFX/DemonVoice");
-        var gm = GetComponent<GameManager>();
+        var gm = GameObject.FindObjectOfType<GameManager>();
         gm.ShowWinScreen();
     }
 }

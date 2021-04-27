@@ -75,21 +75,27 @@ public class City : MonoBehaviour
         if (Country != Country.Hell)
         {
             UpdateOilDemand();
-            if ((CurrentOilDemand / MaximumOilDemand) > 0.9)
-            {
-                sentiment = Mathf.Max(0, sentiment - (demandNotMetSentimentPenilty * Time.deltaTime));
-            }
-            else if ((CurrentOilDemand / MaximumOilDemand) < 0.1)
-            {
-                sentiment = Mathf.Min(1, sentiment + (demandNotMetSentimentPenilty * Time.deltaTime));
-            }
 
-            float demand = CurrentOilDemand / MaximumOilDemand;
-            if (demand > 0.9)
-            {
-                //float envimpact = Mathf.Pow(1.10f, numberOfTimesInvested) * 0.01f * Time.deltaTime;
-                float envimpact = 0.01f * Time.deltaTime;
-                environment = Mathf.Clamp(environment + ((demand - 0.75f) * 4) * envimpact, 0, 1);
+            if (_resourceManager.EndGameActive) {
+                environment = Mathf.Max(0.1f, environment - 0.01f * Time.deltaTime);
+                sentiment   = Mathf.Max(0.1f, sentiment   - 0.01f * Time.deltaTime);
+            } else {
+                if ((CurrentOilDemand / MaximumOilDemand) > 0.9)
+                {
+                    sentiment = Mathf.Max(0, sentiment - (demandNotMetSentimentPenilty * Time.deltaTime));
+                }
+                else if ((CurrentOilDemand / MaximumOilDemand) < 0.1)
+                {
+                    sentiment = Mathf.Min(1, sentiment + (demandNotMetSentimentPenilty * Time.deltaTime));
+                }
+
+                float demand = CurrentOilDemand / MaximumOilDemand;
+                if (demand > 0.9)
+                {
+                    //float envimpact = Mathf.Pow(1.10f, numberOfTimesInvested) * 0.01f * Time.deltaTime;
+                    float envimpact = 0.01f * Time.deltaTime;
+                    environment = Mathf.Clamp(environment + ((demand - 0.75f) * 4) * envimpact, 0, 1);
+                }
             }
         }
 
