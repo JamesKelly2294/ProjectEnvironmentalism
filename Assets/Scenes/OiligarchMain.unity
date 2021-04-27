@@ -401,6 +401,12 @@ MonoBehaviour:
   errorSprite: {fileID: 21300000, guid: f6533ef725303e14a954886d1cb50544, type: 3}
   doneTint: {r: 0.6384499, g: 1, b: 0.5566038, a: 1}
   errorTint: {r: 1, g: 0.8451766, b: 0, a: 1}
+--- !u!1 &748504976 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4530239070843799795, guid: d92bc69bdd5178c46abe380a89263e88,
+    type: 3}
+  m_PrefabInstance: {fileID: 8735745394026431595}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &772043288
 GameObject:
   m_ObjectHideFlags: 0
@@ -925,6 +931,36 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -296.82
+      objectReference: {fileID: 0}
+    - target: {fileID: 633759379643564165, guid: cec63fed5e0bb2949a2cd87a4d49ead3,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 633759379643564165, guid: cec63fed5e0bb2949a2cd87a4d49ead3,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 633759379643564165, guid: cec63fed5e0bb2949a2cd87a4d49ead3,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 633759379643564165, guid: cec63fed5e0bb2949a2cd87a4d49ead3,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 633759379643564165, guid: cec63fed5e0bb2949a2cd87a4d49ead3,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 633759379643564165, guid: cec63fed5e0bb2949a2cd87a4d49ead3,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 728176398806261043, guid: cec63fed5e0bb2949a2cd87a4d49ead3,
         type: 3}
@@ -16920,12 +16956,12 @@ PrefabInstance:
     - target: {fileID: 8477635217469660433, guid: 05ed9a247bdc683419d87eb28bbe39a6,
         type: 3}
       propertyPath: CurrentOilDemand
-      value: 50000
+      value: 15000
       objectReference: {fileID: 0}
     - target: {fileID: 8477635217469660433, guid: 05ed9a247bdc683419d87eb28bbe39a6,
         type: 3}
       propertyPath: MaximumOilDemand
-      value: 50000
+      value: 15000
       objectReference: {fileID: 0}
     - target: {fileID: 8477635217469660433, guid: 05ed9a247bdc683419d87eb28bbe39a6,
         type: 3}
@@ -16996,7 +17032,7 @@ PrefabInstance:
     - target: {fileID: 4530239069840173564, guid: d92bc69bdd5178c46abe380a89263e88,
         type: 3}
       propertyPath: SupplementalNodes.Array.size
-      value: 14
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 4530239069840173564, guid: d92bc69bdd5178c46abe380a89263e88,
         type: 3}
@@ -17100,6 +17136,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4530239069840173564, guid: d92bc69bdd5178c46abe380a89263e88,
         type: 3}
+      propertyPath: SupplementalNodes.Array.data[14].Data
+      value: 
+      objectReference: {fileID: 8211712901385515165}
+    - target: {fileID: 4530239069840173564, guid: d92bc69bdd5178c46abe380a89263e88,
+        type: 3}
+      propertyPath: SupplementalNodes.Array.data[14].Type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4530239069840173564, guid: d92bc69bdd5178c46abe380a89263e88,
+        type: 3}
       propertyPath: SupplementalNodes.Array.data[9].Waypoint
       value: 
       objectReference: {fileID: 2426424085546759808}
@@ -17123,6 +17169,11 @@ PrefabInstance:
       propertyPath: SupplementalNodes.Array.data[13].Waypoint
       value: 
       objectReference: {fileID: 2426424085211585315}
+    - target: {fileID: 4530239069840173564, guid: d92bc69bdd5178c46abe380a89263e88,
+        type: 3}
+      propertyPath: SupplementalNodes.Array.data[14].Waypoint
+      value: 
+      objectReference: {fileID: 748504976}
     - target: {fileID: 4530239069840173564, guid: d92bc69bdd5178c46abe380a89263e88,
         type: 3}
       propertyPath: SupplementalGraphEdges.Array.data[1].FirstWaypoint
