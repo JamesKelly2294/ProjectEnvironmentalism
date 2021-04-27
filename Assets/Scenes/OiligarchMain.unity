@@ -16540,13 +16540,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1993886964979768283, guid: 05ed9a247bdc683419d87eb28bbe39a6,
         type: 3}
+      propertyPath: Population
+      value: 6166488
+      objectReference: {fileID: 0}
+    - target: {fileID: 1993886964979768283, guid: 05ed9a247bdc683419d87eb28bbe39a6,
+        type: 3}
       propertyPath: CurrentOilDemand
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1993886964979768283, guid: 05ed9a247bdc683419d87eb28bbe39a6,
         type: 3}
       propertyPath: OilDemandIncreaseRate
-      value: 10
+      value: 14.1
       objectReference: {fileID: 0}
     - target: {fileID: 1993886964979768283, guid: 05ed9a247bdc683419d87eb28bbe39a6,
         type: 3}
@@ -16562,6 +16567,11 @@ PrefabInstance:
         type: 3}
       propertyPath: bribeCost
       value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 3621916749426285703, guid: 05ed9a247bdc683419d87eb28bbe39a6,
+        type: 3}
+      propertyPath: Population
+      value: 7066141
       objectReference: {fileID: 0}
     - target: {fileID: 3621916749426285703, guid: 05ed9a247bdc683419d87eb28bbe39a6,
         type: 3}
@@ -16571,7 +16581,7 @@ PrefabInstance:
     - target: {fileID: 3621916749426285703, guid: 05ed9a247bdc683419d87eb28bbe39a6,
         type: 3}
       propertyPath: OilDemandIncreaseRate
-      value: 10
+      value: 14.9
       objectReference: {fileID: 0}
     - target: {fileID: 3621916749426285703, guid: 05ed9a247bdc683419d87eb28bbe39a6,
         type: 3}
@@ -16590,6 +16600,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3621916749585424252, guid: 05ed9a247bdc683419d87eb28bbe39a6,
         type: 3}
+      propertyPath: Population
+      value: 1161000
+      objectReference: {fileID: 0}
+    - target: {fileID: 3621916749585424252, guid: 05ed9a247bdc683419d87eb28bbe39a6,
+        type: 3}
       propertyPath: investCost
       value: 100000
       objectReference: {fileID: 0}
@@ -16601,7 +16616,7 @@ PrefabInstance:
     - target: {fileID: 3621916749585424252, guid: 05ed9a247bdc683419d87eb28bbe39a6,
         type: 3}
       propertyPath: OilDemandIncreaseRate
-      value: 10
+      value: 10.3
       objectReference: {fileID: 0}
     - target: {fileID: 3621916749585424252, guid: 05ed9a247bdc683419d87eb28bbe39a6,
         type: 3}
@@ -16620,13 +16635,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3621916749685769166, guid: 05ed9a247bdc683419d87eb28bbe39a6,
         type: 3}
+      propertyPath: Population
+      value: 3097859
+      objectReference: {fileID: 0}
+    - target: {fileID: 3621916749685769166, guid: 05ed9a247bdc683419d87eb28bbe39a6,
+        type: 3}
       propertyPath: CurrentOilDemand
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3621916749685769166, guid: 05ed9a247bdc683419d87eb28bbe39a6,
         type: 3}
       propertyPath: OilDemandIncreaseRate
-      value: 10
+      value: 11.8
       objectReference: {fileID: 0}
     - target: {fileID: 3621916749685769166, guid: 05ed9a247bdc683419d87eb28bbe39a6,
         type: 3}
@@ -16645,6 +16665,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3621916750183114507, guid: 05ed9a247bdc683419d87eb28bbe39a6,
         type: 3}
+      propertyPath: Population
+      value: 1387985
+      objectReference: {fileID: 0}
+    - target: {fileID: 3621916750183114507, guid: 05ed9a247bdc683419d87eb28bbe39a6,
+        type: 3}
       propertyPath: investCost
       value: 100000
       objectReference: {fileID: 0}
@@ -16656,7 +16681,7 @@ PrefabInstance:
     - target: {fileID: 3621916750183114507, guid: 05ed9a247bdc683419d87eb28bbe39a6,
         type: 3}
       propertyPath: OilDemandIncreaseRate
-      value: 10
+      value: 11.6
       objectReference: {fileID: 0}
     - target: {fileID: 3621916750183114507, guid: 05ed9a247bdc683419d87eb28bbe39a6,
         type: 3}
@@ -16675,13 +16700,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3621916750239466185, guid: 05ed9a247bdc683419d87eb28bbe39a6,
         type: 3}
+      propertyPath: Population
+      value: 1270530
+      objectReference: {fileID: 0}
+    - target: {fileID: 3621916750239466185, guid: 05ed9a247bdc683419d87eb28bbe39a6,
+        type: 3}
       propertyPath: CurrentOilDemand
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3621916750239466185, guid: 05ed9a247bdc683419d87eb28bbe39a6,
         type: 3}
       propertyPath: OilDemandIncreaseRate
-      value: 10
+      value: 10.6
       objectReference: {fileID: 0}
     - target: {fileID: 3621916750239466185, guid: 05ed9a247bdc683419d87eb28bbe39a6,
         type: 3}
@@ -16705,6 +16735,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3621916750828158080, guid: 05ed9a247bdc683419d87eb28bbe39a6,
         type: 3}
+      propertyPath: Population
+      value: 2148930
+      objectReference: {fileID: 0}
+    - target: {fileID: 3621916750828158080, guid: 05ed9a247bdc683419d87eb28bbe39a6,
+        type: 3}
       propertyPath: investCost
       value: 250000
       objectReference: {fileID: 0}
@@ -16716,7 +16751,7 @@ PrefabInstance:
     - target: {fileID: 3621916750828158080, guid: 05ed9a247bdc683419d87eb28bbe39a6,
         type: 3}
       propertyPath: OilDemandIncreaseRate
-      value: 10
+      value: 12.1
       objectReference: {fileID: 0}
     - target: {fileID: 3621916750828158080, guid: 05ed9a247bdc683419d87eb28bbe39a6,
         type: 3}
@@ -16735,6 +16770,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3621916750975742006, guid: 05ed9a247bdc683419d87eb28bbe39a6,
         type: 3}
+      propertyPath: Population
+      value: 702394
+      objectReference: {fileID: 0}
+    - target: {fileID: 3621916750975742006, guid: 05ed9a247bdc683419d87eb28bbe39a6,
+        type: 3}
       propertyPath: investCost
       value: 100000
       objectReference: {fileID: 0}
@@ -16746,7 +16786,7 @@ PrefabInstance:
     - target: {fileID: 3621916750975742006, guid: 05ed9a247bdc683419d87eb28bbe39a6,
         type: 3}
       propertyPath: OilDemandIncreaseRate
-      value: 10
+      value: 7.7
       objectReference: {fileID: 0}
     - target: {fileID: 3621916750975742006, guid: 05ed9a247bdc683419d87eb28bbe39a6,
         type: 3}
@@ -16765,13 +16805,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3621916751366681740, guid: 05ed9a247bdc683419d87eb28bbe39a6,
         type: 3}
+      propertyPath: Population
+      value: 497883
+      objectReference: {fileID: 0}
+    - target: {fileID: 3621916751366681740, guid: 05ed9a247bdc683419d87eb28bbe39a6,
+        type: 3}
       propertyPath: CurrentOilDemand
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3621916751366681740, guid: 05ed9a247bdc683419d87eb28bbe39a6,
         type: 3}
       propertyPath: OilDemandIncreaseRate
-      value: 10
+      value: 7.7
       objectReference: {fileID: 0}
     - target: {fileID: 3621916751366681740, guid: 05ed9a247bdc683419d87eb28bbe39a6,
         type: 3}
